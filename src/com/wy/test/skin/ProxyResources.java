@@ -169,7 +169,7 @@ public class ProxyResources extends Resources {
 			result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
 		} else if (notFoundInSkinIds.get(id) > 0) {
 			// 皮肤包中不包含id资源
-			Log.d(TAG, "notFoundInSkinIds contain app id:" + toHex(id) + ", value:" + value);
+			Log.d(TAG, "notFoundInSkinIds contain value:" + value + value.string == null ? ", name:" + getResourceName(id) : "");
 			result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
 		} else {
 			// 将app资源id转换成皮肤资源id
@@ -183,11 +183,20 @@ public class ProxyResources extends Resources {
 					res.getValue(skinId, value, true);
 				}
 				result = (Drawable) ReflectionUtil.invoke(res, "loadDrawable", loadParamType, value, id);
+				// 当同一张图片放在app资源和皮肤资源的不同分辨率目录下, 使用皮肤资源id获取文件名称, 再次尝试
+				if (result == null) {
+					Log.d(TAG, "loadDrawable(TypedValue value, int id) return null ,use getValue(skinId,value,true) try again");
+					res.getValue(skinId, value, true);
+					result = (Drawable) ReflectionUtil.invoke(res, "loadDrawable", loadParamType, value, id);
+				}
 				Object resultInfo = result instanceof ColorDrawable ? toHex((Integer) ReflectionUtil.getValue(
 						ReflectionUtil.getValue(result, "mState"), "mUseColor")) : result;
 				Log.d(TAG, "loadDrawable(TypedValue value, int id) value:" + value + ", skin id:" + toHex(skinId) + ",result:" + resultInfo
 						+ ", from resources :" + res);
 			}
+		}
+		if (result == null) {
+			result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
 		}
 		return result;
 	}
@@ -204,7 +213,7 @@ public class ProxyResources extends Resources {
 			result = (ColorStateList) ReflectionUtil.invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
 		} else if (notFoundInSkinIds.get(id) > 0) {
 			// 皮肤包中不包含id资源
-			Log.d(TAG, "notFoundInSkinIds contain app id:" + toHex(id) + ", value:" + value);
+			Log.d(TAG, "notFoundInSkinIds contain value:" + value + value.string == null ? ", name:" + getResourceName(id) : "");
 			result = (ColorStateList) ReflectionUtil.invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
 		} else {
 			// 将app资源id转换成皮肤资源id
