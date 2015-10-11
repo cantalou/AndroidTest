@@ -1,5 +1,8 @@
 package com.wy.test.skin;
 
+import java.io.InputStream;
+import java.lang.ref.WeakReference;
+
 import com.wy.test.util.ReflectionUtil;
 
 import android.content.Context;
@@ -12,9 +15,12 @@ import android.content.res.XmlResourceParser;
 import android.content.res.Resources.NotFoundException;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.LongSparseArray;
+import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
 
@@ -28,9 +34,14 @@ public class ProxyDefaultResources extends Resources {
 	private static final int APP_ID_MASK = 0x7F000000;
 
 	/**
-	 * 资源id映射
+	 * 皮肤资源id映射
 	 */
-	private SparseIntArray idMap = new SparseIntArray();
+	private SparseIntArray skinIdMap = new SparseIntArray();
+	
+	/**
+	 * 夜间模式资源id映射
+	 */
+	private SparseIntArray nightIdMap = new SparseIntArray();
 
 	/**
 	 * 皮肤资源不存在的id
@@ -66,6 +77,34 @@ public class ProxyDefaultResources extends Resources {
 	 * 资源名称缓存
 	 */
 	private String[] resourceNameCache = new String[resourceNameCacheSize];
+
+	/**
+	 * 资源缓存
+	 */
+	private LongSparseArray<WeakReference<Drawable.ConstantState>> drawableCache = new LongSparseArray<WeakReference<Drawable.ConstantState>>();
+	private LongSparseArray<WeakReference<Drawable.ConstantState>> colorDrawableCache = new LongSparseArray<WeakReference<Drawable.ConstantState>>();
+	private SparseArray<WeakReference<ColorStateList>> colorStateListCache = new SparseArray<WeakReference<ColorStateList>>();
+
+	/**
+	 * 是否夜间模式
+	 */
+	private boolean nightMode = false;
+
+	/**
+	 * Create a new SkinResources object on top of an existing set of assets in
+	 * an AssetManager.
+	 *
+	 * @param skinRes
+	 *            skin resources
+	 * @param defRes
+	 *            default resources
+	 * @param nightMode
+	 *            夜间模式
+	 */
+	public ProxyDefaultResources(Context cxt, Resources skinRes, Resources defRes, boolean nightMode) {
+		this(cxt, skinRes, defRes);
+		this.nightMode = nightMode;
+	}
 
 	/**
 	 * Create a new SkinResources object on top of an existing set of assets in
@@ -105,7 +144,7 @@ public class ProxyDefaultResources extends Resources {
 	 * @param id
 	 * @return 皮肤资源id
 	 */
-	public int convertId(int id) {
+	public int toSkinId(int id) {
 
 		if (id == 0 || skinResources == null) {
 			return 0;
@@ -116,36 +155,81 @@ public class ProxyDefaultResources extends Resources {
 			return 0;
 		}
 
-		int skinId = idMap.get(id);
+		int skinId = skinIdMap.get(id);
 		if (skinId != 0) {
 			return skinId;
 		}
-		skinId = skinResources.getIdentifier(getResourceName(id), null, packageName);
+
+		String name = getResourceName(id);
+		if (TextUtils.isEmpty(name)) {
+			return 0;
+		}
+
+		skinId = skinResources.getIdentifier(name, null, packageName);
 		if (skinId == 0) {
 			notFoundInSkinIds.put(id, id);
 		} else {
-			idMap.put(id, skinId);
+			skinIdMap.put(id, skinId);
+		}
+		return skinId;
+	}
+	
+	/**
+	 * 将应用资源id转成夜间模式资源id
+	 * 
+	 * @param id
+	 * @return 夜间模式资源id
+	 */
+	public int toNightId(int id) {
+
+		if (id == 0 || skinResources == null) {
+			return 0;
+		}
+
+		// 如果皮肤资源包不存在当前资源项,直接返回0
+		if (notFoundInSkinIds.get(id) > 0) {
+			return 0;
+		}
+
+		int skinId = skinIdMap.get(id);
+		if (skinId != 0) {
+			return skinId;
+		}
+
+		String name = getResourceName(id);
+		if (TextUtils.isEmpty(name)) {
+			return 0;
+		}
+
+		skinId = skinResources.getIdentifier(name, null, packageName);
+		if (skinId == 0) {
+			notFoundInSkinIds.put(id, id);
+		} else {
+			skinIdMap.put(id, skinId);
 		}
 		return skinId;
 	}
 
 	@Override
 	public void getValue(int id, TypedValue outValue, boolean resolveRefs) throws NotFoundException {
-		int skinId = convertId(id);
+		int skinId = toSkinId(id);
 		if (skinId != 0) {
 			skinResources.getValue(skinId, outValue, resolveRefs);
-			Log.d(TAG, "getValue(int id, TypedValue outValue, boolean resolveRefs) skin id:" + toHex(skinId) + ", value:" + outValue);
+			Log.v(TAG, "getValue(int id, TypedValue outValue, boolean resolveRefs) skin id:" + toHex(skinId) + ", value:" + outValue);
 		} else {
 			super.getValue(id, outValue, resolveRefs);
+		}
+		if (nightMode && outValue.type >= TypedValue.TYPE_FIRST_COLOR_INT && outValue.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+			
 		}
 	}
 
 	@Override
 	public void getValueForDensity(int id, int density, TypedValue outValue, boolean resolveRefs) throws NotFoundException {
-		int skinId = convertId(id);
+		int skinId = toSkinId(id);
 		if (skinId != 0) {
 			skinResources.getValueForDensity(skinId, density, outValue, resolveRefs);
-			Log.d(TAG, "getValueForDensity skin id:" + toHex(skinId) + ", value:" + outValue);
+			Log.v(TAG, "getValueForDensity skin id:" + toHex(skinId) + ", value:" + outValue);
 		} else {
 			super.getValueForDensity(id, density, outValue, resolveRefs);
 		}
@@ -163,45 +247,59 @@ public class ProxyDefaultResources extends Resources {
 			return null;
 		}
 
-		Drawable result = null;
-		boolean isFromDefaultResources = false;
+		Log.v(TAG, "loadDrawable ,value:" + value + (value.string == null ? ", name:" + getResourceName(id) : "") + ",id:" + toHex(id));
+
+		long key = (((long) value.assetCookie) << 32) | value.data;
+		boolean isColorDrawable = value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT;
+		LongSparseArray<WeakReference<ConstantState>> cache = isColorDrawable ? colorDrawableCache : drawableCache;
+
+		Drawable result = getCachedDrawable(cache, key);
+		if (result != null) {
+			Log.v(TAG, "from cache \n");
+			return result;
+		}
+		boolean isFromSkinResources = false;
 		// 系统资源
 		if ((id & APP_ID_MASK) != APP_ID_MASK) {
 			result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
-			isFromDefaultResources = true;
 		} else if (notFoundInSkinIds.get(id) > 0) {
 			// 皮肤包中不包含id资源
-			Log.d(TAG, "notFoundInSkinIds contain value:" + value + value.string == null ? ", name:" + getResourceName(id) : "");
+			Log.v(TAG, "notFoundInSkinIds contain \n");
 			result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
-			isFromDefaultResources = true;
 		} else {
 			// 将app资源id转换成皮肤资源id
-			int skinId = convertId(id);
+			int skinId = toSkinId(id);
 			if (skinId == 0) {
-				Log.d(TAG, "convertId not found value:" + value);
+				Log.v(TAG, "convertId not found \n");
 				result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
-				isFromDefaultResources = true;
 			} else {
 				Resources res = skinResources;
-				if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT && skinId != id) {
+				if (isColorDrawable) {
 					res.getValue(skinId, value, true);
 				}
 				result = (Drawable) ReflectionUtil.invoke(res, "loadDrawable", loadParamType, value, id);
 				// 当同一张图片放在app资源和皮肤资源的不同分辨率目录下, 使用皮肤资源id获取文件名称, 再次尝试
 				if (result == null) {
-					Log.d(TAG, "loadDrawable(TypedValue value, int id) return null ,use getValue(skinId,value,true) try again");
+					Log.v(TAG, "skinResources.loadDrawable() return null ,use getValue(skinId,value,true) try again");
 					res.getValue(skinId, value, true);
 					result = (Drawable) ReflectionUtil.invoke(res, "loadDrawable", loadParamType, value, id);
 				}
 				Object resultInfo = result instanceof ColorDrawable ? toHex((Integer) ReflectionUtil.getValue(
 						ReflectionUtil.getValue(result, "mState"), "mUseColor")) : result;
-				Log.d(TAG, "loadDrawable(TypedValue value, int id) value:" + value + ", skin id:" + toHex(skinId) + ",result:" + resultInfo
-						+ ", from resources :" + res);
+				Log.v(TAG, ", skin id:" + toHex(skinId) + ",result:" + resultInfo + ", from skinResources ");
+				isFromSkinResources = true;
 			}
 		}
-		if (result == null && !isFromDefaultResources) {
+		if (result == null && isFromSkinResources) {
 			result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
 		}
+
+		if (result != null) {
+			synchronized (cache) {
+				cache.put(key, new WeakReference<ConstantState>(result.getConstantState()));
+			}
+		}
+
 		return result;
 	}
 
@@ -211,25 +309,48 @@ public class ProxyDefaultResources extends Resources {
 			return null;
 		}
 
-		ColorStateList result = null;
+		Log.v(TAG, "loadColorStateList ,value:" + value + (value.string == null ? ", name:" + getResourceName(id) : "") + ",id:"
+				+ toHex(id));
+
+		int key = (value.assetCookie << 24) | value.data;
+
+		ColorStateList result = getCachedColorStateList(key);
+		if (result != null) {
+			Log.v(TAG, "from cache \n");
+			return result;
+		}
+
+		boolean isFromSkinResources = false;
 		if ((id & APP_ID_MASK) != APP_ID_MASK) {
 			// 系统资源
 			result = (ColorStateList) ReflectionUtil.invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
 		} else if (notFoundInSkinIds.get(id) > 0) {
 			// 皮肤包中不包含id资源
-			Log.d(TAG, "notFoundInSkinIds contain value:" + value + value.string == null ? ", name:" + getResourceName(id) : "");
+			Log.v(TAG, "notFoundInSkinIds contain \n");
 			result = (ColorStateList) ReflectionUtil.invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
 		} else {
 			// 将app资源id转换成皮肤资源id
-			int skinId = convertId(id);
+			int skinId = toSkinId(id);
 			if (skinId == 0) {
-				Log.d(TAG, "convertId not found value:" + value);
+				Log.v(TAG, "convertId not found \n");
 				result = (ColorStateList) ReflectionUtil.invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
 			} else {
 				Resources res = skinResources;
+				if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT) {
+					res.getValue(skinId, value, true);
+				}
 				result = (ColorStateList) ReflectionUtil.invoke(res, "loadColorStateList", loadParamType, value, id);
-				Log.d(TAG, "loadColorStateList(TypedValue value, int id) value:" + value + ", skin id:" + toHex(skinId) + ",result:"
-						+ result + ", from resources :" + res);
+				Log.v(TAG, ", skin id:" + toHex(skinId) + ",result:" + result + ", from resources :" + res + "\n");
+				isFromSkinResources = true;
+			}
+		}
+		if (result == null && isFromSkinResources) {
+			result = (ColorStateList) ReflectionUtil.invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
+		}
+
+		if (result != null) {
+			synchronized (colorStateListCache) {
+				colorStateListCache.put(key, new WeakReference<ColorStateList>(result));
 			}
 		}
 		return result;
@@ -255,4 +376,33 @@ public class ProxyDefaultResources extends Resources {
 		}
 	}
 
+	private synchronized Drawable getCachedDrawable(LongSparseArray<WeakReference<ConstantState>> cache, long key) {
+		synchronized (cache) {
+			WeakReference<ConstantState> wr = cache.get(key);
+			if (wr != null) { // we have the key
+				Drawable.ConstantState entry = wr.get();
+				if (entry != null) {
+					return entry.newDrawable(this);
+				} else { // our entry has been purged
+					cache.delete(key);
+				}
+			}
+		}
+		return null;
+	}
+
+	private ColorStateList getCachedColorStateList(int key) {
+		synchronized (colorStateListCache) {
+			WeakReference<ColorStateList> wr = colorStateListCache.get(key);
+			if (wr != null) { // we have the key
+				ColorStateList entry = wr.get();
+				if (entry != null) {
+					return entry;
+				} else { // our entry has been purged
+					colorStateListCache.delete(key);
+				}
+			}
+		}
+		return null;
+	}
 }
