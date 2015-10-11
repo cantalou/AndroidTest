@@ -18,9 +18,9 @@ import android.util.Log;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
 
-public class ProxyResources extends Resources {
+public class ProxyDefaultResources extends Resources {
 
-	private static final String TAG = "ResourcesProxy";
+	private static final String TAG = "ProxyDefaultResources";
 
 	/**
 	 * app资源id前缀
@@ -79,7 +79,7 @@ public class ProxyResources extends Resources {
 	 * @param config
 	 *            Desired device configuration to consider when
 	 */
-	public ProxyResources(AssetManager assets, DisplayMetrics metrics, Configuration config) {
+	public ProxyDefaultResources(AssetManager assets, DisplayMetrics metrics, Configuration config) {
 		super(assets, metrics, config);
 	}
 
@@ -92,7 +92,7 @@ public class ProxyResources extends Resources {
 	 * @param defRes
 	 *            default resources
 	 */
-	public ProxyResources(Context cxt, Resources skinRes, Resources defRes) {
+	public ProxyDefaultResources(Context cxt, Resources skinRes, Resources defRes) {
 		super(defRes.getAssets(), defRes.getDisplayMetrics(), defRes.getConfiguration());
 		skinResources = skinRes;
 		defaultResources = defRes;
@@ -164,19 +164,23 @@ public class ProxyResources extends Resources {
 		}
 
 		Drawable result = null;
+		boolean isFromDefaultResources = false;
 		// 系统资源
 		if ((id & APP_ID_MASK) != APP_ID_MASK) {
 			result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
+			isFromDefaultResources = true;
 		} else if (notFoundInSkinIds.get(id) > 0) {
 			// 皮肤包中不包含id资源
 			Log.d(TAG, "notFoundInSkinIds contain value:" + value + value.string == null ? ", name:" + getResourceName(id) : "");
 			result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
+			isFromDefaultResources = true;
 		} else {
 			// 将app资源id转换成皮肤资源id
 			int skinId = convertId(id);
 			if (skinId == 0) {
 				Log.d(TAG, "convertId not found value:" + value);
 				result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
+				isFromDefaultResources = true;
 			} else {
 				Resources res = skinResources;
 				if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT && skinId != id) {
@@ -195,7 +199,7 @@ public class ProxyResources extends Resources {
 						+ ", from resources :" + res);
 			}
 		}
-		if (result == null) {
+		if (result == null && !isFromDefaultResources) {
 			result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
 		}
 		return result;
@@ -250,4 +254,5 @@ public class ProxyResources extends Resources {
 			return null;
 		}
 	}
+
 }

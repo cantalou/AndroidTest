@@ -61,12 +61,22 @@ public class SkinManager {
 		return skinResources;
 	}
 
-	private Resources createProxyResource(Activity activity, String path) throws Exception {
+	private Resources createProxySkinResource(Activity activity, String path) throws Exception {
 		if (proxyResources == null) {
 			if (defaultResources == null) {
 				defaultResources = activity.getResources();
 			}
-			proxyResources = new ProxyResources(activity, createSkinResource(activity, path), defaultResources);
+			proxyResources = new ProxySkinResources(activity, createSkinResource(activity, path), defaultResources);
+		}
+		return proxyResources;
+	}
+
+	private Resources createProxyDefaultResource(Activity activity, String path) throws Exception {
+		if (proxyResources == null) {
+			if (defaultResources == null) {
+				defaultResources = activity.getResources();
+			}
+			proxyResources = new ProxyDefaultResources(activity, createSkinResource(activity, path), defaultResources);
 		}
 		return proxyResources;
 	}
@@ -90,7 +100,7 @@ public class SkinManager {
 			if (TextUtils.isEmpty(skinPath)) {
 				res = defaultResources;
 			} else {
-				res = createProxyResource(activity, skinPath);
+				res = createProxySkinResource(activity, skinPath);
 			}
 
 			if (activity.getResources() == res) {

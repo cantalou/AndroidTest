@@ -49,11 +49,15 @@ public class SkinActivity extends Activity implements OnClickListener {
 
 	private void initView() {
 		CheckBox cb = (CheckBox) findViewById(R.id.toggleResources);
-		cb.setChecked(!TextUtils.isEmpty(PrefUtil.get(this, "skinPath")));
-		cb.setOnClickListener(this);
+		if (cb != null) {
+			cb.setChecked(!TextUtils.isEmpty(PrefUtil.get(this, "skinPath")));
+			cb.setOnClickListener(this);
+		}
 
 		View v = findViewById(R.id.next);
-		v.setOnClickListener(this);
+		if (v != null) {
+			v.setOnClickListener(this);
+		}
 
 		v = findViewById(R.id.tt);
 	}
@@ -82,5 +86,11 @@ public class SkinActivity extends Activity implements OnClickListener {
 			break;
 		}
 
+	}
+
+	public void toggle(View v) {
+		skinManager.toggle(this);
+		setContentView(R.layout.activity_skin);
+		initView();
 	}
 }
