@@ -28,6 +28,15 @@ public class ProxyDefaultResources extends ProxyResources {
 
 	private static final String TAG = "ProxyDefaultResources";
 
+	/**
+	 * 资源缓存
+	 */
+	private LongSparseArray<WeakReference<Drawable.ConstantState>> drawableCache = new LongSparseArray<WeakReference<Drawable.ConstantState>>();
+
+	private LongSparseArray<WeakReference<Drawable.ConstantState>> colorDrawableCache = new LongSparseArray<WeakReference<Drawable.ConstantState>>();
+
+	private SparseArray<WeakReference<ColorStateList>> colorStateListCache = new SparseArray<WeakReference<ColorStateList>>();
+
 	private Resources defaultResources;
 
 	/**
@@ -163,4 +172,36 @@ public class ProxyDefaultResources extends ProxyResources {
 		return result;
 	}
 
+	protected synchronized Drawable getCachedDrawable(LongSparseArray<WeakReference<ConstantState>> cache, long key) {
+		WeakReference<ConstantState> wr = cache.get(key);
+		if (wr != null) { // we have the key
+			Drawable.ConstantState entry = wr.get();
+			if (entry != null) {
+				return entry.newDrawable(this);
+			} else { // our entry has been purged
+				cache.delete(key);
+			}
+		}
+		return null;
+	}
+
+	protected synchronized ColorStateList getCachedColorStateList(int key) {
+		WeakReference<ColorStateList> wr = colorStateListCache.get(key);
+		if (wr != null) { // we have the key
+			ColorStateList entry = wr.get();
+			if (entry != null) {
+				return entry;
+			} else { // our entry has been purged
+				colorStateListCache.delete(key);
+			}
+		}
+		return null;
+	}
+
+	public synchronized void clearCache() {
+		super.clearCache();
+		drawableCache.clear();
+		colorDrawableCache.clear();
+		colorStateListCache.clear();
+	}
 }
