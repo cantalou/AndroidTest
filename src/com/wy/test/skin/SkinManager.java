@@ -61,22 +61,24 @@ public class SkinManager {
 		return skinResources;
 	}
 
-//	private Resources createProxySkinResource(Activity activity, String path) throws Exception {
-//		if (proxyResources == null) {
-//			if (defaultResources == null) {
-//				defaultResources = activity.getResources();
-//			}
-//			proxyResources = new ProxySkinResources(activity, createSkinResource(activity, path), defaultResources);
-//		}
-//		return proxyResources;
-//	}
+	// private Resources createProxySkinResource(Activity activity, String path)
+	// throws Exception {
+	// if (proxyResources == null) {
+	// if (defaultResources == null) {
+	// defaultResources = activity.getResources();
+	// }
+	// proxyResources = new ProxySkinResources(activity,
+	// createSkinResource(activity, path), defaultResources);
+	// }
+	// return proxyResources;
+	// }
 
 	private Resources createProxyDefaultResource(Activity activity, String path) throws Exception {
 		if (proxyResources == null) {
 			if (defaultResources == null) {
 				defaultResources = activity.getResources();
 			}
-			proxyResources = new ProxyDefaultResources(activity, createSkinResource(activity, path), defaultResources);
+			proxyResources = new ProxyDefaultResources(activity, createSkinResource(activity, path), defaultResources, false);
 		}
 		return proxyResources;
 	}
