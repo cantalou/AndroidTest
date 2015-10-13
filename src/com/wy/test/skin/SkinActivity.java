@@ -3,8 +3,10 @@ package com.wy.test.skin;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
@@ -28,9 +30,12 @@ public class SkinActivity extends Activity implements OnClickListener {
 
 	private SkinManager skinManager = SkinManager.getInstance();
 
+	SharedPreferences sp;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		sp = PreferenceManager.getDefaultSharedPreferences(this);
 		setContentView(R.layout.activity_skin);
 		initView();
 	}
@@ -50,7 +55,13 @@ public class SkinActivity extends Activity implements OnClickListener {
 	private void initView() {
 		CheckBox cb = (CheckBox) findViewById(R.id.toggleResources);
 		if (cb != null) {
-			cb.setChecked(!TextUtils.isEmpty(PrefUtil.get(this, "skinPath")));
+			cb.setChecked(!TextUtils.isEmpty(sp.getString("skinPath", "")));
+			cb.setOnClickListener(this);
+		}
+
+		cb = (CheckBox) findViewById(R.id.toggleNight);
+		if (cb != null) {
+			cb.setChecked(sp.getBoolean("night", false));
 			cb.setOnClickListener(this);
 		}
 
@@ -70,6 +81,15 @@ public class SkinActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.toggleResources: {
+			PrefUtil.set(this, "skinPath", TextUtils.isEmpty(sp.getString("skinPath", "")) ? "skinPath" : "");
+			skinManager.toggle(this);
+			setContentView(R.layout.activity_skin);
+			initView();
+			break;
+		}
+
+		case R.id.toggleNight: {
+			sp.edit().putBoolean("night", !sp.getBoolean("night", false)).commit();
 			skinManager.toggle(this);
 			setContentView(R.layout.activity_skin);
 			initView();

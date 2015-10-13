@@ -177,7 +177,10 @@ public class ProxyResources extends Resources {
 			return nightId;
 		}
 
-		String name = NIGHT_RESOURCE_NAME_PRE + getResourceName(id);
+		// com.wy.test:color/new_blue
+		String name = getResourceName(id);
+		int index = name.indexOf('/') + 1;
+		name = name.substring(0, index) + NIGHT_RESOURCE_NAME_PRE + name.substring(index);
 		nightId = getIdentifier(name, null, packageName);
 		if (nightId == 0) {
 			notFoundedNightIds.put(id, id);
@@ -197,11 +200,17 @@ public class ProxyResources extends Resources {
 
 		int skinId = toSkinId(id);
 		if (skinId != 0) {
+			if (nightMode) {
+				skinId = toNightIdIfExist(skinId);
+			}
 			skinResources.getValue(skinId, outValue, resolveRefs);
-			Log.v(TAG, "getValue(int id, TypedValue outValue, boolean resolveRefs) skin id:" + toHex(skinId) + ", value:" + outValue);
 		} else {
+			if (nightMode) {
+				id = toNightIdIfExist(id);
+			}
 			super.getValue(id, outValue, resolveRefs);
 		}
+		Log.v(TAG, "getValue nightMode :" + nightMode + ",skin id:" + toHex(skinId) + "value:" + toString(outValue));
 	}
 
 	@Override
@@ -213,11 +222,21 @@ public class ProxyResources extends Resources {
 
 		int skinId = toSkinId(id);
 		if (skinId != 0) {
+			if (nightMode) {
+				skinId = toNightIdIfExist(skinId);
+			}
 			skinResources.getValueForDensity(skinId, density, outValue, resolveRefs);
-			Log.v(TAG, "getValueForDensity skin id:" + toHex(skinId) + ", value:" + outValue);
 		} else {
+			if (nightMode) {
+				id = toNightIdIfExist(id);
+			}
 			super.getValueForDensity(id, density, outValue, resolveRefs);
 		}
+		Log.v(TAG, "getValueForDensity nightMode :" + nightMode + ",skin id:" + toHex(skinId) + "value:" + toString(outValue));
+	}
+
+	protected String toString(TypedValue value) {
+		return TextUtils.isEmpty(value.string) ? value + ",name:" + getResourceName(value.resourceId) : value.toString();
 	}
 
 	protected String toHex(int id) {

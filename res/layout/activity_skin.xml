@@ -82,6 +82,13 @@
         android:layout_height="wrap_content"
         android:onClick="toggle"
         android:text="toggle" />
+    
+        <CheckBox
+        android:id="@+id/toggleNight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toggle"
+        android:text="night" />
 
     <TextView
         android:id="@+id/next"

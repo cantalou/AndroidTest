@@ -8,11 +8,16 @@ public class PrefUtil {
 
 	public static void set(Context cxt, String key, String value) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(cxt);
-		sp.edit().putString(key, value).apply();
+		sp.edit().putString(key, value).commit();
 	}
 	
 	public static String get(Context cxt, String key) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(cxt);
 		return sp.getString(key, null);
+	}
+	
+	public static boolean getBoolean(Context cxt, String key) {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(cxt);
+		return sp.getBoolean(key, false);
 	}
 }

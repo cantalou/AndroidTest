@@ -9,6 +9,7 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import static com.wy.test.util.ReflectionUtil.*;
 import static com.wy.test.util.FileUtil.copyAssetsFile;
@@ -46,8 +47,10 @@ public class SkinManager {
 		return InstanceHolder.INSTANCE;
 	}
 
-	private Resources createSkinResource(Activity activity, String path) throws Exception {
-		if (skinResources == null) {
+	private Resources createSkinResource(Activity activity, String path, boolean night) throws Exception {
+
+		Resources skinRsources = null;
+		if (!TextUtils.isEmpty(path)) {
 			String skinDir = activity.getFilesDir().getAbsolutePath();
 			File f = new File(skinDir, SKIN_FILE_NAME);
 			if (!f.exists()) {
@@ -56,8 +59,10 @@ public class SkinManager {
 
 			AssetManager am = AssetManager.class.newInstance();
 			invoke(am, "addAssetPath", new Class<?>[] { String.class }, f.getAbsolutePath());
-			skinResources = new SkinResources(am, defaultResources);
+			skinRsources = new SkinResources(am, defaultResources);
 		}
+
+		skinResources = new ProxyResources(activity, skinRsources, defaultResources, night);
 		return skinResources;
 	}
 
@@ -73,19 +78,15 @@ public class SkinManager {
 	// return proxyResources;
 	// }
 
-	private Resources createProxyDefaultResource(Activity activity, String path) throws Exception {
-		if (proxyResources == null) {
-			if (defaultResources == null) {
-				defaultResources = activity.getResources();
-			}
-			proxyResources = new ProxyDefaultResources(activity, createSkinResource(activity, path), defaultResources, false);
+	private Resources createProxyDefaultResource(Activity activity, String path, boolean night) throws Exception {
+		if (defaultResources == null) {
+			defaultResources = activity.getResources();
 		}
+		proxyResources = new ProxyDefaultResources(activity, createSkinResource(activity, path, night), defaultResources, night);
 		return proxyResources;
 	}
 
 	public void toggle(Activity activity) {
-		String skinPath = PrefUtil.get(activity, "skinPath");
-		PrefUtil.set(activity, "skinPath", TextUtils.isEmpty(skinPath) ? "skinPath" : "");
 		changeResources(activity);
 	}
 
@@ -93,16 +94,18 @@ public class SkinManager {
 
 		try {
 			String skinPath = get(activity, "skinPath");
+			boolean night = getBoolean(activity, "night");
+			Log.d(TAG, "skinPath:" + skinPath + ",night:" + night);
 
 			if (defaultResources == null) {
 				defaultResources = activity.getResources();
 			}
 
 			Resources res = null;
-			if (TextUtils.isEmpty(skinPath)) {
+			if (TextUtils.isEmpty(skinPath) && !night) {
 				res = defaultResources;
 			} else {
-				res = createProxyDefaultResource(activity, skinPath);
+				res = createProxyDefaultResource(activity, skinPath, night);
 			}
 
 			if (activity.getResources() == res) {

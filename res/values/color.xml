@@ -2,4 +2,5 @@
 <resources>
     <color name="blue">#00a2ff</color>
     <color name="new_blue">#00a2ff</color>
+    <color name="night_new_blue">#ffa2ff</color>
 </resources>

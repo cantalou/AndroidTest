@@ -52,7 +52,7 @@ public class ProxyDefaultResources extends ProxyResources {
 	 */
 	public ProxyDefaultResources(Context cxt, Resources skinRes, Resources defRes, boolean nightMode) {
 		super(cxt, skinRes, defRes, nightMode);
-		defaultResources = new ProxyResources(cxt, skinRes, defRes);
+		defaultResources = new ProxyResources(cxt, skinRes, defRes, nightMode);
 	}
 
 	static Class<?>[] loadParamType = new Class<?>[] { TypedValue.class, int.class };
@@ -89,6 +89,9 @@ public class ProxyDefaultResources extends ProxyResources {
 				Log.v(TAG, log + " convertId not found ");
 				result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
 			} else {
+				if(log.contains("blue")){
+					System.out.println("");
+				}
 				Resources res = skinResources;
 				if (isColorDrawable) {
 					res.getValue(skinId, value, true);
