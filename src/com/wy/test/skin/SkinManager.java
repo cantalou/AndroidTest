@@ -62,8 +62,8 @@ public class SkinManager {
 			skinRsources = new SkinResources(am, defaultResources);
 		}
 
-		skinResources = new ProxyResources(activity, skinRsources, defaultResources, night);
-		return skinResources;
+		//skinResources = new ProxyResources(activity, skinRsources, defaultResources, night);
+		return skinRsources;
 	}
 
 	// private Resources createProxySkinResource(Activity activity, String path)

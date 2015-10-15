@@ -177,8 +177,10 @@ public class ProxyResources extends Resources {
 			return nightId;
 		}
 
-		// com.wy.test:color/new_blue
 		String name = getResourceName(id);
+		if (TextUtils.isEmpty(name)) {
+			return id;
+		}
 		int index = name.indexOf('/') + 1;
 		name = name.substring(0, index) + NIGHT_RESOURCE_NAME_PRE + name.substring(index);
 		nightId = getIdentifier(name, null, packageName);
@@ -239,8 +241,13 @@ public class ProxyResources extends Resources {
 		return TextUtils.isEmpty(value.string) ? value + ",name:" + getResourceName(value.resourceId) : value.toString();
 	}
 
-	protected String toHex(int id) {
-		return "0x" + Integer.toHexString(id);
+	protected String toHex(Object id) {
+		if (id instanceof Number) {
+			return "0x" + Integer.toHexString(((Number) id).intValue());
+		} else {
+			return id.toString();
+		}
+
 	}
 
 	@Override

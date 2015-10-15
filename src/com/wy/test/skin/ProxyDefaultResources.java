@@ -13,6 +13,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
 import android.content.res.Resources.NotFoundException;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
@@ -89,20 +90,36 @@ public class ProxyDefaultResources extends ProxyResources {
 				Log.v(TAG, log + " convertId not found ");
 				result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
 			} else {
-				if(log.contains("blue")){
-					System.out.println("");
-				}
+
 				Resources res = skinResources;
 				if (isColorDrawable) {
 					res.getValue(skinId, value, true);
-				}
-				result = (Drawable) ReflectionUtil.invoke(res, "loadDrawable", loadParamType, value, id);
-				// 当同一张图片放在app资源和皮肤资源的不同分辨率目录下, 使用皮肤资源id获取文件名称, 再次尝试
-				if (result == null) {
-					Log.v(TAG, "skinResources.loadDrawable() return null ,use getValue(skinId,value,true) try again");
-					res.getValue(skinId, value, true);
 					result = (Drawable) ReflectionUtil.invoke(res, "loadDrawable", loadParamType, value, id);
+				} else {
+					String file = value.string.toString();
+					if (file.endsWith(".xml")) {
+						try {
+							XmlResourceParser rp = ReflectionUtil.invoke(res, "loadXmlResourceParser", new Class[] { String.class,
+									int.class, int.class, String.class }, file, id, value.assetCookie, "drawable");
+							result = Drawable.createFromXml(res, rp);
+							rp.close();
+						} catch (Exception e) {
+							NotFoundException rnf = new NotFoundException("File " + file + " from drawable resource ID #0x"
+									+ Integer.toHexString(id));
+							rnf.initCause(e);
+							throw rnf;
+						}
+					} else {
+						result = (Drawable) ReflectionUtil.invoke(res, "loadDrawable", loadParamType, value, id);
+						// 当同一张图片放在app资源和皮肤资源的不同分辨率目录下, 使用皮肤资源id获取文件名称, 再次尝试
+						if (result == null) {
+							Log.v(TAG, "skinResources.loadDrawable() return null ,use getValue(skinId,value,true) try again");
+							res.getValue(skinId, value, true);
+							result = (Drawable) ReflectionUtil.invoke(res, "loadDrawable", loadParamType, value, id);
+						}
+					}
 				}
+
 				Object resultInfo = result instanceof ColorDrawable ? toHex((Integer) ReflectionUtil.getValue(
 						ReflectionUtil.getValue(result, "mState"), "mUseColor")) : result;
 				Log.v(TAG, log + ", skin id:" + toHex(skinId) + ",result:" + resultInfo + ", from skinResources ");
@@ -111,6 +128,10 @@ public class ProxyDefaultResources extends ProxyResources {
 		}
 		if (result == null && isFromSkinResources) {
 			result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
+		}
+
+		if (result instanceof BitmapDrawable) {
+
 		}
 
 		if (result != null) {

@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+@SuppressWarnings("unchecked")
 public class ReflectionUtil {
 
 	private static Object[] EMPTY_PARAMS = new Object[0];
@@ -65,11 +66,11 @@ public class ReflectionUtil {
 		return invoke(obj, name, paramsType, EMPTY_PARAMS);
 	}
 
-	public static Object invoke(Object obj, String name, Class<?>[] paramsType, Object... params) {
+	public static <T> T invoke(Object obj, String name, Class<?>[] paramsType, Object... params) {
 		try {
 			Method m = getMethod(obj.getClass(), name, paramsType);
 			m.setAccessible(true);
-			return m.invoke(obj, params);
+			return (T)m.invoke(obj, params);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
