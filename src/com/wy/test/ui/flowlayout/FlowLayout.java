@@ -38,7 +38,7 @@ public final class FlowLayout extends ViewGroup
     }
 
     @Override
-    public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs)
+    public LayoutParams generateLayoutParams(AttributeSet attrs)
     {
         return new MarginLayoutParams(getContext(), attrs);
     }

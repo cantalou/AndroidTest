@@ -28,7 +28,7 @@ import android.util.Log;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
 
-public class SkinResources extends android.content.res.Resources {
+public class SkinResources extends Resources {
 
 	public SkinResources(AssetManager assets, DisplayMetrics metrics, Configuration config) {
 		super(assets, metrics, config);

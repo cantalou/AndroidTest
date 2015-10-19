@@ -1,20 +1,9 @@
 package com.wy.test.skin;
 
-import java.lang.ref.WeakReference;
-
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.LongSparseArray;
-import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
 
@@ -85,7 +74,7 @@ public class ProxyResources extends Resources {
 	/**
 	 * 是否夜间模式
 	 */
-	private boolean nightMode = false;
+	protected boolean nightMode = false;
 
 	/**
 	 * Create a new SkinResources object on top of an existing set of assets in
@@ -121,7 +110,7 @@ public class ProxyResources extends Resources {
 
 	/**
 	 * 将应用资源id转成皮肤资源id
-	 * 
+	 *
 	 * @param id
 	 * @return 皮肤资源id
 	 */
@@ -157,7 +146,7 @@ public class ProxyResources extends Resources {
 
 	/**
 	 * 将应用资源id转成夜间模式资源id
-	 * 
+	 *
 	 * @param id
 	 * @return 夜间模式资源id
 	 */
@@ -200,19 +189,16 @@ public class ProxyResources extends Resources {
 			return;
 		}
 
+		if (nightMode) {
+			id = toNightIdIfExist(id);
+		}
 		int skinId = toSkinId(id);
 		if (skinId != 0) {
-			if (nightMode) {
-				skinId = toNightIdIfExist(skinId);
-			}
 			skinResources.getValue(skinId, outValue, resolveRefs);
 		} else {
-			if (nightMode) {
-				id = toNightIdIfExist(id);
-			}
 			super.getValue(id, outValue, resolveRefs);
 		}
-		Log.v(TAG, "getValue nightMode :" + nightMode + ",skin id:" + toHex(skinId) + "value:" + toString(outValue));
+		Log.v(TAG, "getValue nightMode :" + nightMode + toString(outValue));
 	}
 
 	@Override
@@ -222,23 +208,22 @@ public class ProxyResources extends Resources {
 			return;
 		}
 
+		if (nightMode) {
+			id = toNightIdIfExist(id);
+		}
+
 		int skinId = toSkinId(id);
 		if (skinId != 0) {
-			if (nightMode) {
-				skinId = toNightIdIfExist(skinId);
-			}
 			skinResources.getValueForDensity(skinId, density, outValue, resolveRefs);
 		} else {
-			if (nightMode) {
-				id = toNightIdIfExist(id);
-			}
 			super.getValueForDensity(id, density, outValue, resolveRefs);
 		}
-		Log.v(TAG, "getValueForDensity nightMode :" + nightMode + ",skin id:" + toHex(skinId) + "value:" + toString(outValue));
+		Log.v(TAG, "getValueForDensity nightMode :" + nightMode + toString(outValue));
 	}
 
 	protected String toString(TypedValue value) {
-		return TextUtils.isEmpty(value.string) ? value + ",name:" + getResourceName(value.resourceId) : value.toString();
+		return " skinId:" + toHex(toSkinId(value.resourceId))
+				+ (TextUtils.isEmpty(value.string) ? value + ",name:" + getResourceName(value.resourceId) : value.toString());
 	}
 
 	protected String toHex(Object id) {
