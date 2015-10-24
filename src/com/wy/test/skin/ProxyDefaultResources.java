@@ -27,9 +27,9 @@ public class ProxyDefaultResources extends ProxyResources {
 	/**
 	 * 资源缓存
 	 */
-	private LongSparseArray<WeakReference<Drawable.ConstantState>> drawableCache = new LongSparseArray<WeakReference<Drawable.ConstantState>>();
+	private LongSparseArray<WeakReference<ConstantState>> drawableCache = new LongSparseArray<WeakReference<ConstantState>>();
 
-	private LongSparseArray<WeakReference<Drawable.ConstantState>> colorDrawableCache = new LongSparseArray<WeakReference<Drawable.ConstantState>>();
+	private LongSparseArray<WeakReference<ConstantState>> colorDrawableCache = new LongSparseArray<WeakReference<ConstantState>>();
 
 	private SparseArray<WeakReference<ColorStateList>> colorStateListCache = new SparseArray<WeakReference<ColorStateList>>();
 
@@ -216,7 +216,7 @@ public class ProxyDefaultResources extends ProxyResources {
 	protected synchronized Drawable getCachedDrawable(LongSparseArray<WeakReference<ConstantState>> cache, long key) {
 		WeakReference<ConstantState> wr = cache.get(key);
 		if (wr != null) { // we have the key
-			Drawable.ConstantState entry = wr.get();
+			ConstantState entry = wr.get();
 			if (entry != null) {
 				return entry.newDrawable(this);
 			} else { // our entry has been purged

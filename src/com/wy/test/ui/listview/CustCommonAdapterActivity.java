@@ -32,7 +32,7 @@ public class CustCommonAdapterActivity extends Activity
         setContentView(layout.activity_common_adapter_listview);
         lv = (ListView) findViewById(id.listview);
 
-        data = new ArrayList<CustCommonAdapterActivity.Item>();
+        data = new ArrayList<Item>();
         for (int i = 0; i < 100; i++)
         {
             Item item = new Item();

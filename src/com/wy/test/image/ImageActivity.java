@@ -43,7 +43,7 @@ public class ImageActivity extends Activity
         LinearLayout ll;
         ImageView iv;
         TextView tv;
-        LinearLayout.LayoutParams lp;
+        LayoutParams lp;
 
         HashMap<ImageView.ScaleType, String> desc = new HashMap<ImageView.ScaleType, String>();
         desc.put(ImageView.ScaleType.MATRIX, "Scale using the image matrix when drawing");
@@ -90,7 +90,7 @@ public class ImageActivity extends Activity
                 l.setOrientation(LinearLayout.HORIZONTAL);
 
                 iv = new ImageView(this);
-                lp = new LinearLayout.LayoutParams(100, 100);
+                lp = new LayoutParams(100, 100);
                 lp.setMargins(0, 0, 0, 5);
                 iv.setLayoutParams(lp);
                 iv.setScaleType(scaleType);
