@@ -82,7 +82,7 @@ public class SkinManager {
 		if (defaultResources == null) {
 			defaultResources = activity.getResources();
 		}
-		proxyResources = new ProxyDefaultResources(activity, createSkinResource(activity, path, night), defaultResources, night);
+		proxyResources = new ProxyResources(activity, createSkinResource(activity, path, night), defaultResources);
 		return proxyResources;
 	}
 

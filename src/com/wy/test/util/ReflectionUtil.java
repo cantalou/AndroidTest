@@ -13,20 +13,27 @@ public class ReflectionUtil {
 
 	public static <T> T getValue(Object obj, String name) {
 		try {
-			Field f = getField(obj.getClass(), name);
-			f.setAccessible(true);
-			return (T)f.get(obj);
+			int first;
+			if ((first = name.indexOf('.')) > -1) {
+				Field f = getField(obj.getClass(), name.substring(0, first));
+				f.setAccessible(true);
+				return getValue(f.get(obj), name.substring(first + 1));
+			} else {
+				Field f = getField(obj.getClass(), name);
+				f.setAccessible(true);
+				return (T) f.get(obj);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	public static <T> T  getValue(Class<?> clazz, String name) {
+	public static <T> T getValue(Class<?> clazz, String name) {
 		try {
 			Field f = getField(clazz, name);
 			f.setAccessible(true);
-			return (T)f.get(null);
+			return (T) f.get(null);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -70,7 +77,7 @@ public class ReflectionUtil {
 		try {
 			Method m = getMethod(obj.getClass(), name, paramsType);
 			m.setAccessible(true);
-			return (T)m.invoke(obj, params);
+			return (T) m.invoke(obj, params);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
