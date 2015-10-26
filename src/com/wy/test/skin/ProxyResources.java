@@ -7,6 +7,7 @@ import com.wy.test.util.ReflectionUtil;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.content.res.Resources.Theme;
 import android.content.res.XmlResourceParser;
 import android.content.res.Resources.NotFoundException;
 import android.graphics.drawable.ColorDrawable;
@@ -192,6 +193,7 @@ public class ProxyResources extends Resources {
 
 		try {
 			String name = super.getResourceName(resid);
+			resourceNameIdCache[index] = resid;
 			resourceNameCache[index] = name;
 			return name;
 		} catch (Exception e) {
@@ -259,7 +261,6 @@ public class ProxyResources extends Resources {
 					result = (Drawable) ReflectionUtil.invoke(defaultResources, "loadDrawable", loadParamType, value, id);
 				}
 			}
-
 		}
 
 		if (result != null) {
@@ -304,24 +305,23 @@ public class ProxyResources extends Resources {
 					result = ReflectionUtil.invoke(skinResources, "loadColorStateList", loadParamType, value, id);
 				} else {
 					String file = value.string.toString();
-					try {
-						XmlResourceParser rp = ReflectionUtil.invoke(this, "loadXmlResourceParser", new Class[] { String.class,
-								int.class, int.class, String.class }, file, id, value.assetCookie, "colorstatelist");
-						result = ColorStateList.createFromXml(this, rp);
-						rp.close();
-					} catch (Exception e) {
-						Log.e(TAG, e.getMessage());
+					if (file.endsWith(".xml")) {
+						try {
+							XmlResourceParser rp = ReflectionUtil.invoke(this, "loadXmlResourceParser", new Class[] { String.class,
+									int.class, int.class, String.class }, file, id, value.assetCookie, "colorstatelist");
+							result = ColorStateList.createFromXml(this, rp);
+							rp.close();
+						} catch (Exception e) {
+							Log.e(TAG, e.getMessage());
+						}
 					}
 				}
-
 				Log.v(TAG, log + ",result:" + result + ", from resources :" + skinResources);
 				// 如果皮肤中存在要查找的资源, 但加载失败则直接从默认资源中加载
 				if (result == null) {
 					result = ReflectionUtil.invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
 				}
-
 			}
-
 		}
 
 		if (result != null) {
@@ -331,7 +331,7 @@ public class ProxyResources extends Resources {
 		}
 		return result;
 	}
-
+	
 	protected synchronized Drawable getCachedDrawable(LongSparseArray<WeakReference<ConstantState>> cache, long key) {
 		WeakReference<ConstantState> wr = cache.get(key);
 		if (wr != null) { // we have the key
@@ -357,6 +357,8 @@ public class ProxyResources extends Resources {
 		}
 		return null;
 	}
+	
+	
 
 	public void clearCache() {
 		skinIdMap.clear();
