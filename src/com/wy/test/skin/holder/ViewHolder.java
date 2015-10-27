@@ -7,18 +7,18 @@ import android.view.View;
 public class ViewHolder implements AttrHolder {
 
 	protected int background;
-
+	
 	@SuppressWarnings("deprecation")
 	@Override
-	public void reload(View view) {
+	public void reload(View view ,Resources res) {
 		if (background != 0) {
-			Resources res = view.getResources();
 			view.setBackgroundDrawable(res.getDrawable(background));
 		}
 	}
 
 	@Override
-	public void parse(AttributeSet attrs) {
+	public void parse(View view ,AttributeSet attrs) {
+		view.setTag(ATTR_HOLDER_KEY, this);
 		background = getResourceId(attrs, "background");
 	}
 
