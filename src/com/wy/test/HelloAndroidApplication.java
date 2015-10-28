@@ -1,8 +1,8 @@
 package com.wy.test;
 
 import android.app.Application;
-import android.content.Context;
-import android.os.StrictMode;
+
+import com.wy.test.skin.SkinManager;
 
 public class HelloAndroidApplication extends Application
 {
@@ -11,5 +11,7 @@ public class HelloAndroidApplication extends Application
     public void onCreate()
     {
         super.onCreate();
+        SkinManager.getInstance()
+                   .init(this);
     }
 }
