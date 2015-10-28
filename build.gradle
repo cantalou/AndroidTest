@@ -109,11 +109,11 @@ task copyJarDependencies(type: Copy) {
 }
 
 void moveJarIntoLibs(File file){
-    println 'Added jar ' + file
-        copy{
-            from file
-            into 'libs'
-        }
+//    println 'Added jar ' + file
+//        copy{
+//            from file
+//            into 'libs'
+//        }
 }
 
 void moveAndRenameAar(File file){
