@@ -2,14 +2,10 @@ package com.wy.test.skin.resources;
 
 import java.lang.ref.WeakReference;
 
-import com.wy.test.util.ReflectionUtil;
-
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.content.res.Resources.Theme;
 import android.content.res.XmlResourceParser;
-import android.content.res.Resources.NotFoundException;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;

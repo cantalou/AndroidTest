@@ -1,8 +1,5 @@
 package com.wy.test.skin.holder;
 
-import com.wy.test.util.ReflectionUtil;
-
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
