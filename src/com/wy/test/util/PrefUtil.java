@@ -6,12 +6,12 @@ import android.preference.PreferenceManager;
 
 public class PrefUtil {
 
-	public static void set(Context cxt, String key, String value) {
+	public static void setString(Context cxt, String key, String value) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(cxt);
 		sp.edit().putString(key, value).commit();
 	}
 	
-	public static String get(Context cxt, String key) {
+	public static String getString(Context cxt, String key) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(cxt);
 		return sp.getString(key, null);
 	}

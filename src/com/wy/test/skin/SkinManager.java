@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -13,15 +16,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AbsListView;
+import android.widget.Adapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.view.ViewPropertyAnimator;
+import com.wy.test.skin.resources.NightResources;
 import com.wy.test.skin.resources.ProxyResources;
 import com.wy.test.skin.resources.SkinResources;
-import com.wy.test.util.ActivityStateUtil;
 import com.wy.test.util.Log;
+import com.wy.test.util.PrefUtil;
 import com.wy.test.util.ReflectUtil;
 import com.wy.test.util.StringUtils;
 
@@ -31,6 +37,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static com.wy.test.util.ReflectUtil.invoke;
 import static com.wy.test.util.ReflectUtil.set;
@@ -45,10 +52,17 @@ public class SkinManager
      */
     private static final String SKIN_DIR = "/skin";
 
+    public static final String PREF_KEY_SKIN_NAME = "skinName";
+
     /**
      * 默认皮肤
      */
     public static final String DEFAULT_SKIN_NAME = "defaultSkinName";
+
+    /**
+     * 夜间模式皮肤资源名称, 夜间模式属于内置资源包
+     */
+    public static final String DEFAULT_SKIN_NAME_NIGHT = "defaultSkinNameNight";
 
     /**
      * activity
@@ -70,6 +84,13 @@ public class SkinManager
      */
     private Resources defaultResources;
 
+    /**
+     * 资源名称
+     */
+    private String skinName;
+
+    private Handler handler = new Handler(Looper.myLooper());
+
     private static class InstanceHolder
     {
         static final SkinManager INSTANCE = new SkinManager();
@@ -90,18 +111,37 @@ public class SkinManager
     }
 
     /**
+     * 获取存储皮肤文件目录
+     *
+     * @param cxt
+     * @return 文件目录
+     */
+    public File getSkinDir(Context cxt)
+    {
+        File dir = new File(cxt.getFilesDir() + File.separator + SKIN_DIR);
+        dir.mkdirs();
+        return dir;
+    }
+
+
+    /**
      * 创建皮肤资源
      *
-     * @param activity
+     * @param cxt
      * @param skinName 皮肤资源文件名
      * @return 皮肤资源对象
      * @throws Exception
      */
-    private Resources createSkinResource(Activity activity, String skinName) throws FileNotFoundException, InstantiationException, IllegalAccessException
+    private Resources createSkinResource(Context cxt, String skinName) throws FileNotFoundException, InstantiationException, IllegalAccessException
     {
+        if (DEFAULT_SKIN_NAME_NIGHT.equals(skinName) || DEFAULT_SKIN_NAME.equals(skinName))
+        {
+            return defaultResources;
+        }
+
         Resources skinResources = null;
 
-        File skinFile = new File(activity.getFilesDir() + File.separator + SKIN_DIR, skinName);
+        File skinFile = new File(getSkinDir(cxt), skinName);
         if (!skinFile.exists())
         {
             throw new FileNotFoundException(skinFile + " not found");
@@ -117,12 +157,12 @@ public class SkinManager
     /**
      * 创建代理资源
      *
-     * @param activity
+     * @param cxt
      * @param skinName 资源名称
      * @return 代理Resources
      * @throws Exception
      */
-    private Resources createProxyResource(Activity activity, String skinName) throws FileNotFoundException, InstantiationException, IllegalAccessException
+    private Resources createProxyResource(Context cxt, String skinName) throws FileNotFoundException, InstantiationException, IllegalAccessException
     {
         Resources res = null;
         WeakReference<Resources> resRef = cacheResources.get(skinName);
@@ -134,7 +174,14 @@ public class SkinManager
                 return res;
             }
         }
-        res = new ProxyResources(activity.getPackageName(), createSkinResource(activity, skinName), defaultResources);
+        if (DEFAULT_SKIN_NAME_NIGHT.equals(skinName))
+        {
+            res = new NightResources(cxt.getPackageName(), createSkinResource(cxt, skinName), defaultResources);
+        }
+        else
+        {
+            res = new ProxyResources(cxt.getPackageName(), createSkinResource(cxt, skinName), defaultResources);
+        }
         synchronized (this)
         {
             cacheResources.put(skinName, new WeakReference<Resources>(res));
@@ -148,7 +195,7 @@ public class SkinManager
      * @param activity 触发切换资源的Activity
      * @param res      新资源
      */
-    public void realChangeResources(Activity activity, Resources res)
+    private void realChangeResources(Activity activity, Resources res)
     {
         // ContextThemeWrapper add mResources field in JELLY_BEAN
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
@@ -167,7 +214,7 @@ public class SkinManager
      *
      * @param cxt
      */
-    public void registerViewFactory(Context cxt)
+    private void registerViewFactory(Context cxt)
     {
         LayoutInflater li = LayoutInflater.from(cxt);
         if (li.getFactory() == null)
@@ -176,14 +223,11 @@ public class SkinManager
         }
     }
 
+
     /**
-     * 切换资源
-     *
-     * @param activity 界面
-     * @param skinName 资源名称
-     * @return 切换成功 true
+     * 更换所有activity的皮肤资源
      */
-    public boolean changeResources(Activity activity, String skinName)
+    public boolean changeResources(final Activity activity, final String skinName) throws ExecutionException, InterruptedException
     {
         if (StringUtils.isBlank(skinName))
         {
@@ -195,69 +239,85 @@ public class SkinManager
             defaultResources = activity.getResources();
         }
 
-        try
-        {
-            Resources newResources = createProxyResource(activity, skinName);
-            changeAll(activity, newResources);
-            return true;
-        }
-        catch (Exception e)
-        {
-            Log.e(e);
-            return false;
-        }
-    }
-
-    /**
-     * 更换所有activity的皮肤资源
-     */
-    private void changeAll(Activity activity, Resources res)
-    {
-        if (ActivityStateUtil.isDestroy(activity))
-        {
-            return;
-        }
-
         // 在改变activity资源前截图用于渐变动画显示
         skinChangeAnimation(activity);
 
-        // 遍历所有的activity调用onSkinChange修改资源
-        for (int i = activitys.size() - 1; i >= 0; i--)
+        return new AsyncTask<Void, Void, Boolean>()
         {
-            Activity a = activitys.get(i);
-            realChangeResources(a, res);
-
-            if (a instanceof OnResourcesChangeListener)
+            @Override
+            protected Boolean doInBackground(Void... params)
             {
-                ((OnResourcesChangeListener) a).onResourcesChange();
+                try
+                {
+                    Resources res = createProxyResource(activity, skinName);
+                    List<Activity> temp = (List<Activity>) activitys.clone();
+                    for (int i = temp.size() - 1; i >= 0; i--)
+                    {
+                        change(temp.get(i), res);
+                    }
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Log.e(e);
+                    return false;
+                }
             }
 
-            if (a instanceof FragmentActivity)
+        }.execute()
+         .get();
+    }
+
+    /**
+     * 更换所有activity的皮肤资源, 调用OnResourcesChangeListener回调进行自定义资源的更新
+     */
+    private void change(final Activity a, Resources res)
+    {
+        realChangeResources(a, res);
+
+        if (a instanceof OnResourcesChangeListener)
+        {
+            handler.post(new Runnable()
             {
-                List<Fragment> fragments = ((FragmentActivity) a).getSupportFragmentManager()
-                                                                 .getFragments();
-                if (fragments == null || fragments.size() == 0)
+                @Override
+                public void run()
                 {
-                    continue;
+                    ((OnResourcesChangeListener) a).onResourcesChange();
                 }
+            });
+        }
+
+        if (a instanceof FragmentActivity)
+        {
+            List<Fragment> fragments = ReflectUtil.get(((FragmentActivity) a).getSupportFragmentManager(), "mAdded");
+            if (fragments != null && fragments.size() > 0)
+            {
                 for (Fragment f : fragments)
                 {
                     if (f instanceof OnResourcesChangeListener)
                     {
-                        ((OnResourcesChangeListener) f).onResourcesChange();
+                        final OnResourcesChangeListener listener = (OnResourcesChangeListener) f;
+                        handler.post(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                listener.onResourcesChange();
+                            }
+                        });
                     }
                 }
             }
+        }
 
-            Window w = a.getWindow();
-            if (w != null)
-            {
-                onResourcesChange(w.getDecorView());
-            }
+        Window w = a.getWindow();
+        if (w != null)
+        {
+            onResourcesChange(w.getDecorView());
         }
     }
 
-    private void onResourcesChange(View v)
+    private void onResourcesChange(final View v)
     {
         if (v == null)
         {
@@ -266,8 +326,15 @@ public class SkinManager
 
         if (v instanceof OnResourcesChangeListener)
         {
-            ((OnResourcesChangeListener) v).onResourcesChange();
-            v.invalidate();
+            handler.post(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    ((OnResourcesChangeListener) v).onResourcesChange();
+                    v.invalidate();
+                }
+            });
         }
 
         if (v instanceof AbsListView)
@@ -275,6 +342,11 @@ public class SkinManager
             Object recycler = ReflectUtil.get(v, "mRecycler");
             ReflectUtil.invoke(recycler, "scrapActiveViews", new Class[0], new Object[0]);
             ReflectUtil.invoke(recycler, "clear", new Class[0], new Object[0]);
+            Adapter adapter = ((AbsListView) v).getAdapter();
+            if (adapter instanceof BaseAdapter)
+            {
+                ((BaseAdapter) adapter).notifyDataSetChanged();
+            }
         }
 
         if (v instanceof ViewGroup)
@@ -293,23 +365,29 @@ public class SkinManager
      *
      * @param activity 要更新皮肤的界面
      */
-    public synchronized void onCreate(Activity activity)
+    public void onAttach(Activity activity)
     {
+        registerViewFactory(activity);
+
         activitys.add(activity);
 
-        String skinName = AppConfigManager.getValue(AppConfigKey.SETTING_SKIN_FILE_NAME);
+        if (skinName == null)
+        {
+            skinName = PrefUtil.getString(activity, PREF_KEY_SKIN_NAME);
+        }
+
         if (StringUtils.isBlank(skinName) || DEFAULT_SKIN_NAME.equals(skinName))
         {
             return;
         }
 
-        if (skinResources == null)
+        try
         {
-            createResources(activity, skinName);
+            realChangeResources(activity, createProxyResource(activity, skinName));
         }
-        if (skinResources != null && activity.getResources() != skinResources)
+        catch (Exception e)
         {
-            realChangeResources(activity);
+            Log.e(e);
         }
     }
 

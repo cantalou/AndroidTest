@@ -1,37 +1,37 @@
 package com.wy.test.skin;
 
-import com.wy.test.R;
-
 import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 
-public class SkinTwoActivity extends Activity {
+import com.wy.test.R;
 
-	private SkinManager skinManager = SkinManager.getInstance();
+public class SkinTwoActivity extends Activity
+{
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		skinManager.realChangeResources(this);
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_skin);
-	}
+    private SkinManager skinManager = SkinManager.getInstance();
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.skin, menu);
-		return true;
-	}
+    @Override
+    protected void attachBaseContext(Context newBase)
+    {
+        super.attachBaseContext(newBase);
+        skinManager.onAttach(this);
+    }
 
-	public void toggle(View v) {
-		skinManager.toggle(this);
-		setContentView(R.layout.activity_skin);
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
 
-	public void next(View v) {
-		Intent i = new Intent(this, SkinTwoActivity.class);
-		startActivity(i);
-	}
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_skin);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.skin, menu);
+        return true;
+    }
+
 }

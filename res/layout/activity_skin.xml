@@ -1,37 +1,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.wy.test.skin.SkinActivity" >
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              tools:context="com.wy.test.skin.SkinActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/ic_launcher"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="图片" />
+                android:text="图片"/>
         </LinearLayout>
 
         <LinearLayout
@@ -39,56 +39,67 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <FrameLayout
                 android:id="@+id/tt"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@color/new_blue" />
+                android:background="@color/new_blue"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/skin_color" />
+                android:text="@string/skin_color"/>
         </LinearLayout>
-        
-        
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:gravity="center"
-                android:text="文本内容" />
+                android:text="文本内容"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/skin_text" />
+                android:text="@string/skin_text"/>
         </LinearLayout>
     </LinearLayout>
 
     <CheckBox
-        android:id="@+id/toggleResources"
+        android:id="@+id/night"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toggle"
-        android:text="toggle" />
-    
-        <CheckBox
-        android:id="@+id/toggleNight"
+        android:text="night"/>
+
+    <CheckBox
+        android:id="@+id/red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="toggle"
-        android:text="night" />
+        android:text="red"/>
+
+    <CheckBox
+        android:id="@+id/green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="green"/>
+
+    <CheckBox
+        android:id="@+id/def"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="default"/>
 
     <TextView
         android:id="@+id/next"
@@ -98,6 +109,6 @@
         android:onClick="next"
         android:padding="10dip"
         android:text="Next"
-        android:textSize="24sp" />
+        android:textSize="24sp"/>
 
 </LinearLayout>
