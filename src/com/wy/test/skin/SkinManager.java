@@ -3,13 +3,11 @@ package com.wy.test.skin;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +21,8 @@ import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.wy.test.skin.resources.ProxyResources;
 import com.wy.test.skin.resources.SkinResources;
 import com.wy.test.util.ActivityStateUtil;
+import com.wy.test.util.Log;
+import com.wy.test.util.ReflectUtil;
 import com.wy.test.util.StringUtils;
 
 import java.io.File;
@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.wy.test.util.ReflectUtil.invoke;
-import static com.wy.test.util.ReflectUtil.setValue;
+import static com.wy.test.util.ReflectUtil.set;
 
 public class SkinManager
 {
@@ -51,7 +51,7 @@ public class SkinManager
     public static final String DEFAULT_SKIN_NAME = "defaultSkinName";
 
     /**
-     * activity与资源map,用于保存activity改变皮肤前的resources
+     * activity
      */
     private ArrayList<Activity> activitys = new ArrayList<Activity>();
 
@@ -63,7 +63,7 @@ public class SkinManager
     /**
      * 当前是否正在切换资源
      */
-    volatile boolean isChangingResource = false;
+    volatile boolean changingResource = false;
 
     /**
      * 默认资源
@@ -94,10 +94,10 @@ public class SkinManager
      *
      * @param activity
      * @param skinName 皮肤资源文件名
-     * @return
+     * @return 皮肤资源对象
      * @throws Exception
      */
-    private Resources createSkinResource(Activity activity, String skinName) throws Exception
+    private Resources createSkinResource(Activity activity, String skinName) throws FileNotFoundException, InstantiationException, IllegalAccessException
     {
         Resources skinResources = null;
 
@@ -122,7 +122,7 @@ public class SkinManager
      * @return 代理Resources
      * @throws Exception
      */
-    private Resources createProxyResource(Activity activity, String skinName) throws Exception
+    private Resources createProxyResource(Activity activity, String skinName) throws FileNotFoundException, InstantiationException, IllegalAccessException
     {
         Resources res = null;
         WeakReference<Resources> resRef = cacheResources.get(skinName);
@@ -134,8 +134,11 @@ public class SkinManager
                 return res;
             }
         }
-        res = new ProxyResources(activity, createSkinResource(activity, skinName), defaultResources);
-        cacheResources.put(skinName, new WeakReference<Resources>(res));
+        res = new ProxyResources(activity.getPackageName(), createSkinResource(activity, skinName), defaultResources);
+        synchronized (this)
+        {
+            cacheResources.put(skinName, new WeakReference<Resources>(res));
+        }
         return res;
     }
 
@@ -143,53 +146,20 @@ public class SkinManager
      * 将activity界面的资源替换成指定资源, activity界面
      *
      * @param activity 触发切换资源的Activity
-     * @param skinName 资源文件名
+     * @param res      新资源
      */
-    public void changeResources(Activity activity, String skinName)
+    public void realChangeResources(Activity activity, Resources res)
     {
-        try
+        // ContextThemeWrapper add mResources field in JELLY_BEAN
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
         {
-            if (StringUtils.isBlank(skinName))
-            {
-                throw new IllegalArgumentException("illegal argument skinName is null");
-            }
-
-            if (defaultResources == null)
-            {
-                defaultResources = activity.getResources();
-            }
-
-            Resources res = null;
-            if (DEFAULT_SKIN_NAME.equals(skinName))
-            {
-                res = defaultResources;
-            }
-            else
-            {
-                res = createProxyResource(activity, skinName);
-            }
-
-            if (activity.getResources() == res)
-            {
-                return;
-            }
-
-            // ContextThemeWrapper add mResources field in JELLY_BEAN
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-            {
-                setValue(activity, "mResources", res);
-            }
-            else
-            {
-                setValue(activity.getBaseContext(), "mResources", res);
-            }
-            setValue(activity, "mTheme", null);
-
+            set(activity, "mResources", res);
         }
-        catch (Exception e)
+        else
         {
-            e.printStackTrace();
+            set(activity.getBaseContext(), "mResources", res);
         }
+        set(activity, "mTheme", null);
     }
 
     /**
@@ -207,68 +177,55 @@ public class SkinManager
     }
 
     /**
-     * 加载皮肤资源
+     * 切换资源
      *
-     * @param name 皮肤资源名称
+     * @param activity 界面
+     * @param skinName 资源名称
+     * @return 切换成功 true
      */
-    public synchronized boolean loadSkin(Activity activity, String name)
+    public boolean changeResources(Activity activity, String skinName)
     {
-        if (StringUtils.isBlank(name))
+        if (StringUtils.isBlank(skinName))
         {
-            return true;
+            throw new IllegalArgumentException("illegal argument skinName is null");
         }
 
-        if (name.equals(AppConfigManager.getValue(AppConfigKey.SETTING_SKIN_FILE_NAME)))
+        if (defaultResources == null)
         {
-            return true;
+            defaultResources = activity.getResources();
         }
 
-        if (!activityMaps.containsKey(activity))
+        try
         {
-            activityMaps.put(activity, activity.getResources());
-        }
-
-        if (DEFAULT_SKIN_NAME.equals(name))
-        {
-            AppConfigManager.setValue(AppConfigKey.SETTING_SKIN_FILE_NAME, name);
-            skinResources = activityMaps.get(activity);
-            changeAll(activity);
+            Resources newResources = createProxyResource(activity, skinName);
+            changeAll(activity, newResources);
             return true;
         }
-        else
+        catch (Exception e)
         {
-            createResources(activity, name);
-            if (skinResources != null)
-            {
-                AppConfigManager.setValue(AppConfigKey.SETTING_SKIN_FILE_NAME, name);
-                changeAll(activity);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            Log.e(e);
+            return false;
         }
     }
 
     /**
      * 更换所有activity的皮肤资源
      */
-    private void changeAll(Activity activity)
+    private void changeAll(Activity activity, Resources res)
     {
         if (ActivityStateUtil.isDestroy(activity))
         {
             return;
         }
 
-        // 在改变皮肤设置前,截图用于渐变动画显示
+        // 在改变activity资源前截图用于渐变动画显示
         skinChangeAnimation(activity);
 
         // 遍历所有的activity调用onSkinChange修改资源
-        for (Activity a : activityMaps.keySet())
+        for (int i = activitys.size() - 1; i >= 0; i--)
         {
-
-            changeResources(a);
+            Activity a = activitys.get(i);
+            realChangeResources(a, res);
 
             if (a instanceof OnResourcesChangeListener)
             {
@@ -306,6 +263,7 @@ public class SkinManager
         {
             return;
         }
+
         if (v instanceof OnResourcesChangeListener)
         {
             ((OnResourcesChangeListener) v).onResourcesChange();
@@ -314,9 +272,9 @@ public class SkinManager
 
         if (v instanceof AbsListView)
         {
-            Object recycler = ReflectionUtil.getValue(v, "mRecycler");
-            ReflectionUtil.invoke(recycler, "scrapActiveViews", new Class[0], new Object[0]);
-            ReflectionUtil.invoke(recycler, "clear", new Class[0], new Object[0]);
+            Object recycler = ReflectUtil.get(v, "mRecycler");
+            ReflectUtil.invoke(recycler, "scrapActiveViews", new Class[0], new Object[0]);
+            ReflectUtil.invoke(recycler, "clear", new Class[0], new Object[0]);
         }
 
         if (v instanceof ViewGroup)
@@ -335,12 +293,9 @@ public class SkinManager
      *
      * @param activity 要更新皮肤的界面
      */
-    public synchronized void changeSkinOnAttach(Activity activity)
+    public synchronized void onCreate(Activity activity)
     {
-        if (!activityMaps.containsKey(activity))
-        {
-            activityMaps.put(activity, activity.getResources());
-        }
+        activitys.add(activity);
 
         String skinName = AppConfigManager.getValue(AppConfigKey.SETTING_SKIN_FILE_NAME);
         if (StringUtils.isBlank(skinName) || DEFAULT_SKIN_NAME.equals(skinName))
@@ -354,52 +309,7 @@ public class SkinManager
         }
         if (skinResources != null && activity.getResources() != skinResources)
         {
-            changeResources(activity);
-        }
-    }
-
-    private void createResources(Activity cxt, String skinName)
-    {
-
-        if (StringUtils.isBlank(skinName))
-        {
-            return;
-        }
-
-        String filePath = ForumsGlobal.DIR_SKIN + File.separator + skinName;
-        try
-        {
-            File file = new File(filePath);
-            if (!file.exists())
-            {
-                // Log.w(TAG, "文件不存在,地址:{}", filePath);
-                return;
-            }
-
-            if (!file.canRead())
-            {
-                // Log.w(TAG, "文件不可读,地址:{}", filePath);
-                return;
-            }
-
-            AssetManager am = AssetManager.class.newInstance();
-            int result = (Integer) invoke(am, "addAssetPath", String.class, filePath);
-            if (result == 0)
-            {
-                // Log.w(TAG,
-                // "AssetManager.addAssetPath添加资源文件失败,返回结果:{},地址:{}", result,
-                // filePath);
-                return;
-            }
-
-            Resources defaultResources = activityMaps.get(cxt);
-            Configuration conf = defaultResources.getConfiguration();
-            DisplayMetrics dm = defaultResources.getDisplayMetrics();
-            skinResources = new SkinResources(am, dm, conf, defaultResources, cxt);
-        }
-        catch (Exception e)
-        {
-            MyLog.e(TAG, e);
+            realChangeResources(activity);
         }
     }
 
@@ -458,16 +368,16 @@ public class SkinManager
                                 public void onAnimationEnd(Animator animation)
                                 {
                                     decor.removeView(coverView);
-                                    isChangingResource = false;
+                                    changingResource = false;
                                 }
                             })
                             .start();
-        isChangingResource = true;
+        changingResource = true;
     }
 
-    public synchronized void remove(Activity activity)
+    public synchronized void onDestroy(Activity activity)
     {
-        activityMaps.remove(activity);
+        activitys.remove(activity);
     }
 
     /**
@@ -477,6 +387,6 @@ public class SkinManager
      */
     public boolean isChangingResource()
     {
-        return isChangingResource;
+        return changingResource;
     }
 }

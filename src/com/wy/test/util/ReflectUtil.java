@@ -21,14 +21,14 @@ public class ReflectUtil
      * @param value     值
      * @return 成功 true
      */
-    public static boolean setValue(Object target, String fieldName, Object value)
+    public static boolean set(Object target, String fieldName, Object value)
     {
         try
         {
             int dotIndex;
             if ((dotIndex = fieldName.lastIndexOf('.')) != -1)
             {
-                target = getValue(target, fieldName.substring(0, dotIndex));
+                target = get(target, fieldName.substring(0, dotIndex));
                 fieldName = fieldName.substring(dotIndex + 1);
             }
             Field f = findField(target.getClass(), fieldName);
@@ -54,7 +54,7 @@ public class ReflectUtil
      * @param fieldName 属性名, 支持.表达式, 如: target.field.field
      * @return 返回属性值
      */
-    public static <T> T getValue(Object target, String fieldName)
+    public static <T> T get(Object target, String fieldName)
     {
         try
         {
@@ -64,7 +64,7 @@ public class ReflectUtil
             {
                 Field f = findField(clazz, fieldName.substring(0, dotIndex));
                 f.setAccessible(true);
-                return getValue(Modifier.isStatic(f.getModifiers()) ? f.getType() : f.get(target), fieldName.substring(dotIndex + 1));
+                return get(Modifier.isStatic(f.getModifiers()) ? f.getType() : f.get(target), fieldName.substring(dotIndex + 1));
             }
             else
             {

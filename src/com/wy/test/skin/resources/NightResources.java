@@ -82,7 +82,7 @@ public class NightResources extends ProxyResources {
 		} else {
 			defaultResources.getValue(id, outValue, resolveRefs);
 		}
-		Log.v(TAG, "getValue " + toString(outValue));
+		Log.v(TAG, "get " + toString(outValue));
 	}
 
 	@Override

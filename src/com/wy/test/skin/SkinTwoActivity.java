@@ -14,7 +14,7 @@ public class SkinTwoActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		skinManager.changeResources(this);
+		skinManager.realChangeResources(this);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_skin);
 	}

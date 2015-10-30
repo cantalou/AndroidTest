@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -16,15 +15,7 @@ import android.widget.CheckBox;
 import com.wy.test.R;
 import com.wy.test.util.PrefUtil;
 
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-
-import static com.wy.test.util.FileUtil.*;
-import static com.wy.test.util.ReflectionUtil.*;
+import static com.wy.test.util.ReflectUtil.*;
 
 public class SkinActivity extends Activity implements OnClickListener {
 
@@ -43,7 +34,7 @@ public class SkinActivity extends Activity implements OnClickListener {
 	@Override
 	protected void attachBaseContext(Context newBase) {
 		super.attachBaseContext(newBase);
-		skinManager.changeResources(this);
+		skinManager.realChangeResources();hangeResources(this);
 	}
 
 	@Override

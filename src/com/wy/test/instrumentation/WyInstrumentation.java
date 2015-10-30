@@ -17,14 +17,14 @@ public class WyInstrumentation extends Instrumentation {
 	@Override
 	public void callActivityOnCreate(Activity activity, Bundle icicle, PersistableBundle persistentState) {
 		Log.d(TAG, "callActivityOnCreate(Activity activity, Bundle icicle, PersistableBundle persistentState) ");
-		mSkinManager.changeResources(activity);
+		mSkinManager.realChangeResources(activity);
 		super.callActivityOnCreate(activity, icicle, persistentState);
 	}
 
 	@Override
 	public void callActivityOnCreate(Activity activity, Bundle icicle) {
 		Log.d(TAG, "callActivityOnCreate(Activity activity, Bundle icicle) ");
-		mSkinManager.changeResources(activity);
+		mSkinManager.realChangeResources(activity);
 		super.callActivityOnCreate(activity, icicle);
 	}
 
