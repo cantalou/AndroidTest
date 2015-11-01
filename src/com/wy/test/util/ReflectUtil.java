@@ -117,7 +117,7 @@ public class ReflectUtil {
 			try {
 				result = target.getMethod(methodName, paramsType);
 			} catch (Exception e) {
-				Log.w(e);
+				//ignore
 			}
 		}
 
@@ -127,7 +127,6 @@ public class ReflectUtil {
 				try {
 					result = target.getDeclaredMethod(methodName, paramsType);
 				} catch (Exception e) {
-					Log.w(e);
 					target = target.getSuperclass();
 				}
 			}

@@ -25,6 +25,8 @@ public class SkinActivity extends Activity implements OnClickListener {
 
 	private String currentSkin = "def";
 
+	private static boolean hasNotCopy = true;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,9 +34,13 @@ public class SkinActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_skin);
 		initView();
 
-		String dir = skinManager.getSkinDir(this).getAbsolutePath();
-		FileUtil.copyAssetsFile(this, "green.apk", dir, "green.apk");
-		FileUtil.copyAssetsFile(this, "red.apk", dir, "red.apk");
+		if (hasNotCopy) {
+			String dir = skinManager.getSkinDir(this).getAbsolutePath();
+			FileUtil.copyAssetsFile(this, "green.apk", dir, "green.apk");
+			FileUtil.copyAssetsFile(this, "red.apk", dir, "red.apk");
+			hasNotCopy = false;
+		}
+
 	}
 
 	@Override

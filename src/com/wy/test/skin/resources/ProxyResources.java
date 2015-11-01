@@ -187,8 +187,8 @@ public class ProxyResources extends Resources {
 	}
 
 	protected String toString(TypedValue value) {
-		return " skinId:" + toHex(toSkinId(value.resourceId))
-				+ (TextUtils.isEmpty(value.string) ? value + ",name:" + getResourceName(value.resourceId) : " " + value.toString());
+		return " skinId:" + toHex(toSkinId(value.resourceId)) + " "
+				+ (TextUtils.isEmpty(value.string) ? value + ",name:" + getResourceName(value.resourceId) : value.toString());
 	}
 
 	protected String toHex(Object id) {
