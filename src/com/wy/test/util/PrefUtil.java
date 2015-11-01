@@ -10,12 +10,12 @@ public class PrefUtil {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(cxt);
 		sp.edit().putString(key, value).commit();
 	}
-	
+
 	public static String getString(Context cxt, String key) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(cxt);
 		return sp.getString(key, null);
 	}
-	
+
 	public static boolean getBoolean(Context cxt, String key) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(cxt);
 		return sp.getBoolean(key, false);

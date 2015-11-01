@@ -46,10 +46,6 @@ public class ViewFactory implements Factory
                     try
                     {
                         view = inflater.createView(name, prefix, attrs);
-                        if (view != null)
-                        {
-                            return view;
-                        }
                     }
                     catch (ClassNotFoundException e)
                     {

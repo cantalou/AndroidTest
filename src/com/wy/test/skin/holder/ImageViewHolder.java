@@ -12,12 +12,14 @@ public class ImageViewHolder extends ViewHolder {
 	@Override
 	public void reload(View view, Resources res) {
 		super.reload(view, res);
-		((ImageView) view).setImageDrawable(res.getDrawable(src));
+		if (src != 0) {
+			((ImageView) view).setImageDrawable(res.getDrawable(src));
+		}
 	}
 
 	@Override
-	public void parse(View view, AttributeSet attrs) {
-		super.parse(view, attrs);
+	public boolean parse(AttributeSet attrs) {
 		src = getResourceId(attrs, "src");
+		return super.parse(attrs) && src != 0;
 	}
 }

@@ -18,5 +18,12 @@ public interface AttrHolder {
 	 */
 	public void reload(View view, Resources res);
 
+	/**
+	 * 解析组件内的app资源属性
+	 * 
+	 * @param view
+	 * @param attrs
+	 */
 	public void parse(View view, AttributeSet attrs);
+
 }

@@ -15,118 +15,141 @@ import com.wy.test.R;
 import com.wy.test.util.FileUtil;
 import com.wy.test.util.PrefUtil;
 
-public class SkinActivity extends Activity implements OnClickListener
-{
+public class SkinActivity extends Activity implements OnClickListener {
 
-    private SkinManager skinManager = SkinManager.getInstance();
+	private SkinManager skinManager = SkinManager.getInstance();
 
-    SharedPreferences sp;
+	SharedPreferences sp;
 
-    private CheckBox red, green, night, def;
+	private CheckBox red, green, night, def;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        sp = PreferenceManager.getDefaultSharedPreferences(this);
-        setContentView(R.layout.activity_skin);
-        initView();
+	private String currentSkin = "def";
 
-        String dir = getFilesDir().getAbsolutePath();
-        FileUtil.copyAssetsFile(this, "green.apk", dir, "green.apk");
-        FileUtil.copyAssetsFile(this, "red.apk", dir, "red.apk");
-    }
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		currentSkin = PrefUtil.getString(this, SkinManager.PREF_KEY_SKIN_NAME);
+		setContentView(R.layout.activity_skin);
+		initView();
 
-    @Override
-    protected void attachBaseContext(Context newBase)
-    {
-        super.attachBaseContext(newBase);
-        skinManager.onAttach(this);
-    }
+		String dir = skinManager.getSkinDir(this).getAbsolutePath();
+		FileUtil.copyAssetsFile(this, "green.apk", dir, "green.apk");
+		FileUtil.copyAssetsFile(this, "red.apk", dir, "red.apk");
+	}
 
-    @Override
-    protected void onDestroy()
-    {
-        skinManager.onDestroy(this);
-        super.onDestroy();
-    }
+	@Override
+	protected void attachBaseContext(Context newBase) {
+		super.attachBaseContext(newBase);
+		skinManager.onAttach(this);
+	}
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.skin, menu);
-        return true;
-    }
+	@Override
+	protected void onDestroy() {
+		skinManager.onDestroy(this);
+		super.onDestroy();
+	}
 
-    private void initView()
-    {
-        String currentSkinName = PrefUtil.getString(this, SkinManager.PREF_KEY_SKIN_NAME);
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.skin, menu);
+		return true;
+	}
 
-        red = (CheckBox) findViewById(R.id.red);
-        red.setChecked("red.apk".equals(currentSkinName));
-        red.setOnClickListener(this);
+	private void initView() {
 
-        green = (CheckBox) findViewById(R.id.green);
-        green.setChecked("green.apk".equals(currentSkinName));
-        green.setOnClickListener(this);
+		red = (CheckBox) findViewById(R.id.red);
+		red.setChecked("red.apk".equals(currentSkin));
+		red.setOnClickListener(this);
 
-        night = (CheckBox) findViewById(R.id.night);
-        night.setChecked(SkinManager.DEFAULT_SKIN_NAME_NIGHT.equals(currentSkinName));
-        night.setOnClickListener(this);
+		green = (CheckBox) findViewById(R.id.green);
+		green.setChecked("green.apk".equals(currentSkin));
+		green.setOnClickListener(this);
 
-        def = (CheckBox) findViewById(R.id.def);
-        def.setChecked(SkinManager.DEFAULT_SKIN_NAME.equals(currentSkinName));
-        def.setOnClickListener(this);
+		night = (CheckBox) findViewById(R.id.night);
+		night.setChecked(SkinManager.DEFAULT_SKIN_NAME_NIGHT.equals(currentSkin));
+		night.setOnClickListener(this);
 
-        findViewById(R.id.next).setOnClickListener(this);
-    }
+		def = (CheckBox) findViewById(R.id.def);
+		def.setChecked(SkinManager.DEFAULT_SKIN_NAME.equals(currentSkin));
+		def.setOnClickListener(this);
 
-    @Override
-    public void onClick(View v)
-    {
-        red.setChecked(false);
-        green.setChecked(false);
-        night.setChecked(false);
-        def.setChecked(false);
-        switch (v.getId())
-        {
-            case R.id.red:
-            {
-                skinManager.changeResources(this, "red.apk");
-                red.setChecked(true);
-                break;
-            }
+		findViewById(R.id.next).setOnClickListener(this);
+	}
 
-            case R.id.green:
-            {
-                skinManager.changeResources(this, "green.apk");
-                green.setChecked(true);
-                break;
-            }
+	@Override
+	public void onClick(View v) {
 
-            case R.id.night:
-            {
-                skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME_NIGHT);
-                night.setChecked(true);
-                break;
-            }
+		switch (v.getId()) {
 
-            case R.id.def:
-            {
-                skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME);
-                def.setChecked(true);
-                break;
-            }
+		case R.id.next: {
+			startActivity(new Intent(this, SkinTwoActivity.class));
+			break;
+		}
 
-            case R.id.next:
-            {
-                startActivity(new Intent(this, SkinTwoActivity.class));
-                break;
-            }
+		case R.id.red: {
+			if (!currentSkin.equals("red")) {
+				skinManager.changeResources(this, "red.apk");
+				red.setChecked(true);
+				def.setChecked(false);
+				currentSkin = "red";
+			} else {
+				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME);
+				red.setChecked(false);
+				def.setChecked(true);
+				currentSkin = "def";
+			}
+			green.setChecked(false);
+			night.setChecked(false);
+			break;
+		}
 
-            default:
-                break;
-        }
+		case R.id.green: {
+			if (!currentSkin.equals("green")) {
+				skinManager.changeResources(this, "green.apk");
+				green.setChecked(true);
+				def.setChecked(false);
+				currentSkin = "green";
+			} else {
+				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME);
+				green.setChecked(false);
+				def.setChecked(true);
+				currentSkin = "def";
+			}
+			red.setChecked(false);
+			night.setChecked(false);
+			break;
+		}
 
-    }
+		case R.id.night: {
+			if (!currentSkin.equals("night")) {
+				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME_NIGHT);
+				night.setChecked(true);
+				def.setChecked(false);
+				currentSkin = "night";
+			} else {
+				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME);
+				night.setChecked(false);
+				def.setChecked(true);
+				currentSkin = "def";
+			}
+			red.setChecked(false);
+			green.setChecked(false);
+			break;
+		}
+
+		case R.id.def: {
+			skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME);
+			def.setChecked(true);
+			red.setChecked(false);
+			green.setChecked(false);
+			night.setChecked(false);
+			currentSkin = "def";
+			break;
+		}
+
+		default:
+			break;
+		}
+
+	}
 }

@@ -6,6 +6,7 @@ import android.content.res.XmlResourceParser;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
+import android.support.v4.media.session.MediaSessionCompat.SessionFlags;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.LongSparseArray;
@@ -58,6 +59,11 @@ public class ProxyResources extends Resources {
 	protected String packageName;
 
 	/**
+	 * 皮肤资源包名
+	 */
+	protected String skinName;
+
+	/**
 	 * 资源名称缓存id
 	 */
 	protected int[] resourceNameIdCache = new int[RESOURCE_NAME_CACHE_SIZE];
@@ -68,11 +74,29 @@ public class ProxyResources extends Resources {
 	protected String[] resourceNameCache = new String[RESOURCE_NAME_CACHE_SIZE];
 
 	/**
-	 * 资源缓存
+	 * Drawable资源缓存(图片,xml)
 	 */
 	protected LongSparseArray<WeakReference<Drawable.ConstantState>> drawableCache = new LongSparseArray<WeakReference<Drawable.ConstantState>>();
+
+	/**
+	 * colorDrawable资源缓存(单色值)
+	 */
 	protected LongSparseArray<WeakReference<Drawable.ConstantState>> colorDrawableCache = new LongSparseArray<WeakReference<Drawable.ConstantState>>();
+
+	/**
+	 * colorStateList资源缓存(多状态色值)
+	 */
 	protected SparseArray<WeakReference<ColorStateList>> colorStateListCache = new SparseArray<WeakReference<ColorStateList>>();
+
+	/**
+	 * 在load资源的时候,用于表示是否调用过getValue方法
+	 */
+	private int fromGetValue = 0;
+
+	/**
+	 * @see #fromGetValue
+	 */
+	private int fromGetValueVersion = 0;
 
 	/**
 	 * Create a new SkinResources object on top of an existing set of assets in
@@ -83,11 +107,12 @@ public class ProxyResources extends Resources {
 	 * @param defRes
 	 *            default resources
 	 */
-	public ProxyResources(String packageName, Resources skinRes, Resources defRes) {
+	public ProxyResources(String packageName, Resources skinRes, Resources defRes, String skinName) {
 		super(defRes.getAssets(), defRes.getDisplayMetrics(), defRes.getConfiguration());
 		skinResources = skinRes;
 		defaultResources = defRes;
 		this.packageName = packageName;
+		this.skinName = skinName;
 	}
 
 	/**
@@ -137,7 +162,7 @@ public class ProxyResources extends Resources {
 		int skinId = toSkinId(id);
 		if (skinId != 0) {
 			skinResources.getValue(skinId, outValue, resolveRefs);
-			outValue.resourceId = -outValue.resourceId;
+			fromGetValue = id & ++fromGetValueVersion;
 		} else {
 			super.getValue(id, outValue, resolveRefs);
 		}
@@ -154,7 +179,7 @@ public class ProxyResources extends Resources {
 		int skinId = toSkinId(id);
 		if (skinId != 0) {
 			skinResources.getValueForDensity(skinId, density, outValue, resolveRefs);
-			outValue.resourceId = -outValue.resourceId;
+			fromGetValue = id & ++fromGetValueVersion;
 		} else {
 			super.getValueForDensity(id, density, outValue, resolveRefs);
 		}
@@ -163,7 +188,7 @@ public class ProxyResources extends Resources {
 
 	protected String toString(TypedValue value) {
 		return " skinId:" + toHex(toSkinId(value.resourceId))
-				+ (TextUtils.isEmpty(value.string) ? value + ",name:" + getResourceName(value.resourceId) : value.toString());
+				+ (TextUtils.isEmpty(value.string) ? value + ",name:" + getResourceName(value.resourceId) : " " + value.toString());
 	}
 
 	protected String toHex(Object id) {
@@ -225,39 +250,47 @@ public class ProxyResources extends Resources {
 
 		// 系统资源
 		if ((id & APP_ID_MASK) != APP_ID_MASK) {
-			result = (Drawable) invoke(defaultResources, "loadDrawable", loadParamType, value, id);
-		} else if (isColor && value.resourceId < 0) {
-			result = (Drawable) invoke(skinResources, "loadDrawable", loadParamType, value, id);
+			result = invoke(defaultResources, "loadDrawable", loadParamType, value, id);
+		} else if (isColor && fromGetValue == (id & fromGetValueVersion)) {
+			result = invoke(skinResources, "loadDrawable", loadParamType, value, id);
 		} else {
 			// 将app资源id转换成皮肤资源id
 			int skinId = toSkinId(id);
+
+			Resources res;
 			if (skinId == 0) {
 				Log.v(TAG, log + " convertId not found ");
-				result = (Drawable) invoke(defaultResources, "loadDrawable", loadParamType, value, id);
+				res = defaultResources;
 			} else {
+				res = skinResources;
 				if (isColor) {
-					skinResources.getValue(skinId, value, true);
-					result = (Drawable) invoke(skinResources, "loadDrawable", loadParamType, value, id);
-				} else {
-					String file = value.string.toString();
-					if (file.endsWith(".xml")) {
-						try {
-							XmlResourceParser rp = invoke(this, "loadXmlResourceParser", new Class[]{String.class, int.class, int.class, String.class},
-										      file, id, value.assetCookie, "drawable");
-							result = Drawable.createFromXml(this, rp);
-							rp.close();
-						} catch (Exception e) {
-							Log.e(TAG, e.getMessage());
-						}
-					}
+					res.getValue(skinId, value, true);
 				}
+			}
 
-				Object resultInfo = result instanceof ColorDrawable ? toHex(get(result, "mState.mUseColor")) : result;
-				Log.v(TAG, log + ",result:" + resultInfo + " from skinResources ");
-				// 如果皮肤中存在要查找的资源, 但加载失败则直接从默认资源中加载
-				if (result == null) {
-					result = (Drawable) invoke(defaultResources, "loadDrawable", loadParamType, value, id);
+			if (isColor) {
+				result = invoke(res, "loadDrawable", loadParamType, value, id);
+			} else {
+				String file = value.string.toString();
+				if (file.endsWith(".xml")) {
+					try {
+						XmlResourceParser rp = invoke(this, "loadXmlResourceParser", new Class[] { String.class, int.class, int.class,
+								String.class }, file, id, value.assetCookie, "drawable");
+						result = Drawable.createFromXml(this, rp);
+						rp.close();
+					} catch (Exception e) {
+						Log.e(TAG, e.getMessage());
+					}
+				} else {
+					result = invoke(res, "loadDrawable", loadParamType, value, id);
 				}
+			}
+
+			Object resultInfo = result instanceof ColorDrawable ? toHex(get(result, "mState.mUseColor")) : result;
+			Log.v(TAG, log + ",result:" + resultInfo + " from " + skinResources);
+			// 如果皮肤中存在要查找的资源, 但加载失败则直接从默认资源中加载
+			if (result == null && skinId != 0) {
+				result = invoke(defaultResources, "loadDrawable", loadParamType, value, id);
 			}
 		}
 
@@ -288,38 +321,48 @@ public class ProxyResources extends Resources {
 		// 系统资源
 		if ((id & APP_ID_MASK) != APP_ID_MASK) {
 			result = invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
-		} else if (isColor && value.resourceId < 0) {
+		} else if (isColor && fromGetValue == (id & fromGetValueVersion)) {
 			result = invoke(skinResources, "loadColorStateList", loadParamType, value, id);
 		} else {
 
 			// 将app资源id转换成皮肤资源id
 			int skinId = toSkinId(id);
+
+			Resources res;
 			if (skinId == 0) {
-				Log.v(TAG, log + " convertSkinId not found");
-				result = invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
+				Log.v(TAG, log + " convertId not found ");
+				res = defaultResources;
 			} else {
+				res = skinResources;
 				if (isColor) {
-					skinResources.getValue(skinId, value, true);
-					result = invoke(skinResources, "loadColorStateList", loadParamType, value, id);
-				} else {
-					String file = value.string.toString();
-					if (file.endsWith(".xml")) {
-						try {
-							XmlResourceParser rp = invoke(this, "loadXmlResourceParser", new Class[]{String.class, int.class, int.class, String.class},
-										      file, id, value.assetCookie, "colorstatelist");
-							result = ColorStateList.createFromXml(this, rp);
-							rp.close();
-						} catch (Exception e) {
-							Log.e(TAG, e.getMessage());
-						}
-					}
-				}
-				Log.v(TAG, log + ",result:" + result + ", from resources :" + skinResources);
-				// 如果皮肤中存在要查找的资源, 但加载失败则直接从默认资源中加载
-				if (result == null) {
-					result = invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
+					res.getValue(skinId, value, true);
 				}
 			}
+
+			if (isColor) {
+				result = invoke(res, "loadColorStateList", loadParamType, value, id);
+			} else {
+				String file = value.string.toString();
+				if (file.endsWith(".xml")) {
+					try {
+						XmlResourceParser rp = invoke(this, "loadXmlResourceParser", new Class[] { String.class, int.class, int.class,
+								String.class }, file, id, value.assetCookie, "drawable");
+						result = ColorStateList.createFromXml(this, rp);
+						rp.close();
+					} catch (Exception e) {
+						Log.e(TAG, e.getMessage());
+					}
+				} else {
+					result = invoke(res, "loadColorStateList", loadParamType, value, id);
+				}
+			}
+
+			Log.v(TAG, log + ",result:" + result + " from " + skinResources);
+			// 如果皮肤中存在要查找的资源, 但加载失败则直接从默认资源中加载
+			if (result == null && skinId != 0) {
+				result = invoke(res, "loadColorStateList", loadParamType, value, id);
+			}
+
 		}
 
 		if (result != null) {
@@ -329,7 +372,7 @@ public class ProxyResources extends Resources {
 		}
 		return result;
 	}
-	
+
 	protected synchronized Drawable getCachedDrawable(LongSparseArray<WeakReference<ConstantState>> cache, long key) {
 		WeakReference<ConstantState> wr = cache.get(key);
 		if (wr != null) { // we have the key
@@ -355,8 +398,6 @@ public class ProxyResources extends Resources {
 		}
 		return null;
 	}
-	
-	
 
 	public void clearCache() {
 		skinIdMap.clear();
@@ -366,5 +407,10 @@ public class ProxyResources extends Resources {
 		drawableCache.clear();
 		colorDrawableCache.clear();
 		colorStateListCache.clear();
+	}
+
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + "{" + skinName + "}";
 	}
 }

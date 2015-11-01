@@ -12,12 +12,14 @@ public class ListViewHolder extends ViewHolder {
 	@Override
 	public void reload(View view, Resources res) {
 		super.reload(view, res);
-		((ListView) view).setDivider(res.getDrawable(divider));
+		if (divider != 0) {
+			((ListView) view).setDivider(res.getDrawable(divider));
+		}
 	}
 
 	@Override
-	public void parse(View view, AttributeSet attrs) {
-		super.parse(view, attrs);
+	public boolean parse(AttributeSet attrs) {
 		divider = getResourceId(attrs, "divider");
+		return super.parse(attrs) && divider != 0;
 	}
 }
