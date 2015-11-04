@@ -117,24 +117,24 @@ void moveJarIntoLibs(File file){
 
 void moveAndRenameAar(File file){
     println 'Added aar ' + file
-    def baseFilename = file.name.lastIndexOf('.').with {it != -1 ? file.name[0..<it] : file.name}
+//    def baseFilename = file.name.lastIndexOf('.').with {it != -1 ? file.name[0..<it] : file.name}
 
     // directory excluding the classes.jar
-    copy{
-        from zipTree(file)
-        exclude 'classes.jar'
-        into 'libs/'+baseFilename
-    }
+//    copy{
+//        from zipTree(file)
+//        exclude 'classes.jar'
+//        into 'libs/'+baseFilename
+//    }
 
     // Copies the classes.jar into the libs directory of the expoded AAR.
     // In Eclipse you can then import this exploded ar as an Android project
     // and then reference not only the classes but also the android resources :D 
-    copy{
-        from zipTree(file)
-        include 'classes.jar'
-        into 'libs/' + baseFilename +'/libs'
-        rename { String fileName ->
-            fileName.replace('classes.jar', baseFilename + '.jar')
-        }
-    }
+//    copy{
+//        from zipTree(file)
+//        include 'classes.jar'
+//        into 'libs/' + baseFilename +'/libs'
+//        rename { String fileName ->
+//            fileName.replace('classes.jar', baseFilename + '.jar')
+//        }
+//    }
 }

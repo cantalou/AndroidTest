@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="libs/android-support-v4.jar" sourcepath="D:/android/extras/android/m2repository/com/android/support/support-v4/23.1.0/support-v4-23.1.0-sources.jar"/>
+	<classpathentry kind="lib" path="libs/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="libs/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="libs/butterknife-5.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/cglib-2.2.1-v20090111.jar"/>
+	<classpathentry kind="lib" path="libs/guice-3.0-no_aop.jar"/>
+	<classpathentry kind="lib" path="libs/javax.inject-1.jar"/>
+	<classpathentry kind="lib" path="libs/library-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/roboguice-2.0.jar"/>
+	<classpathentry kind="lib" path="libs/universal-image-loader-1.9.3.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
