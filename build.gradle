@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-        maven { url "http://dl.bintray.com/populov/maven" }
         mavenCentral()
         jcenter()
     }
@@ -9,11 +8,11 @@ buildscript {
     }
 }
 
-    repositories {
-        maven { url "http://dl.bintray.com/populov/maven" }
-        mavenCentral()
-        jcenter()
-    }
+repositories {
+   maven { url "http://dl.bintray.com/populov/maven" }
+   mavenCentral()
+   jcenter()
+}
 
 apply plugin: 'android'
 

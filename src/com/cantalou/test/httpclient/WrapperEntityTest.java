@@ -13,7 +13,6 @@ public class WrapperEntityTest
     {
         ByteArrayEntity b = null;
         BufferedHttpEntity bte = null;
-        bte.consumeContent();
     }
 
 }
