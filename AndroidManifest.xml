@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    package="com.wy.test"
+    package="com.cantalou.test"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:versionCode="1"
     android:versionName="0.0.1-SNAPSHOT">
@@ -20,7 +20,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
-        android:name=".HelloAndroidApplication"
+        android:name="com.cantalou.test.HelloAndroidApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -28,7 +28,7 @@
         android:theme="@style/AppBaseTheme">
         <uses-library android:name="android.test.runner"/>
 
-        <activity android:name=".HelloAndroidActivity">
+        <activity android:name="com.cantalou.test.HelloAndroidActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
