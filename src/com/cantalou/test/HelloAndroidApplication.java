@@ -2,7 +2,6 @@ package com.cantalou.test;
 
 import android.app.Application;
 
-import com.cantalou.skin.SkinManager;
 
 public class HelloAndroidApplication extends Application
 {
@@ -11,7 +10,5 @@ public class HelloAndroidApplication extends Application
     public void onCreate()
     {
         super.onCreate();
-        SkinManager.getInstance()
-                   .init(this);
     }
 }
