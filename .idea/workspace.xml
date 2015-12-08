@@ -17,33 +17,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb27a0d0-3573-42aa-b1f4-e170ea98b8db" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/AbstractHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/AttrHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/ImageViewHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/ListViewHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/resources/NightResources.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/OnResourcesChangeFinishListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/OnResourcesChangeListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/resources/ProxyResources.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/test/skin/view/SkinFrameLayout.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/test/skin/view/SkinImageView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/instrumentation/SkinInstrumentation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/resources/SkinResources.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/test/skin/view/SkinTextView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/TextViewHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/ViewFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/ViewHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/android_util_2_0_4.xml" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\.idea\libraries\android_skin_change_1_0_6.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/green.apk" afterPath="$PROJECT_DIR$/assets/green.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/red.apk" afterPath="$PROJECT_DIR$/assets/red.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinActivity.java" afterPath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinTwoActivity.java" afterPath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinTwoActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_skin.xml" afterPath="$PROJECT_DIR$/res/layout/activity_skin.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setting.gradle" afterPath="$PROJECT_DIR$/setting.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidTest.iws" />
@@ -1425,6 +1398,13 @@
       <option name="number" value="Default" />
       <updated>1449554858497</updated>
     </task>
+    <task id="LOCAL-00001" summary="1">
+      <created>1449574763620</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1449574763620</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1497,6 +1477,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
