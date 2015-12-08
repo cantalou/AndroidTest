@@ -17,7 +17,7 @@ public class SkinTwoActivity extends Activity
     protected void attachBaseContext(Context newBase)
     {
         super.attachBaseContext(newBase);
-        skinManager.onAttach(this);
+        skinManager.onCreate(this);
     }
 
     @Override

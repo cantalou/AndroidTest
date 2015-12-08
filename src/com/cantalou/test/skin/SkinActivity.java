@@ -32,8 +32,9 @@ public class SkinActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		skinManager.onCreate(this);
 		super.onCreate(savedInstanceState);
-		currentSkin = PrefUtil.getString(this, SkinManager.PREF_KEY_SKIN_NAME);
+		currentSkin = PrefUtil.getString(this, "");
 		if (currentSkin == null) {
 			currentSkin = "def";
 		}
@@ -41,18 +42,12 @@ public class SkinActivity extends Activity implements OnClickListener {
 		initView();
 
 		if (hasNotCopy) {
-			String dir = skinManager.getSkinDir(this).getAbsolutePath() + File.separator;
+			String dir = getCacheDir() + File.separator;
 			FileUtil.copyAssetsFile(this, "green.apk", dir + "green.apk");
 			FileUtil.copyAssetsFile(this, "red.apk", dir + "red.apk");
 			hasNotCopy = false;
 		}
 
-	}
-
-	@Override
-	protected void attachBaseContext(Context newBase) {
-		super.attachBaseContext(newBase);
-		skinManager.onAttach(this);
 	}
 
 	@Override
@@ -78,11 +73,11 @@ public class SkinActivity extends Activity implements OnClickListener {
 		green.setOnClickListener(this);
 
 		night = (CheckBox) findViewById(R.id.night);
-		night.setChecked(SkinManager.DEFAULT_SKIN_NAME_NIGHT.equals(currentSkin));
+		night.setChecked(SkinManager.DEFAULT_SKIN_NIGHT.equals(currentSkin));
 		night.setOnClickListener(this);
 
 		def = (CheckBox) findViewById(R.id.def);
-		def.setChecked(SkinManager.DEFAULT_SKIN_NAME.equals(currentSkin));
+		def.setChecked(SkinManager.DEFAULT_SKIN.equals(currentSkin));
 		def.setOnClickListener(this);
 
 		findViewById(R.id.next).setOnClickListener(this);
@@ -105,7 +100,7 @@ public class SkinActivity extends Activity implements OnClickListener {
 				def.setChecked(false);
 				currentSkin = "red";
 			} else {
-				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME);
+				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN);
 				red.setChecked(false);
 				def.setChecked(true);
 				currentSkin = "def";
@@ -122,7 +117,7 @@ public class SkinActivity extends Activity implements OnClickListener {
 				def.setChecked(false);
 				currentSkin = "green";
 			} else {
-				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME);
+				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN);
 				green.setChecked(false);
 				def.setChecked(true);
 				currentSkin = "def";
@@ -134,12 +129,12 @@ public class SkinActivity extends Activity implements OnClickListener {
 
 		case R.id.night: {
 			if (!currentSkin.equals("night")) {
-				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME_NIGHT);
+				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NIGHT);
 				night.setChecked(true);
 				def.setChecked(false);
 				currentSkin = "night";
 			} else {
-				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME);
+				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN);
 				night.setChecked(false);
 				def.setChecked(true);
 				currentSkin = "def";
@@ -150,7 +145,7 @@ public class SkinActivity extends Activity implements OnClickListener {
 		}
 
 		case R.id.def: {
-			skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NAME);
+			skinManager.changeResources(this, SkinManager.DEFAULT_SKIN);
 			def.setChecked(true);
 			red.setChecked(false);
 			green.setChecked(false);
