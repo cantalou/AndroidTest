@@ -11,7 +11,5 @@ public class HelloAndroidApplication extends Application
     public void onCreate()
     {
         super.onCreate();
-        SkinManager.getInstance()
-                   .init(this);
     }
 }
