@@ -14,16 +14,9 @@ public class SkinTwoActivity extends Activity
     private SkinManager skinManager = SkinManager.getInstance();
 
     @Override
-    protected void attachBaseContext(Context newBase)
-    {
-        super.attachBaseContext(newBase);
-        skinManager.onCreate(this);
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-
+        skinManager.onCreate(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skin);
     }
@@ -35,4 +28,10 @@ public class SkinTwoActivity extends Activity
         return true;
     }
 
+    @Override
+    protected void onDestroy()
+    {
+        skinManager.onDestroy(this);
+        super.onDestroy();
+    }
 }

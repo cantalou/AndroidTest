@@ -22,7 +22,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 
-            <ImageView
+            <com.cantalou.test.skin.view.SkinImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/ic_launcher" />
@@ -41,7 +41,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 
-            <FrameLayout
+            <com.cantalou.test.skin.view.SkinFrameLayout
                 android:id="@+id/tt"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -61,7 +61,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 
-            <TextView
+            <com.cantalou.test.skin.view.SkinTextView
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:gravity="center"
@@ -82,7 +82,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 
-            <FrameLayout
+            <com.cantalou.test.skin.view.SkinFrameLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/selector_skin_icon" />
