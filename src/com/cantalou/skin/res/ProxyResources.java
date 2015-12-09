@@ -1,4 +1,4 @@
-package com.cantalou.skin.resources;
+package com.cantalou.skin.res;
 
 import android.content.res.AssetManager;
 import android.content.res.ColorStateList;
@@ -225,8 +225,13 @@ public class ProxyResources extends Resources
 
     protected Class<?>[] loadParamType = new Class<?>[]{TypedValue.class, int.class};
 
-    @SuppressWarnings("deprecation")
+
     Drawable loadDrawable(TypedValue value, int id) throws NotFoundException
+    {
+        return proxyLoadDrawable(value, id);
+    }
+
+    public Drawable proxyLoadDrawable(TypedValue value, int id) throws NotFoundException
     {
 
         if (id == 0)
@@ -282,7 +287,7 @@ public class ProxyResources extends Resources
                 {
                     try
                     {
-                        XmlResourceParser rp = invoke(res, "loadXmlResourceParser", new Class[]{
+                        XmlResourceParser rp = invoke(this, "loadXmlResourceParser", new Class[]{
                                 String.class, int.class, int.class, String.class
                         }, file, id, value.assetCookie, "drawable");
                         result = Drawable.createFromXml(this, rp);
@@ -307,7 +312,7 @@ public class ProxyResources extends Resources
                         }
                         opts.inPurgeable = true;
                         opts.inInputShareable = true;
-                        result = Drawable.createFromResourceStream(res, value, is, file, opts);
+                        result = Drawable.createFromResourceStream(this, value, is, file, opts);
                     }
                     catch (Exception e)
                     {
@@ -349,8 +354,12 @@ public class ProxyResources extends Resources
         return result;
     }
 
-    @SuppressWarnings("deprecation")
     ColorStateList loadColorStateList(TypedValue value, int id) throws NotFoundException
+    {
+        return proxyLoadColorStateList(value, id);
+    }
+
+    public ColorStateList proxyLoadColorStateList(TypedValue value, int id) throws NotFoundException
     {
 
         if (id == 0)
@@ -406,10 +415,10 @@ public class ProxyResources extends Resources
                 {
                     try
                     {
-                        XmlResourceParser rp = invoke(res, "loadXmlResourceParser", new Class[]{
+                        XmlResourceParser rp = invoke(this, "loadXmlResourceParser", new Class[]{
                                 String.class, int.class, int.class, String.class
                         }, file, id, value.assetCookie, "drawable");
-                        result = ColorStateList.createFromXml(res, rp);
+                        result = ColorStateList.createFromXml(this, rp);
                         rp.close();
                     }
                     catch (Exception e)

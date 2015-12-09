@@ -1,4 +1,4 @@
-package com.cantalou.skin.resources;
+package com.cantalou.skin.res;
 
 import android.content.res.AssetManager;
 import android.content.res.Resources;

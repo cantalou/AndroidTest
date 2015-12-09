@@ -1,4 +1,4 @@
-package com.cantalou.skin.resources;
+package com.cantalou.skin.res;
 
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -16,7 +16,6 @@ import android.util.SparseIntArray;
 import android.util.TypedValue;
 
 import com.cantalou.android.util.ReflectUtil;
-import com.cantalou.skin.resources.ProxyResources;
 
 public class NightResources extends ProxyResources
 {

@@ -25,7 +25,7 @@ public class SkinActivity extends Activity implements OnClickListener,
 
     SharedPreferences sp;
 
-    private String currentSkin;
+    private String currentSkin = "";
 
     private CheckBox red, green, night, def;
 
