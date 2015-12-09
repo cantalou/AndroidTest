@@ -48,16 +48,8 @@ public abstract class AbstractHolder implements AttrHolder
             String attributeName = attrs.getAttributeName(i);
             if (name.equals(attributeName))
             {
-                String value = attrs.getAttributeValue(i);
-                int ik = attrs.getAttributeResourceValue(i, 0);
-                int id = attrs.getAttributeNameResource(i);
-                int j = attrs.getAttributeIntValue(i, 0);
-                if (value.startsWith("@"))
-                {
-                    id = Integer.parseInt(value.substring(1));
-                    return (id & APP_RESOURCE_ID_PACKAGE) == APP_RESOURCE_ID_PACKAGE ? id : 0;
-                }
-
+                int id = attrs.getAttributeResourceValue(i, 0);
+                return (id & APP_RESOURCE_ID_PACKAGE) == APP_RESOURCE_ID_PACKAGE ? id : 0;
             }
         }
         return 0;
@@ -65,11 +57,7 @@ public abstract class AbstractHolder implements AttrHolder
 
     protected int getResourceId(AttributeSet attrs, int index)
     {
-        String attributeName = attrs.getAttributeName(index);
-        String value = attrs.getAttributeValue(index);
-        int i = attrs.getAttributeResourceValue(index, 0);
         int id = attrs.getAttributeNameResource(index);
-        int j = attrs.getAttributeIntValue(index, 0);
         return (id & APP_RESOURCE_ID_PACKAGE) == APP_RESOURCE_ID_PACKAGE ? id : 0;
     }
 }
