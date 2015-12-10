@@ -23,16 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb27a0d0-3573-42aa-b1f4-e170ea98b8db" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\holder\AttrHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\res\DrawableLongSparseArray.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/holder/AbstractHolder.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/AbstractHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/holder/ImageViewHolder.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/ImageViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/holder/ListViewHolder.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/ListViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyResources.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyResources.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/holder/TextViewHolder.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/TextViewHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/ViewFactory.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/ViewFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/holder/ViewHolder.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/holder/ViewHolder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidTest.iws" />
@@ -1310,7 +1300,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449710880028</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1">
+      <created>1449749443878</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1449749443878</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
