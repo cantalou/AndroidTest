@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.cantalou.android.util.ReflectUtil;
-import com.cantalou.skin.holder.ViewHolder;
+import com.cantalou.skin.SkinManager;
 
 public class ListViewHolder extends ViewHolder
 {
@@ -37,9 +37,14 @@ public class ListViewHolder extends ViewHolder
     }
 
     @Override
-    public boolean parse(AttributeSet attrs)
+    public boolean parseAttr(Resources res, AttributeSet attrs)
     {
         divider = getResourceId(attrs, "divider");
-        return super.parse(attrs) || divider != 0;
+        if (divider != 0)
+        {
+            SkinManager.getInstance()
+                       .registerDrawable(res, divider);
+        }
+        return super.parseAttr(res, attrs) || divider != 0;
     }
 }

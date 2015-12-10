@@ -10,7 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.LayoutInflater.Factory;
 import android.view.View;
@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import com.cantalou.android.util.Log;
 import com.cantalou.android.util.PrefUtil;
 import com.cantalou.android.util.StringUtils;
-import com.cantalou.skin.holder.AttrHolder;
+import com.cantalou.skin.holder.AbstractHolder;
 import com.cantalou.skin.instrumentation.SkinInstrumentation;
 import com.cantalou.skin.res.NightResources;
 import com.cantalou.skin.res.ProxyResources;
@@ -83,9 +83,14 @@ public class SkinManager
     private Resources defaultResources;
 
     /**
-     * 资源
+     * 资源名称
      */
     String currentSkin = DEFAULT_SKIN;
+
+    /**
+     * 资源
+     */
+    private Resources currentSkinResources;
 
     /**
      * 资源切换时提交View刷新任务到UI线程
@@ -101,6 +106,11 @@ public class SkinManager
      * 资源切换结束回调
      */
     private ArrayList<OnResourcesChangeFinishListener> onResourcesChangeFinishListeners = new ArrayList<OnResourcesChangeFinishListener>();
+
+    /**
+     * 缓存对象
+     */
+    private TypedValue cacheValue = new TypedValue();
 
     private static class InstanceHolder
     {
@@ -335,6 +345,10 @@ public class SkinManager
                     {
                         return false;
                     }
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && res instanceof ProxyResources)
+                    {
+                        ((ProxyResources) res).clearPreloadCache();
+                    }
                     List<Activity> temp = (List<Activity>) activitys.clone();
                     for (int i = temp.size() - 1; i >= 0; i--)
                     {
@@ -446,11 +460,11 @@ public class SkinManager
             v.invalidate();
         }
 
-        Object tag = v.getTag(AttrHolder.ATTR_HOLDER_KEY);
-        if (tag != null && tag instanceof AttrHolder)
+        Object tag = v.getTag(AbstractHolder.ATTR_HOLDER_KEY);
+        if (tag != null && tag instanceof AbstractHolder)
         {
-            ((AttrHolder) tag).reload(v, v.getContext()
-                                          .getResources());
+            ((AbstractHolder) tag).reload(v, v.getContext()
+                                              .getResources());
         }
 
         if (v instanceof ViewGroup)
@@ -575,9 +589,71 @@ public class SkinManager
     /**
      * 注册资源id
      */
-    public void registerResourceId(AttributeSet attrs)
+    public void registerDrawable(Resources res, int id)
     {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
+        {
+            return;
+        }
 
+        if ((ProxyResources.APP_ID_MASK & id) != ProxyResources.APP_ID_MASK)
+        {
+            return;
+        }
+
+        if (StringUtils.isBlank(currentSkin) || DEFAULT_SKIN.equals(currentSkin))
+        {
+            return;
+        }
+
+        if (!(res instanceof ProxyResources))
+        {
+            Log.w("Param res is not a instance of ProxyResources");
+            return;
+        }
+
+        ProxyResources proxyResources = (ProxyResources) res;
+        synchronized (cacheValue)
+        {
+            TypedValue value = cacheValue;
+            proxyResources.getValue(id, value, true);
+            proxyResources.proxyLoadDrawable(value, id);
+        }
+    }
+
+    /**
+     * 注册资源id
+     */
+    public void registerColorStateList(Resources res, int id)
+    {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
+        {
+            return;
+        }
+
+        if ((ProxyResources.APP_ID_MASK & id) != ProxyResources.APP_ID_MASK)
+        {
+            return;
+        }
+
+        if (StringUtils.isBlank(currentSkin) || DEFAULT_SKIN.equals(currentSkin))
+        {
+            return;
+        }
+
+        if (!(res instanceof ProxyResources))
+        {
+            Log.w("Param res is not a instance of ProxyResources");
+            return;
+        }
+
+        ProxyResources proxyResources = (ProxyResources) res;
+        synchronized (cacheValue)
+        {
+            TypedValue value = cacheValue;
+            proxyResources.getValue(id, value, true);
+            proxyResources.proxyLoadColorStateList(value, id);
+        }
     }
 
     /**
@@ -603,5 +679,10 @@ public class SkinManager
     public synchronized void removeOnResourcesChangeFinishListener(OnResourcesChangeFinishListener listener)
     {
         onResourcesChangeFinishListeners.remove(listener);
+    }
+
+    public Factory getViewFactory()
+    {
+        return viewFactory;
     }
 }
