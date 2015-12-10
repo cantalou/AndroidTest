@@ -23,21 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb27a0d0-3573-42aa-b1f4-e170ea98b8db" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/res/DrawableLongSparseArray.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/green.apk" afterPath="$PROJECT_DIR$/assets/green.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/red.apk" afterPath="$PROJECT_DIR$/assets/red.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinActivity.java" afterPath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/ViewFactory.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/ViewFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_skin.xml" afterPath="$PROJECT_DIR$/res/layout/activity_skin.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/color.xml" afterPath="$PROJECT_DIR$/res/values/color.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/selector_skin_color.xml" afterPath="$PROJECT_DIR$/res/drawable/selector_skin_color.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/selector_skin_icon.xml" afterPath="$PROJECT_DIR$/res/drawable/selector_skin_icon.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/res/DrawableLongSparseArray.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/res/DrawableLongSparseArray.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\res\drawable-xhdpi\ic_launcher_bak.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher_not_in_skin.png" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\resources\NightResources.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/res/NightResources.java" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\resources\ProxyResources.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyResources.java" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\resources\SkinResources.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/res/SkinResources.java" />
     </list>
     <ignored path="AndroidTest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -182,8 +169,8 @@
       <file leaf-file-name="DrawableLongSparseArray.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/res/DrawableLongSparseArray.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40083218">
-              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.82385576">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#532#533#0" expanded="true" />
@@ -1129,72 +1116,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cantalou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cantalou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cantalou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -1417,7 +1338,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449574933554</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1">
+      <created>1449659406064</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1449659406064</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1869,8 +1796,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/res/DrawableLongSparseArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40083218">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.82385576">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#532#533#0" expanded="true" />

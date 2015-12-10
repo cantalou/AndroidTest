@@ -31,12 +31,4 @@ public class DrawableLongSparseArray<E> extends LongSparseArray
         }
     }
 
-    public E get(long key)
-    {
-        if (mKeyIdMaps.get(key) == null)
-        {
-            return (Drawable.ConstantState) mOldPreloadCache[0].get(key);
-        }
-        return this.mSkinEngine.loadConstantState(((Integer) this.mKeyToResourcesId.get(key)).intValue());
-    }
 }
