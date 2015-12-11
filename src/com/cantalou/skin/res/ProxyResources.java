@@ -36,6 +36,7 @@ import static com.cantalou.android.util.ReflectUtil.set;
  * @author LinZhiWei
  * @date 2015年11月29日 下午3:15:02
  */
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class ProxyResources extends Resources
 {
 
@@ -111,6 +112,12 @@ public class ProxyResources extends Resources
      */
     protected SparseArray<WeakReference<ColorStateList>> colorStateListCache;
 
+    final Class[] loadXmlResourceParserParam = new Class[]{
+            String.class, int.class, int.class, String.class
+    };
+
+    final Class[] openNonAssetParam = new Class[]{int.class, String.class, int.class};
+
     /**
      * Create a new SkinResources object on top of an existing set of assets in
      * an AssetManager.
@@ -118,7 +125,6 @@ public class ProxyResources extends Resources
      * @param skinRes skin resources
      * @param defRes  default resources
      */
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public ProxyResources(String packageName, Resources skinRes, Resources defRes, String skinName)
     {
         super(defRes.getAssets(), defRes.getDisplayMetrics(), defRes.getConfiguration());
@@ -139,27 +145,6 @@ public class ProxyResources extends Resources
             colorDrawableCache = new LongSparseArray<WeakReference<ConstantState>>();
             colorStateListCache = new SparseArray<WeakReference<ColorStateList>>();
         }
-    }
-
-    /**
-     * 替换预加载缓存
-     *
-     * @param preloadedDrawables       图片缓存
-     * @param preloadedColorDrawables  颜色缓存
-     * @param preloadedColorStateLists 小于Build.VERSION_CODES.JELLY_BEAN
-     * @param preloadedColorStateLists Build.VERSION_CODES.JELLY_BEAN 及其以上
-     */
-    public void setPreloadResourcesCache(LongSparseArray<WeakReference<ConstantState>> preloadedDrawables, LongSparseArray<WeakReference<ConstantState>> preloadedColorDrawables,
-                                         LongSparseArray<WeakReference<ColorStateList>> preloadedColorStateLists)
-    {
-        this.drawableCache = preloadedDrawables;
-        set(this, "sPreloadedDrawables", preloadedDrawables);
-
-        this.colorDrawableCache = preloadedColorDrawables;
-        set(this, "sPreloadedColorDrawables", preloadedColorDrawables);
-
-        this.colorStateListCache16 = preloadedColorStateLists;
-        set(this, "mPreloadedColorStateLists", preloadedColorStateLists);
     }
 
     /**
@@ -267,10 +252,29 @@ public class ProxyResources extends Resources
 
     protected Class<?>[] loadParamType = new Class<?>[]{TypedValue.class, int.class};
 
-    Drawable loadDrawable(TypedValue value, int id)
-    {
-        return proxyLoadDrawable(value, id);
-    }
+    //    Drawable loadDrawable(TypedValue value, int id)
+    //    {
+    //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+    //        {
+    //            return invoke(defaultResources, "loadDrawable", loadParamType, value, id);
+    //        }
+    //        else
+    //        {
+    //            return proxyLoadDrawable(value, id);
+    //        }
+    //    }
+    //
+    //    ColorStateList loadColorStateList(TypedValue value, int id) throws NotFoundException
+    //    {
+    //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+    //        {
+    //            return invoke(defaultResources, "loadColorStateList", loadParamType, value, id);
+    //        }
+    //        else
+    //        {
+    //            return proxyLoadColorStateList(value, id);
+    //        }
+    //    }
 
     public Drawable proxyLoadDrawable(TypedValue value, int id) throws NotFoundException
     {
@@ -328,15 +332,13 @@ public class ProxyResources extends Resources
                 {
                     try
                     {
-                        XmlResourceParser rp = invoke(res, "loadXmlResourceParser", new Class[]{
-                                String.class, int.class, int.class, String.class
-                        }, file, id, value.assetCookie, "drawable");
+                        XmlResourceParser rp = invoke(res, "loadXmlResourceParser", loadXmlResourceParserParam, file, id, value.assetCookie, "drawable");
                         result = Drawable.createFromXml(this, rp);
                         rp.close();
                     }
                     catch (Exception e)
                     {
-                        Log.e(TAG, e.getMessage());
+                        Log.e(TAG, e.toString());
                     }
                 }
                 else
@@ -344,7 +346,7 @@ public class ProxyResources extends Resources
                     InputStream is = null;
                     try
                     {
-                        is = invoke(res.getAssets(), "openNonAsset", new Class[]{int.class, String.class, int.class}, value.assetCookie, file, AssetManager.ACCESS_STREAMING);
+                        is = invoke(res.getAssets(), "openNonAsset", openNonAssetParam, value.assetCookie, file, AssetManager.ACCESS_STREAMING);
                         BitmapFactory.Options opts = new BitmapFactory.Options();
                         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
                         {
@@ -357,7 +359,7 @@ public class ProxyResources extends Resources
                     }
                     catch (Exception e)
                     {
-                        Log.e(TAG, e.getMessage());
+                        Log.e(TAG, e.toString());
                     }
                     finally
                     {
@@ -387,17 +389,9 @@ public class ProxyResources extends Resources
 
         if (result != null)
         {
-            synchronized (this)
-            {
-                cache.put(key, new WeakReference<ConstantState>(result.getConstantState()));
-            }
+            setCachedDrawable(cache, key, result);
         }
         return result;
-    }
-
-    ColorStateList loadColorStateList(TypedValue value, int id) throws NotFoundException
-    {
-        return proxyLoadColorStateList(value, id);
     }
 
     public ColorStateList proxyLoadColorStateList(TypedValue value, int id) throws NotFoundException
@@ -456,15 +450,13 @@ public class ProxyResources extends Resources
                 {
                     try
                     {
-                        XmlResourceParser rp = invoke(res, "loadXmlResourceParser", new Class[]{
-                                String.class, int.class, int.class, String.class
-                        }, file, id, value.assetCookie, "drawable");
+                        XmlResourceParser rp = invoke(res, "loadXmlResourceParser", loadXmlResourceParserParam, file, id, value.assetCookie, "drawable");
                         result = ColorStateList.createFromXml(res, rp);
                         rp.close();
                     }
                     catch (Exception e)
                     {
-                        Log.e(TAG, e.getMessage());
+                        Log.e(TAG, e.toString());
                     }
                 }
             }
@@ -495,12 +487,20 @@ public class ProxyResources extends Resources
         return result;
     }
 
+    protected synchronized void setCachedDrawable(LongSparseArray<WeakReference<ConstantState>> cache, long key, Drawable drawable)
+    {
+        synchronized (this)
+        {
+            cache.put(key, new WeakReference<ConstantState>(drawable.getConstantState()));
+        }
+    }
+
     protected synchronized Drawable getCachedDrawable(LongSparseArray<WeakReference<ConstantState>> cache, long key)
     {
         Object item = cache.get(key);
         if (item instanceof Drawable.ConstantState)
         {
-            return ((Drawable.ConstantState)item).newDrawable(this);
+            return ((Drawable.ConstantState) item).newDrawable(this);
         }
         WeakReference<ConstantState> wr = (WeakReference<ConstantState>) item;
         if (wr != null)
@@ -569,18 +569,39 @@ public class ProxyResources extends Resources
         clearPreloadCache();
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void clearPreloadCache()
     {
-        drawableCache.clear();
-        colorDrawableCache.clear();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        int len = drawableCache.size();
+        for (int i = 0; i < len; i++)
         {
-            colorStateListCache16.clear();
-        }
-        else
-        {
-            colorStateListCache.clear();
+            Object value = drawableCache.valueAt(i);
+            if (value != null && value.getClass() != Drawable.ConstantState.class)
+            {
+                drawableCache.removeAt(i);
+            }
+
+            value = colorDrawableCache.valueAt(i);
+            if (value != null && value.getClass() != Drawable.ConstantState.class)
+            {
+                colorDrawableCache.removeAt(i);
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+            {
+                value = colorStateListCache16.valueAt(i);
+                if (value != null && value.getClass() != ColorStateList.class)
+                {
+                    colorStateListCache16.removeAt(i);
+                }
+            }
+            else
+            {
+                value = colorStateListCache.valueAt(i);
+                if (value != null && value.getClass() != ColorStateList.class)
+                {
+                    colorStateListCache.removeAt(i);
+                }
+            }
         }
     }
 

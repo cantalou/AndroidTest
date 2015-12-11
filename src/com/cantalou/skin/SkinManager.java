@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.LongSparseArray;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.LayoutInflater.Factory;
@@ -345,6 +348,7 @@ public class SkinManager
                     {
                         return false;
                     }
+                    currentSkinResources = res;
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN && res instanceof ProxyResources)
                     {
                         ((ProxyResources) res).clearPreloadCache();
@@ -517,6 +521,18 @@ public class SkinManager
     }
 
     /**
+     * 替换预加载缓存
+     */
+    public void setProxyPreloadResourcesCache()
+    {
+        set(this, "sPreloadedDrawables", preloadedDrawables);
+
+        set(this, "sPreloadedColorDrawables", preloadedColorDrawables);
+
+        set(this, "mPreloadedColorStateLists", preloadedColorStateLists);
+    }
+
+    /**
      * 给界面添加更换皮肤转换的动画
      *
      * @param activity 要显示渐变动画的界面
@@ -684,5 +700,15 @@ public class SkinManager
     public Factory getViewFactory()
     {
         return viewFactory;
+    }
+
+    public Resources getCurrentSkinResources()
+    {
+        return currentSkinResources;
+    }
+
+    public Resources getDefaultResources()
+    {
+        return defaultResources;
     }
 }

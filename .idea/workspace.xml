@@ -18,11 +18,16 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="test" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb27a0d0-3573-42aa-b1f4-e170ea98b8db" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/sparearray/ColorStateListLongSpareArray.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/sparearray/ColorStateListSpareArray.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/sparearray/DrawableLongSpareArray.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/res/NightResources.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/res/NightResources.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyResources.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyResources.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java" afterPath="$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidTest.iws" />
@@ -68,28 +73,42 @@
         <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="364" column="17" selection-start-line="364" selection-start-column="17" selection-end-line="364" selection-end-column="17" />
+              <caret line="522" column="7" selection-start-line="522" selection-start-column="7" selection-end-line="522" selection-end-column="7" />
               <folding>
-                <element signature="e#1891#1901#0" expanded="true" />
-                <element signature="e#2018#2052#0" expanded="true" />
-                <element signature="e#2676#2709#0" expanded="true" />
+                <element signature="e#3177#3178#0" expanded="true" />
+                <element signature="e#3223#3224#0" expanded="true" />
+                <element signature="e#8764#8794#0" expanded="true" />
+                <element signature="e#19454#19455#0" expanded="true" />
+                <element signature="e#19488#19489#0" expanded="true" />
+                <element signature="e#19887#19888#0" expanded="true" />
+                <element signature="e#19921#19922#0" expanded="true" />
+                <element signature="e#19975#19976#0" expanded="true" />
+                <element signature="e#20018#20019#0" expanded="true" />
+                <element signature="e#20068#20069#0" expanded="true" />
+                <element signature="e#20107#20108#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProxyResources.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProxyResources.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyResources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.78074867">
-              <caret line="503" column="9" selection-start-line="503" selection-start-column="9" selection-end-line="503" selection-end-column="9" />
+            <state vertical-scroll-proportion="-1.7118644">
+              <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7135#7136#0" expanded="true" />
-                <element signature="e#7251#7252#0" expanded="true" />
-                <element signature="e#7397#7398#0" expanded="true" />
-                <element signature="e#7448#7449#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NightResources.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/res/NightResources.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="117" column="20" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -97,23 +116,50 @@
       <file leaf-file-name="Resources.java" pinned="false" current-in-tab="false">
         <entry file="file://D:/android/sources/android-21/android/content/res/Resources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.1694913">
-              <caret line="2059" column="37" selection-start-line="2059" selection-start-column="19" selection-end-line="2059" selection-end-column="37" />
+            <state vertical-scroll-proportion="-2.0">
+              <caret line="102" column="92" selection-start-line="102" selection-start-column="78" selection-end-line="102" selection-end-column="92" />
               <folding>
+                <element signature="class#Theme#0;class#Resources#0" expanded="false" />
                 <element signature="method#obtainStyledAttributes#1;class#Theme#0;class#Resources#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Drawable.java" pinned="false" current-in-tab="false">
-        <entry file="file://D:/android/sources/android-21/android/graphics/drawable/Drawable.java">
+      <file leaf-file-name="ColorStateListSpareArray.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/sparearray/ColorStateListSpareArray.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.35244754">
+              <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+              <folding>
+                <element signature="e#769#785#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DrawableLongSpareArray.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/sparearray/DrawableLongSpareArray.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="1195" column="24" selection-start-line="1195" selection-start-column="24" selection-end-line="1195" selection-end-column="24" />
+              <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
               <folding>
-                <element signature="e#45182#45183#0" expanded="true" />
-                <element signature="e#45226#45227#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#607#616#0" expanded="true" />
+                <element signature="e#756#780#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ColorStateListLongSpareArray.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/sparearray/ColorStateListLongSpareArray.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="22" selection-end-column="7" />
+              <folding>
+                <element signature="e#605#614#0" expanded="true" />
+                <element signature="e#752#768#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -983,8 +1029,6 @@
         <option value="$PROJECT_DIR$/src/android/content/res/ProxyTypedArray.java" />
         <option value="$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyLongSparseArray.java" />
         <option value="$PROJECT_DIR$/src/com/cantalou/skin/res/DrawableLongSparseArray.java" />
-        <option value="$PROJECT_DIR$/src/com/cantalou/skin/sparearray/ColorStateListLongSpareArray.java" />
-        <option value="$PROJECT_DIR$/src/com/cantalou/skin/sparearray/DrawableLongSpareArray.java" />
         <option value="$PROJECT_DIR$/src/com/cantalou/skin/holder/AbsListViewHolder.java" />
         <option value="$PROJECT_DIR$/src/com/cantalou/skin/holder/AttrHolder.java" />
         <option value="$PROJECT_DIR$/src/com/cantalou/skin/holder/AbstractHolder.java" />
@@ -993,8 +1037,14 @@
         <option value="$PROJECT_DIR$/src/com/cantalou/skin/holder/ListViewHolder.java" />
         <option value="$PROJECT_DIR$/src/com/cantalou/skin/holder/ImageViewHolder.java" />
         <option value="$PROJECT_DIR$/src/com/cantalou/skin/ViewFactory.java" />
-        <option value="$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java" />
+        <option value="$PROJECT_DIR$/src/com/cantalou/skin/res/NightResources.java" />
+        <option value="$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyConstantState.java" />
+        <option value="$PROJECT_DIR$/src/com/cantalou/skin/sparearray/ProxyLongSpareArray.java" />
         <option value="$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyResources.java" />
+        <option value="$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java" />
+        <option value="$PROJECT_DIR$/src/com/cantalou/skin/sparearray/ColorStateListLongSpareArray.java" />
+        <option value="$PROJECT_DIR$/src/com/cantalou/skin/sparearray/DrawableLongSpareArray.java" />
+        <option value="$PROJECT_DIR$/src/com/cantalou/skin/sparearray/ColorStateListSpareArray.java" />
       </list>
     </option>
   </component>
@@ -1012,10 +1062,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1920" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -1040,7 +1088,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1059,8 +1106,75 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cantalou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cantalou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cantalou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sparearray" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
@@ -1072,7 +1186,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1083,7 +1197,7 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.101:5555" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="prox&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/skin/res/ProxyResources.java&#10;layoutIn&#9;PSI&#9;JAVA://android.view.LayoutInflater&#10;View&#9;FILE&#9;file://D:/android/sources/android-21/android/view/View.java&#10;view&#9;FILE&#9;file://D:/android/sources/android-21/android/view/View.java&#10;TypedArray&#9;FILE&#9;file://D:/android/sources/android-21/android/content/res/TypedArray.java&#10;pro&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/skin/resources/ProxyResources.java&#10;skin&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/test/skin/SkinActivity.java&#10;R.ja&#9;FILE&#9;file://D:/workspace/AndroidTest/gen/com/cantalou/test/R.java&#10;skinf&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/test/skin/view/SkinFrameLayout.java&#10;skini&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/test/skin/view/SkinImageView.java&#10;r.ja&#9;FILE&#9;file://D:/workspace/AndroidTest/gen/com/cantalou/test/R.java&#10;proxy&#9;PSI&#9;JAVA://com.cantalou.skin.resources.ProxyResources" />
+    <property name="SearchEverywhereHistoryKey" value="Drawable$ConstantState&#9;PSI&#9;JAVA://android.graphics.drawable.Drawable.ConstantState&#10;prox&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/skin/res/ProxyResources.java&#10;layoutIn&#9;PSI&#9;JAVA://android.view.LayoutInflater&#10;View&#9;FILE&#9;file://D:/android/sources/android-21/android/view/View.java&#10;view&#9;FILE&#9;file://D:/android/sources/android-21/android/view/View.java&#10;TypedArray&#9;FILE&#9;file://D:/android/sources/android-21/android/content/res/TypedArray.java&#10;pro&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/skin/resources/ProxyResources.java&#10;skin&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/test/skin/SkinActivity.java&#10;R.ja&#9;FILE&#9;file://D:/workspace/AndroidTest/gen/com/cantalou/test/R.java&#10;skinf&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/test/skin/view/SkinFrameLayout.java&#10;skini&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/test/skin/view/SkinImageView.java&#10;r.ja&#9;FILE&#9;file://D:/workspace/AndroidTest/gen/com/cantalou/test/R.java&#10;proxy&#9;PSI&#9;JAVA://com.cantalou.skin.resources.ProxyResources" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
@@ -1092,6 +1206,9 @@
       <recent name="D:\workspace\AndroidTest\assets" />
       <recent name="D:\workspace\AndroidTest\res\drawable-xhdpi" />
       <recent name="D:\workspace\AndroidTest\src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cantalou.skin.sparearray" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.AndroidTest">
@@ -1306,23 +1423,28 @@
       <option name="project" value="LOCAL" />
       <updated>1449749443878</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1">
+      <created>1449749453635</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1449749453635</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1040" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16129032" sideWeight="0.49573562" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16129032" sideWeight="0.4936034" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48609567" sideWeight="0.108208954" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1574179" sideWeight="0.1155914" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48609567" sideWeight="0.89179105" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1716418" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1574179" sideWeight="0.8844086" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22358176" sideWeight="0.8576759" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -1330,8 +1452,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1369936" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18655914" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -1343,6 +1464,8 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1716418" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1369,76 +1492,12 @@
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java</url>
-          <line>341</line>
-          <properties />
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyResources.java</url>
-          <line>123</line>
-          <properties />
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
       </breakpoints>
       <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/holder/AbstractHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/ViewFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33027524">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setting.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/android/sources/android-21/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29711142">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files (x86)/gradle-2.8/caches/modules-2/files-2.1/com.cantalou/android-skin-change/2.0.5/3f3395179dc2384cca80f0c5879379a27d460187/android-skin-change-2.0.5-sources.jar!/com/cantalou/skin/SkinManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.09492635">
-          <caret line="291" column="13" selection-start-line="291" selection-start-column="13" selection-end-line="291" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/android/sources/android-21/android/content/ContextWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1546,28 +1605,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_skin.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.82758623">
           <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
-          <folding>
-            <element signature="e#574#607#0" expanded="true" />
-          </folding>
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/selector_skin_icon.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08450704">
           <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1575,7 +1629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.056338027">
           <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1591,7 +1644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45852897">
           <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1650,9 +1702,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.4545455">
           <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1684,7 +1734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1700,7 +1749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1728,7 +1776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1761,22 +1808,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java">
+    <entry file="file://D:/android/sources/android-21/android/util/Log.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="364" column="17" selection-start-line="364" selection-start-column="17" selection-end-line="364" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="230" column="22" selection-start-line="230" selection-start-column="22" selection-end-line="230" selection-end-column="22" />
           <folding>
-            <element signature="e#1891#1901#0" expanded="true" />
-            <element signature="e#2018#2052#0" expanded="true" />
-            <element signature="e#2676#2709#0" expanded="true" />
+            <element signature="e#8699#8700#0" expanded="false" />
+            <element signature="e#8766#8767#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/android/graphics/drawable/DrawableContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3766667">
+          <caret line="581" column="33" selection-start-line="581" selection-start-column="33" selection-end-line="581" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/android/graphics/drawable/BitmapDrawable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33271718">
+          <caret line="166" column="24" selection-start-line="166" selection-start-column="12" selection-end-line="166" selection-end-column="24" />
+          <folding>
+            <element signature="e#4182#4183#0" expanded="true" />
+            <element signature="e#4243#4244#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://D:/android/sources/android-21/android/graphics/drawable/Drawable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1195" column="24" selection-start-line="1195" selection-start-column="24" selection-end-line="1195" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.33285302">
+          <caret line="124" column="22" selection-start-line="124" selection-start-column="22" selection-end-line="124" selection-end-column="22" />
           <folding>
             <element signature="e#45182#45183#0" expanded="true" />
             <element signature="e#45226#45227#0" expanded="true" />
@@ -1784,26 +1849,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/android/sources/android-21/android/content/res/Resources.java">
+    <entry file="file://D:/android/sources/android-21/android/util/SparseArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1694913">
-          <caret line="2059" column="37" selection-start-line="2059" selection-start-column="19" selection-end-line="2059" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.33286715">
+          <caret line="100" column="13" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
           <folding>
-            <element signature="method#obtainStyledAttributes#1;class#Theme#0;class#Resources#0" expanded="false" />
+            <element signature="e#4072#4073#0" expanded="true" />
+            <element signature="e#4109#4110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/SkinManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="522" column="7" selection-start-line="522" selection-start-column="7" selection-end-line="522" selection-end-column="7" />
+          <folding>
+            <element signature="e#3177#3178#0" expanded="true" />
+            <element signature="e#3223#3224#0" expanded="true" />
+            <element signature="e#8764#8794#0" expanded="true" />
+            <element signature="e#19454#19455#0" expanded="true" />
+            <element signature="e#19488#19489#0" expanded="true" />
+            <element signature="e#19887#19888#0" expanded="true" />
+            <element signature="e#19921#19922#0" expanded="true" />
+            <element signature="e#19975#19976#0" expanded="true" />
+            <element signature="e#20018#20019#0" expanded="true" />
+            <element signature="e#20068#20069#0" expanded="true" />
+            <element signature="e#20107#20108#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/res/ProxyResources.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78074867">
-          <caret line="503" column="9" selection-start-line="503" selection-start-column="9" selection-end-line="503" selection-end-column="9" />
+        <state vertical-scroll-proportion="-1.7118644">
+          <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7135#7136#0" expanded="true" />
-            <element signature="e#7251#7252#0" expanded="true" />
-            <element signature="e#7397#7398#0" expanded="true" />
-            <element signature="e#7448#7449#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/res/NightResources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="117" column="20" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/android/content/res/Resources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0">
+          <caret line="102" column="92" selection-start-line="102" selection-start-column="78" selection-end-line="102" selection-end-column="92" />
+          <folding>
+            <element signature="class#Theme#0;class#Resources#0" expanded="false" />
+            <element signature="method#obtainStyledAttributes#1;class#Theme#0;class#Resources#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/sparearray/DrawableLongSpareArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="41" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#607#616#0" expanded="true" />
+            <element signature="e#756#780#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/sparearray/ColorStateListLongSpareArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="22" selection-end-column="7" />
+          <folding>
+            <element signature="e#605#614#0" expanded="true" />
+            <element signature="e#752#768#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cantalou/skin/sparearray/ColorStateListSpareArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35244754">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+          <folding>
+            <element signature="e#769#785#0" expanded="true" />
           </folding>
         </state>
       </provider>
