@@ -17,7 +17,7 @@ public class ColorStateListSpareArray extends SparseArray<ColorStateList>
 
     private SkinManager skinManager = SkinManager.getInstance();
 
-    private LongSparseArray<Integer> resourceIdKeyMap = new LongSparseArray<Integer>();
+    private LongSparseArray<Integer> keyResourceIdMap = new LongSparseArray<Integer>();
 
     /**
      * Resources mColorStateListCache
@@ -29,7 +29,7 @@ public class ColorStateListSpareArray extends SparseArray<ColorStateList>
     @Override
     public ColorStateList get(int key)
     {
-        Integer id = resourceIdKeyMap.get(key);
+        Integer id = keyResourceIdMap.get(key);
         if (id != null)
         {
             Resources res = skinManager.getCurrentSkinResources();
@@ -50,9 +50,13 @@ public class ColorStateListSpareArray extends SparseArray<ColorStateList>
 
     public void registerId(int id)
     {
+        if (keyResourceIdMap.indexOfValue(id) > -1)
+        {
+            return;
+        }
         Resources res = skinManager.getDefaultResources();
         res.getValue(id, value, true);
         long key = (value.assetCookie << 24) | value.data;
-        resourceIdKeyMap.put(key, id);
+        keyResourceIdMap.put(key, id);
     }
 }
