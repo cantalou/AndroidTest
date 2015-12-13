@@ -140,13 +140,14 @@ public class SkinProxyResources extends ProxyResources {
 			return 0;
 		}
 
-		skinId = this.getIdentifier(name, null, packageName);
+		skinId = skinResources.getIdentifier(name, null, packageName);
 		if (skinId == 0) {
 			notFoundedSkinIds.put(id, id);
 			Log.v("resource id :{} getIdentifier(name, null, packageName) return null", toHex(id));
 		} else {
 			skinIdMap.put(id, skinId);
 		}
+		Log.v("convert name:{},id:{} to skin id:{}", name, toHex(id), toHex(skinId));
 		return skinId;
 	}
 
