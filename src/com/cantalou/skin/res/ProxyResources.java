@@ -67,20 +67,15 @@ public class ProxyResources extends Resources {
 	 */
 	protected String[] resourceNameCache = new String[RESOURCE_NAME_CACHE_SIZE + 1];
 
-	protected LongSparseArray<ConstantState> preloadedDrawables;
+	protected static LongSparseArray<ConstantState> preloadedDrawables;
 
-	protected LongSparseArray<ConstantState> preloadedColorDrawables;
+	protected static LongSparseArray<ConstantState> preloadedColorDrawables;
 
-	protected LongSparseArray<ColorStateList> preloadedColorStateLists16;
+	protected static LongSparseArray<ColorStateList> preloadedColorStateLists16;
 
-	protected SparseArray<ColorStateList> preloadedColorStateLists;
+	protected static SparseArray<ColorStateList> preloadedColorStateLists;
 
 	protected String packageName;
-
-	/**
-	 * 皮肤资源
-	 */
-	protected String skinPath;
 
 	protected SkinManager skinManager;
 
@@ -88,9 +83,8 @@ public class ProxyResources extends Resources {
 
 	protected final TypedValue typedValueCache = new TypedValue();
 
-	public ProxyResources(Resources res, String skinPath) {
+	public ProxyResources(Resources res) {
 		super(res.getAssets(), res.getDisplayMetrics(), res.getConfiguration());
-		this.skinPath = skinPath;
 		skinManager = SkinManager.getInstance();
 	}
 
@@ -135,33 +129,43 @@ public class ProxyResources extends Resources {
 	 */
 	public void replacePreloadCache() {
 
-		SkinManager skinManager = SkinManager.getInstance();
-
-		LongSparseArray<ConstantState>[] sPreloadedDrawables = get(Resources.class, "sPreloadedDrawables");
-		if (preloadedColorDrawables == null) {
-			preloadedColorDrawables = new DrawableLongSpareArray(this, sPreloadedDrawables[0], skinManager.getDrawableIdKeyMap());
-		}
-		sPreloadedDrawables[0] = preloadedColorDrawables;
-
 		if (preloadedDrawables == null) {
-			LongSparseArray<ConstantState> sPreloadedColorDrawables = get(Resources.class, "sPreloadedColorDrawables");
-			preloadedDrawables = new DrawableLongSpareArray(this, sPreloadedColorDrawables, skinManager.getColorDrawableIdKeyMap());
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+				LongSparseArray<ConstantState>[] sPreloadedDrawablesArray = get(Resources.class, "sPreloadedDrawables");
+				preloadedDrawables = sPreloadedDrawablesArray[0];
+			} else {
+				preloadedDrawables = get(Resources.class, "sPreloadedDrawables");
+			}
+		} else {
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+				LongSparseArray<ConstantState>[] sPreloadedDrawablesArray = get(Resources.class, "sPreloadedDrawables");
+				sPreloadedDrawablesArray[0] = preloadedDrawables;
+			} else {
+				set(Resources.class, "sPreloadedDrawables", preloadedDrawables);
+			}
 		}
-		set(Resources.class, "sPreloadedColorDrawables", preloadedDrawables);
+
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2) {
+			if (preloadedColorDrawables == null) {
+				preloadedColorDrawables = get(Resources.class, "sPreloadedColorDrawables");
+				;
+			} else {
+				set(Resources.class, "sPreloadedColorDrawables", preloadedColorDrawables);
+			}
+		}
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 			if (preloadedColorStateLists16 == null) {
-				LongSparseArray<ColorStateList> sPreloadedColorStateLists = get(Resources.class, "sPreloadedColorStateLists");
-				preloadedColorStateLists16 = new ColorStateListLongSpareArray(this, sPreloadedColorStateLists,
-						skinManager.getColorStateListIdKeyMap());
+				preloadedColorStateLists16 = get(Resources.class, "sPreloadedColorStateLists");
+			} else {
+				set(Resources.class, "sPreloadedColorStateLists", preloadedColorStateLists16);
 			}
-			set(Resources.class, "sPreloadedColorStateLists", preloadedColorStateLists16);
 		} else {
 			if (preloadedColorStateLists == null) {
-				SparseArray<ColorStateList> sPreloadedColorStateLists = get(Resources.class, "sPreloadedColorStateLists");
-				preloadedColorStateLists = new ColorStateListSpareArray(this, sPreloadedColorStateLists, skinManager.getColorStateListIdKeyMap());
+				preloadedColorStateLists = get(Resources.class, "mPreloadedColorStateLists");
+			} else {
+				set(Resources.class, "mPreloadedColorStateLists", preloadedColorStateLists);
 			}
-			set(Resources.class, "sPreloadedColorStateLists", preloadedColorStateLists);
 		}
 	}
 
@@ -208,11 +212,14 @@ public class ProxyResources extends Resources {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
-	public Drawable loadDrawable(Resources res, int id) throws NotFoundException {
-
+	public Drawable loadDrawable(int id) throws NotFoundException {
 		TypedValue value = typedValueCache;
-		res.getValue(id, value, true);
+		this.getValue(id, value, true);
+		return loadDrawable(this, value, id);
+	}
+
+	@SuppressWarnings("deprecation")
+	public Drawable loadDrawable(Resources res, TypedValue value, int id) throws NotFoundException {
 
 		boolean isColorDrawable = value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT;
 		Drawable dr = null;
@@ -226,7 +233,7 @@ public class ProxyResources extends Resources {
 			String file = value.string.toString();
 			if (file.endsWith(".xml")) {
 				try {
-					XmlResourceParser rp = invoke(res, "loadXmlResourceParser", loadXmlResourceParserParam, file, id, value.assetCookie, "drawable");
+					XmlResourceParser rp = invoke(this, "loadXmlResourceParser", loadXmlResourceParserParam, file, id, value.assetCookie, "drawable");
 					dr = Drawable.createFromXml(res, rp);
 					rp.close();
 				} catch (Exception e) {
@@ -249,30 +256,29 @@ public class ProxyResources extends Resources {
 					dr = Drawable.createFromResourceStream(res, value, is, file, opts);
 					is.close();
 				} catch (Exception e) {
-					NotFoundException rnf = new NotFoundException("File " + file + " from drawable resource ID #0x" + Integer.toHexString(id));
-					rnf.initCause(e);
-					throw rnf;
+					Log.w("File :{} from drawable resource ID #0x{} not found in :{}", file, Integer.toHexString(id), res);
 				}
 			}
 		}
 
 		if (dr != null) {
 			dr.setChangingConfigurations(value.changingConfigurations);
+			if (logEnable && (id & APP_ID_MASK) == APP_ID_MASK) {
+				Log.v("load value:{} from :{} result:{} ", toString(value), res, dr);
+			}
 		}
-
-		if (logEnable && (id & APP_ID_MASK) == APP_ID_MASK) {
-			Log.v("load value:{} from :{} result:{} ", toString(value), res, dr);
-		}
-
 		return dr;
 	}
 
-	public ColorStateList loadColorStateList(Resources res, int id) throws NotFoundException {
-
+	public ColorStateList loadColorStateList(int id) throws NotFoundException {
 		TypedValue value = typedValueCache;
-		res.getValue(id, value, true);
+		this.getValue(id, value, true);
+		return loadColorStateList(this, value, id);
+	}
 
-		ColorStateList csl;
+	public ColorStateList loadColorStateList(Resources res, TypedValue value, int id) throws NotFoundException {
+
+		ColorStateList csl = null;
 
 		if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT) {
 			csl = ColorStateList.valueOf(value.data);
@@ -287,13 +293,12 @@ public class ProxyResources extends Resources {
 
 		if (file.endsWith(".xml")) {
 			try {
-				XmlResourceParser rp = invoke(res, "loadXmlResourceParser", loadXmlResourceParserParam, file, id, value.assetCookie, "colorstatelist");
-				csl = ColorStateList.createFromXml(this, rp);
+				XmlResourceParser rp = invoke(this, "loadXmlResourceParser", loadXmlResourceParserParam, file, id, value.assetCookie,
+						"colorstatelist");
+				csl = ColorStateList.createFromXml(res, rp);
 				rp.close();
 			} catch (Exception e) {
-				NotFoundException rnf = new NotFoundException("File " + file + " from color state list resource ID #0x" + Integer.toHexString(id));
-				rnf.initCause(e);
-				throw rnf;
+				Log.w("File :{} from color state list resource ID #0x{} not found in :{}", file, Integer.toHexString(id), res);
 			}
 		} else {
 			throw new NotFoundException("File " + file + " from drawable resource ID #0x" + Integer.toHexString(id) + ": .xml extension required");
@@ -305,10 +310,5 @@ public class ProxyResources extends Resources {
 	public void clearCache() {
 		resourceNameIdCache = new int[RESOURCE_NAME_CACHE_SIZE];
 		resourceNameCache = new String[RESOURCE_NAME_CACHE_SIZE];
-	}
-
-	@Override
-	public String toString() {
-		return getClass().getSimpleName() + "{" + skinPath + "}";
 	}
 }

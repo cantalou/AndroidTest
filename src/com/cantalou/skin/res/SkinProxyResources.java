@@ -54,6 +54,11 @@ public class SkinProxyResources extends ProxyResources {
 	protected String packageName;
 
 	/**
+	 * 皮肤资源
+	 */
+	protected String skinPath;
+
+	/**
 	 * 皮肤资源id映射
 	 */
 	protected SparseIntArray skinIdMap = new SparseIntArray();
@@ -74,9 +79,10 @@ public class SkinProxyResources extends ProxyResources {
 	 * @param skinPath
 	 */
 	public SkinProxyResources(String packageName, Resources skinRes, Resources defRes, String skinPath) {
-		super(defRes, skinPath);
+		super(defRes);
 		this.skinResources = skinRes;
 		this.packageName = packageName;
+		this.skinPath = skinPath;
 	}
 
 	/**
@@ -150,11 +156,14 @@ public class SkinProxyResources extends ProxyResources {
 
 	protected Class<?>[] loadParamType = new Class<?>[] { TypedValue.class, int.class };
 
-	public Drawable loadSkinDrawable(int id) throws NotFoundException {
+	public Drawable loadDrawable(int id) throws NotFoundException {
 
 		if (id == 0) {
 			return null;
 		}
+
+		TypedValue value = typedValueCache;
+		getValue(id, value, true);
 
 		Resources res;
 		int skinId;
@@ -163,22 +172,33 @@ public class SkinProxyResources extends ProxyResources {
 			skinId = id;
 		} else {
 			res = skinResources;
+			if (isColor(value)) {
+				res.getValue(skinId, value, true);
+			}
 		}
 
-		Drawable result = loadDrawable(res, skinId);
+		Drawable result = null;
+		try {
+			result = loadDrawable(res, value, skinId);
+		} catch (Exception e) {
+			Log.e(e);
+		}
 
 		// 如果皮肤中存在资源, 但加载失败则直接从默认资源中加载
 		if (result == null && skinId != 0) {
-			result = loadDrawable(res, id);
+			result = loadDrawable(this, value, id);
 		}
 		return result;
 	}
 
-	public ColorStateList loadSkinColorStateList(int id) throws NotFoundException {
+	public ColorStateList loadColorStateList(int id) throws NotFoundException {
 
 		if (id == 0) {
 			return null;
 		}
+
+		TypedValue value = typedValueCache;
+		getValue(id, value, true);
 
 		Resources res;
 		int skinId;
@@ -187,13 +207,21 @@ public class SkinProxyResources extends ProxyResources {
 			skinId = id;
 		} else {
 			res = skinResources;
+			if (isColor(value)) {
+				res.getValue(skinId, value, true);
+			}
 		}
 
-		ColorStateList result = loadColorStateList(res, skinId);
+		ColorStateList result = null;
+		try {
+			result = loadColorStateList(res, value, skinId);
+		} catch (Exception e) {
+			Log.e(e);
+		}
 
 		// 如果皮肤中存在资源, 但加载失败则直接从默认资源中加载
 		if (result == null && skinId != 0) {
-			result = loadColorStateList(res, id);
+			result = loadColorStateList(this, value, id);
 		}
 		return result;
 	}
@@ -202,5 +230,36 @@ public class SkinProxyResources extends ProxyResources {
 		super.clearCache();
 		skinIdMap.clear();
 		notFoundedSkinIds.clear();
+	}
+
+	/**
+	 * 将 sPreloadedDrawables, sPreloadedColorDrawables, sPreloadedColorStateLists 替换成自定义的对象
+	 */
+	public void replacePreloadCache() {
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+			LongSparseArray<ConstantState>[] sPreloadedDrawablesArray = get(Resources.class, "sPreloadedDrawables");
+			sPreloadedDrawablesArray[0] = new DrawableLongSpareArray(this, preloadedDrawables, skinManager.getDrawableIdKeyMap());
+		} else {
+			set(Resources.class, "sPreloadedDrawables", new DrawableLongSpareArray(this, preloadedDrawables, skinManager.getDrawableIdKeyMap()));
+		}
+
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2) {
+			set(Resources.class, "sPreloadedColorDrawables",
+					new DrawableLongSpareArray(this, preloadedColorDrawables, skinManager.getColorDrawableIdKeyMap()));
+		}
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			set(Resources.class, "sPreloadedColorStateLists",
+					new ColorStateListLongSpareArray(this, preloadedColorStateLists16, skinManager.getColorStateListIdKeyMap()));
+		} else {
+			set(Resources.class, "mPreloadedColorStateLists",
+					new ColorStateListSpareArray(this, preloadedColorStateLists, skinManager.getColorStateListIdKeyMap()));
+		}
+	}
+
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + "{" + skinPath + "}";
 	}
 }

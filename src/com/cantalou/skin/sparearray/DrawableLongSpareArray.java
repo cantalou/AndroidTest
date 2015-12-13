@@ -9,6 +9,7 @@ import android.util.LongSparseArray;
 import android.util.TypedValue;
 
 import com.cantalou.skin.SkinManager;
+import com.cantalou.skin.res.ProxyResources;
 import com.cantalou.skin.res.SkinProxyResources;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -21,9 +22,9 @@ public class DrawableLongSpareArray extends LongSparseArray<Drawable.ConstantSta
 	 */
 	private LongSparseArray<Drawable.ConstantState> originalCache;
 
-	private Resources resources;
+	private ProxyResources resources;
 
-	public DrawableLongSpareArray(Resources resources, LongSparseArray<Drawable.ConstantState> originalCache,
+	public DrawableLongSpareArray(ProxyResources resources, LongSparseArray<Drawable.ConstantState> originalCache,
 			LongSparseArray<Integer> resourceIdKeyMap) {
 		this.resources = resources;
 		this.originalCache = originalCache;
@@ -34,7 +35,7 @@ public class DrawableLongSpareArray extends LongSparseArray<Drawable.ConstantSta
 	public Drawable.ConstantState get(long key) {
 		Integer id;
 		if (resources != null && (id = resourceIdKeyMap.get(key)) != null) {
-			Drawable dr = resources.getDrawable(id);
+			Drawable dr = resources.loadDrawable(id);
 			if (dr != null) {
 				return dr.getConstantState();
 			} else {

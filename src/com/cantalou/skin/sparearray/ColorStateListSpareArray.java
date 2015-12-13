@@ -8,6 +8,7 @@ import android.util.LongSparseArray;
 import android.util.SparseArray;
 import android.util.TypedValue;
 
+import com.cantalou.skin.res.ProxyResources;
 import com.cantalou.skin.res.SkinProxyResources;
 
 public class ColorStateListSpareArray extends SparseArray<ColorStateList> {
@@ -19,9 +20,9 @@ public class ColorStateListSpareArray extends SparseArray<ColorStateList> {
 	 */
 	private SparseArray<ColorStateList> originalCache;
 
-	private Resources resources;
+	private ProxyResources resources;
 
-	public ColorStateListSpareArray(Resources resources, SparseArray<ColorStateList> originalCache,
+	public ColorStateListSpareArray(ProxyResources resources, SparseArray<ColorStateList> originalCache,
 			LongSparseArray<Integer> resourceIdKeyMap) {
 		this.resources = resources;
 		this.originalCache = originalCache;
@@ -33,7 +34,7 @@ public class ColorStateListSpareArray extends SparseArray<ColorStateList> {
 		ColorStateList csl;
 		Integer id = resourceIdKeyMap.get(key);
 		if (id != null) {
-			csl = resources.getColorStateList(id);
+			csl = resources.loadColorStateList(id);
 		} else {
 			csl = originalCache.get(key);
 		}

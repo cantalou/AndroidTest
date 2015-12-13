@@ -95,7 +95,7 @@ public class NightResources extends SkinProxyResources {
 	}
 
 	Drawable loadDrawable(TypedValue value, int id) throws NotFoundException {
-		Drawable result = super.loadSkinDrawable(toNightId(id));
+		Drawable result = super.loadDrawable(toNightId(id));
 		setColorFilter(result);
 		return result;
 	}

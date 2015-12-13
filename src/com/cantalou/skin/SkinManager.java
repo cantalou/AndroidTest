@@ -83,7 +83,7 @@ public class SkinManager {
 	/**
 	 * 默认资源
 	 */
-	private Resources defaultResources;
+	private ProxyResources defaultResources;
 
 	/**
 	 * 资源名称
@@ -314,8 +314,6 @@ public class SkinManager {
 			throw new IllegalStateException("defaultResources is not initialized. Call the method onCreate of SkinManage in Activity onCreate()");
 		}
 
-		showSkinChangeAnimation(activity);
-
 		final Context cxt = activity.getApplicationContext();
 		new AsyncTask<Void, Void, Boolean>() {
 			@Override
@@ -331,7 +329,6 @@ public class SkinManager {
 					if (res == null) {
 						return false;
 					}
-					currentSkinResources = res;
 					((ProxyResources) res).replacePreloadCache();
 					List<Activity> temp = (List<Activity>) activitys.clone();
 					for (int i = temp.size() - 1; i >= 0; i--) {
@@ -339,6 +336,9 @@ public class SkinManager {
 						change(temp.get(i), res);
 					}
 					Log.d("finish change resource");
+					currentSkinResources = res;
+					currentSkinPath = skinPath;
+					PrefUtil.setString(cxt, PREF_KEY_CURRENT_SKIN, currentSkinPath);
 					return true;
 				} catch (Exception e) {
 					Log.e(e);
@@ -349,8 +349,7 @@ public class SkinManager {
 			@Override
 			protected void onPostExecute(Boolean result) {
 				if (result) {
-					currentSkinPath = skinPath;
-					PrefUtil.setString(cxt, PREF_KEY_CURRENT_SKIN, currentSkinPath);
+
 				}
 				Log.i("changeResources doInBackground return :{}, currentSkin:{}", result, currentSkinPath);
 				ArrayList<OnResourcesChangeFinishListener> list = (ArrayList<OnResourcesChangeFinishListener>) onResourcesChangeFinishListeners
@@ -361,6 +360,8 @@ public class SkinManager {
 				changingResource = false;
 			}
 		}.execute();
+		
+		showSkinChangeAnimation(activity);
 	}
 
 	/**
@@ -448,7 +449,8 @@ public class SkinManager {
 	public void onCreate(Activity activity) {
 
 		if (defaultResources == null) {
-			defaultResources = new ProxyResources(activity.getResources(), DEFAULT_SKIN_PATH);
+			defaultResources = new ProxyResources(activity.getResources());
+			defaultResources.replacePreloadCache();
 			registerViewFactory(activity);
 			Log.v("init defaultResources and registerViewFactory ");
 		}
