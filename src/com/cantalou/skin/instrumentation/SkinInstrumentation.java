@@ -351,29 +351,26 @@ public class SkinInstrumentation extends Instrumentation {
 		return targetInstrucmentation.newActivity(cl, className, intent);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void startAllocCounting() {
 		targetInstrucmentation.startAllocCounting();
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void stopAllocCounting() {
 		targetInstrucmentation.stopAllocCounting();
 	}
 
 	public void execStartActivities(Context who, IBinder contextThread, IBinder token, Activity target, Intent[] intents) {
-		ReflectUtil.invoke(targetInstrucmentation, "execStartActivities", new Class<?>[]{
-			Context.class, IBinder.class, IBinder.class, Activity.class, intents.getClass()
-		}, who, contextThread, token, target, intents);
+		ReflectUtil.invoke(targetInstrucmentation, "execStartActivities", new Class<?>[] { Context.class, IBinder.class, IBinder.class,
+				Activity.class, intents.getClass() }, who, contextThread, token, target, intents);
 	}
 
 	@SuppressLint("NewApi")
 	public ActivityResult execStartActivity(Context who, IBinder contextThread, IBinder token, Fragment target, Intent intent,
 			int requestCode) {
-		return (ActivityResult) ReflectUtil.invoke(targetInstrucmentation, "execStartActivity", new Class<?>[]{
-								   Context.class, IBinder.class, IBinder.class, Activity.class, Intent.class, int.class
-							   }, who, contextThread, token, target, intent, requestCode);
+		return (ActivityResult) ReflectUtil.invoke(targetInstrucmentation, "execStartActivity", new Class<?>[] { Context.class,
+				IBinder.class, IBinder.class, Activity.class, Intent.class, int.class }, who, contextThread, token, target, intent,
+				requestCode);
 	}
 }

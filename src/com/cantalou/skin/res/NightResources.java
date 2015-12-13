@@ -1,4 +1,4 @@
-package com.cantalou.skin.resources;
+package com.cantalou.skin.res;
 
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -16,10 +16,8 @@ import android.util.SparseIntArray;
 import android.util.TypedValue;
 
 import com.cantalou.android.util.ReflectUtil;
-import com.cantalou.skin.resources.ProxyResources;
 
-public class NightResources extends ProxyResources
-{
+public class NightResources extends SkinProxyResources {
 
 	/**
 	 * 夜间模式资源名称前缀
@@ -97,17 +95,17 @@ public class NightResources extends ProxyResources
 	}
 
 	Drawable loadDrawable(TypedValue value, int id) throws NotFoundException {
-		Drawable result = super.loadDrawable(value, toNightId(id));
+		Drawable result = super.loadSkinDrawable(toNightId(id));
 		setColorFilter(result);
 		return result;
 	}
 
 	/**
 	 * 给图片添加灰层
-	 * 
+	 *
+	 * @param drawable
 	 * @author LinZhiWei
 	 * @date 2015年11月3日 下午4:08:56
-	 * @param drawable
 	 */
 	private void setColorFilter(Drawable drawable) {
 		if (drawable instanceof BitmapDrawable) {

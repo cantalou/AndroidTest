@@ -4,10 +4,10 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.cantalou.skin.SkinManager;
 import com.cantalou.skin.holder.AbstractHolder;
 
-public class ViewHolder extends AbstractHolder
-{
+public class ViewHolder extends AbstractHolder {
 
 	protected int background;
 
@@ -20,9 +20,12 @@ public class ViewHolder extends AbstractHolder
 	}
 
 	@Override
-	public boolean parse(AttributeSet attrs) {
+	public boolean parseAttr(AttributeSet attrs) {
 		background = getResourceId(attrs, "background");
-		return super.parse(attrs) || background != 0;
+		if (background != 0) {
+			SkinManager.getInstance().registerDrawable(background);
+		}
+		return super.parseAttr(attrs) || background != 0;
 	}
 
 }

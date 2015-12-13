@@ -25,7 +25,7 @@ public class SkinActivity extends Activity implements OnClickListener,
 
     SharedPreferences sp;
 
-    private String currentSkin;
+    private String currentSkin = "";
 
     private CheckBox red, green, night, def;
 
@@ -81,7 +81,7 @@ public class SkinActivity extends Activity implements OnClickListener,
         night.setOnClickListener(this);
 
         def = (CheckBox) findViewById(R.id.def);
-        def.setChecked(SkinManager.DEFAULT_SKIN.equals(currentSkin));
+        def.setChecked(SkinManager.DEFAULT_SKIN_PATH.equals(currentSkin));
         def.setOnClickListener(this);
 
         findViewById(R.id.next).setOnClickListener(this);
@@ -128,9 +128,9 @@ public class SkinActivity extends Activity implements OnClickListener,
 
             case R.id.def:
             {
-                if (!currentSkin.endsWith(SkinManager.DEFAULT_SKIN))
+                if (!currentSkin.endsWith(SkinManager.DEFAULT_SKIN_PATH))
                 {
-                    skinManager.changeResources(this, SkinManager.DEFAULT_SKIN);
+                    skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_PATH);
                 }
                 break;
             }

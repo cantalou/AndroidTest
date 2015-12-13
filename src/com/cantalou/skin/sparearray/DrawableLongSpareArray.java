@@ -1,45 +1,47 @@
 package com.cantalou.skin.sparearray;
 
-import java.lang.reflect.TypeVariable;
-
-import com.cantalou.skin.resources.ProxyResources;
-
+import android.annotation.TargetApi;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Build;
 import android.util.LongSparseArray;
 import android.util.TypedValue;
 
-/**
- *
- * @author LinZhiWei
- * @date 2015年12月9日 下午10:14:34
- */
+import com.cantalou.skin.SkinManager;
+import com.cantalou.skin.res.SkinProxyResources;
+
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class DrawableLongSpareArray extends LongSparseArray<Drawable.ConstantState> {
 
-	private LongSparseArray<Integer> resourceIdKeyMap = new LongSparseArray<Integer>();
-
-	private ProxyResources resources;
-
-	private TypedValue cacheValue = new TypedValue();
-
-	public DrawableLongSpareArray(ProxyResources resources) {
-		super();
-		this.resources = resources;
-	}
+	private LongSparseArray<Integer> resourceIdKeyMap;
 
 	/**
-	 * 注册资源id, 添加和缓存key的映射
-	 * 
-	 * @param id
+	 * Resources mColorStateListCache
 	 */
-	public void registerResourceId(int id) {
-		if ((ProxyResources.APP_ID_MASK & id) == ProxyResources.APP_ID_MASK) {
-			synchronized (cacheValue) {
-				TypedValue value = cacheValue;
-				resources.getValue(id, value, true);
-				resources.proxyLoadDrawable(value, id);
+	private LongSparseArray<Drawable.ConstantState> originalCache;
+
+	private Resources resources;
+
+	public DrawableLongSpareArray(Resources resources, LongSparseArray<Drawable.ConstantState> originalCache,
+			LongSparseArray<Integer> resourceIdKeyMap) {
+		this.resources = resources;
+		this.originalCache = originalCache;
+		this.resourceIdKeyMap = resourceIdKeyMap;
+	}
+
+	@Override
+	public Drawable.ConstantState get(long key) {
+		Integer id;
+		if (resources != null && (id = resourceIdKeyMap.get(key)) != null) {
+			Drawable dr = resources.getDrawable(id);
+			if (dr != null) {
+				return dr.getConstantState();
+			} else {
+				return null;
 			}
+		} else {
+			return originalCache.get(key);
 		}
 	}
 }

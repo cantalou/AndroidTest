@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.LongSparseArray;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.LayoutInflater.Factory;
 import android.view.View;
@@ -21,11 +25,12 @@ import android.widget.ImageView;
 import com.cantalou.android.util.Log;
 import com.cantalou.android.util.PrefUtil;
 import com.cantalou.android.util.StringUtils;
-import com.cantalou.skin.holder.AttrHolder;
+import com.cantalou.skin.holder.AbstractHolder;
 import com.cantalou.skin.instrumentation.SkinInstrumentation;
-import com.cantalou.skin.resources.NightResources;
-import com.cantalou.skin.resources.ProxyResources;
-import com.cantalou.skin.resources.SkinResources;
+import com.cantalou.skin.res.NightResources;
+import com.cantalou.skin.res.ProxyResources;
+import com.cantalou.skin.res.SkinProxyResources;
+import com.cantalou.skin.res.SkinResources;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -53,7 +58,7 @@ public class SkinManager {
 	/**
 	 * 默认皮肤
 	 */
-	public static final String DEFAULT_SKIN = "defaultSkin";
+	public static final String DEFAULT_SKIN_PATH = "defaultSkin";
 
 	/**
 	 * 夜间模式皮肤资源名称, 夜间模式属于内置资源包
@@ -66,7 +71,7 @@ public class SkinManager {
 	ArrayList<Activity> activitys = new ArrayList<Activity>();
 
 	/**
-	 * 以载入的资源
+	 * 已载入的资源
 	 */
 	private HashMap<String, WeakReference<Resources>> cacheResources = new HashMap<String, WeakReference<Resources>>();
 
@@ -81,9 +86,14 @@ public class SkinManager {
 	private Resources defaultResources;
 
 	/**
+	 * 资源名称
+	 */
+	String currentSkinPath = DEFAULT_SKIN_PATH;
+
+	/**
 	 * 资源
 	 */
-	String currentSkin = DEFAULT_SKIN;
+	private Resources currentSkinResources;
 
 	/**
 	 * 资源切换时提交View刷新任务到UI线程
@@ -99,6 +109,26 @@ public class SkinManager {
 	 * 资源切换结束回调
 	 */
 	private ArrayList<OnResourcesChangeFinishListener> onResourcesChangeFinishListeners = new ArrayList<OnResourcesChangeFinishListener>();
+
+	/**
+	 * 缓存对象
+	 */
+	private TypedValue cacheValue = new TypedValue();
+
+	/**
+	 * 资源id与key的映射
+	 */
+	private LongSparseArray<Integer> drawableIdKeyMap = new LongSparseArray<Integer>();
+
+	/**
+	 * 颜色资源id与key的映射
+	 */
+	private LongSparseArray<Integer> colorDrawableIdKeyMap = new LongSparseArray<Integer>();
+
+	/**
+	 * 文字颜色资源id与key的映射
+	 */
+	private LongSparseArray<Integer> colorStateListIdKeyMap = new LongSparseArray<Integer>();
 
 	private static class InstanceHolder {
 		static final com.cantalou.skin.SkinManager INSTANCE = new com.cantalou.skin.SkinManager();
@@ -151,13 +181,12 @@ public class SkinManager {
 	 * 创建皮肤资源
 	 *
 	 * @param skinPath
-	 *            皮肤资源文件名
-	 * @return 皮肤资源对象
+	 *            资源文件路径
+	 * @return 资源对象
 	 */
 	private Resources createSkinResource(String skinPath) {
 
-		if (DEFAULT_SKIN_NIGHT.equals(skinPath) || DEFAULT_SKIN.equals(skinPath)) {
-			Log.d("skinPath is:{} , return defaultResources");
+		if (DEFAULT_SKIN_NIGHT.equals(skinPath)) {
 			return defaultResources;
 		}
 
@@ -189,32 +218,41 @@ public class SkinManager {
 	 *
 	 * @param cxt
 	 * @param skinPath
-	 *            资源名称
-	 * @return 代理Resources, 如果skinPath文件不存在,或者解析失败将返回null
+	 *            资源路径
+	 * @return 代理Resources, 如果skinPath文件不存在或者解析失败返回null
 	 */
 	private Resources createProxyResource(Context cxt, String skinPath) {
-		Resources res = null;
+
+		if (DEFAULT_SKIN_PATH.equals(skinPath)) {
+			Log.d("skinPath is:{} , return defaultResources");
+			return defaultResources;
+		}
+
+		Resources skinResources = null;
 		WeakReference<Resources> resRef = cacheResources.get(skinPath);
 		if (resRef != null) {
-			res = resRef.get();
-			if (res != null) {
-				return res;
+			skinResources = resRef.get();
+			if (skinResources != null) {
+				return skinResources;
 			}
 		}
-		res = createSkinResource(skinPath);
-		if (res == null) {
+
+		skinResources = createSkinResource(skinPath);
+		if (skinResources == null) {
 			Log.w("Create skin resources fail");
-			return res;
+			return skinResources;
 		}
+		
 		if (DEFAULT_SKIN_NIGHT.equals(skinPath)) {
-			res = new NightResources(cxt.getPackageName(), res, defaultResources, skinPath);
+			skinResources = new NightResources(cxt.getPackageName(), skinResources, defaultResources, skinPath);
 		} else {
-			res = new ProxyResources(cxt.getPackageName(), res, defaultResources, skinPath);
+			skinResources = new SkinProxyResources(cxt.getPackageName(), skinResources, defaultResources, skinPath);
 		}
+		
 		synchronized (this) {
-			cacheResources.put(skinPath, new WeakReference<Resources>(res));
+			cacheResources.put(skinPath, new WeakReference<Resources>(skinResources));
 		}
-		return res;
+		return skinResources;
 	}
 
 	/**
@@ -230,7 +268,8 @@ public class SkinManager {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 			Log.v("after JELLY_BEAN change Activity:{} to Resources :{} ,result:{} ", activity, toRes, set(activity, "mResources", toRes));
 		} else {
-			Log.v("vefore JELLY_BEAN change context:{} to Resources :{} ,result:{} ", activity.getBaseContext(), toRes, set(activity.getBaseContext(), "mResources", toRes));
+			Log.v("vefore JELLY_BEAN change context:{} to Resources :{} ,result:{} ", activity.getBaseContext(), toRes,
+					set(activity.getBaseContext(), "mResources", toRes));
 		}
 		Log.v("reset theme to null ", set(activity, "mTheme", null));
 	}
@@ -266,22 +305,24 @@ public class SkinManager {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public boolean changeResources(Activity activity, final String skinPath) {
+	public void changeResources(Activity activity, final String skinPath) {
 		if (StringUtils.isBlank(skinPath)) {
 			throw new IllegalArgumentException("skinPath could not be empty");
 		}
 
 		if (defaultResources == null) {
-			defaultResources = activity.getResources();
-			registerViewFactory(activity);
-			Log.v("init defaultResources and registerViewFactory ");
+			throw new IllegalStateException("defaultResources is not initialized. Call the method onCreate of SkinManage in Activity onCreate()");
 		}
 
-		// 在改变activity资源前截图用于渐变动画显示
-		//skinChangeAnimation(activity);
+		showSkinChangeAnimation(activity);
 
 		final Context cxt = activity.getApplicationContext();
 		new AsyncTask<Void, Void, Boolean>() {
+			@Override
+			protected void onPreExecute() {
+				changingResource = true;
+			}
+
 			@Override
 			protected Boolean doInBackground(Void... params) {
 				try {
@@ -290,6 +331,8 @@ public class SkinManager {
 					if (res == null) {
 						return false;
 					}
+					currentSkinResources = res;
+					((ProxyResources) res).replacePreloadCache();
 					List<Activity> temp = (List<Activity>) activitys.clone();
 					for (int i = temp.size() - 1; i >= 0; i--) {
 						Log.d("change :{} resources to :{}", temp.get(i), res);
@@ -306,18 +349,18 @@ public class SkinManager {
 			@Override
 			protected void onPostExecute(Boolean result) {
 				if (result) {
-					currentSkin = skinPath;
-					PrefUtil.setString(cxt, PREF_KEY_CURRENT_SKIN, currentSkin);
+					currentSkinPath = skinPath;
+					PrefUtil.setString(cxt, PREF_KEY_CURRENT_SKIN, currentSkinPath);
 				}
-				Log.i("changeResources doInBackground return :{}, currentSkin:{}", result, currentSkin);
+				Log.i("changeResources doInBackground return :{}, currentSkin:{}", result, currentSkinPath);
 				ArrayList<OnResourcesChangeFinishListener> list = (ArrayList<OnResourcesChangeFinishListener>) onResourcesChangeFinishListeners
 						.clone();
 				for (OnResourcesChangeFinishListener listener : list) {
 					listener.onResourcesChangeFinish(result);
 				}
+				changingResource = false;
 			}
 		}.execute();
-		return true;
 	}
 
 	/**
@@ -373,6 +416,7 @@ public class SkinManager {
 	 * @param v
 	 */
 	private void onResourcesChange(final View v) {
+
 		if (v == null) {
 			return;
 		}
@@ -382,9 +426,9 @@ public class SkinManager {
 			v.invalidate();
 		}
 
-		Object tag = v.getTag(AttrHolder.ATTR_HOLDER_KEY);
-		if (tag != null && tag instanceof AttrHolder) {
-			((AttrHolder) tag).reload(v, v.getContext().getResources());
+		Object tag = v.getTag(AbstractHolder.ATTR_HOLDER_KEY);
+		if (tag != null && tag instanceof AbstractHolder) {
+			((AbstractHolder) tag).reload(v, v.getContext().getResources());
 		}
 
 		if (v instanceof ViewGroup) {
@@ -397,101 +441,134 @@ public class SkinManager {
 	}
 
 	/**
-	 * 更换皮肤
-	 *
+	 * 初始化defaultResources, 判断使用什么资源,
+	 * 
 	 * @param activity
-	 *            要更新皮肤的界面
 	 */
 	public void onCreate(Activity activity) {
 
 		if (defaultResources == null) {
-			defaultResources = activity.getResources();
+			defaultResources = new ProxyResources(activity.getResources(), DEFAULT_SKIN_PATH);
 			registerViewFactory(activity);
+			Log.v("init defaultResources and registerViewFactory ");
 		}
 
-		String prefSkin = PrefUtil.getString(activity, PREF_KEY_CURRENT_SKIN);
-		if (StringUtils.isNotBlank(prefSkin)) {
-			currentSkin = prefSkin;
-		}
 		activitys.add(activity);
-		registerViewFactory(activity);
 
-		if (StringUtils.isBlank(currentSkin) || DEFAULT_SKIN.equals(currentSkin)) {
-			Log.d("currentSkin is :{} ignore", currentSkin);
-			return;
+		String prefSkinPath = PrefUtil.getString(activity, PREF_KEY_CURRENT_SKIN);
+		if (StringUtils.isNotBlank(prefSkinPath)) {
+			currentSkinPath = prefSkinPath;
+		}
+
+		Resources res;
+		if (DEFAULT_SKIN_PATH.equals(currentSkinPath)) {
+			res = defaultResources;
+		} else {
+			res = createProxyResource(activity, currentSkinPath);
 		}
 
 		try {
-			changeActivityResources(activity, createProxyResource(activity, currentSkin));
+			changeActivityResources(activity, res);
 		} catch (Exception e) {
 			Log.e(e);
 		}
 	}
 
 	/**
-	 * 给界面添加更换皮肤转换的动画
+	 * 对当前界面截图, 模糊渐变消失
 	 *
 	 * @param activity
 	 *            要显示渐变动画的界面
 	 */
-	private void skinChangeAnimation(Activity activity) {
+	private void showSkinChangeAnimation(Activity activity) {
 		try {
 			final ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
-			if (decor != null) {
-				decor.setDrawingCacheEnabled(true);
-				Bitmap temp = Bitmap.createBitmap(decor.getDrawingCache());
-				decor.setDrawingCacheEnabled(false);
-				ImageView iv = new ImageView(activity);
-				iv.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						// consume all event
-					}
-				});
-				iv.setImageBitmap(temp);
-				// showAnimation(decor, iv, 800);
+			if (decor == null) {
+				return;
 			}
+
+			decor.setDrawingCacheEnabled(true);
+			Bitmap temp = Bitmap.createBitmap(decor.getDrawingCache());
+			decor.setDrawingCacheEnabled(false);
+			final ImageView iv = new ImageView(activity);
+			iv.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// consume all event
+				}
+			});
+			iv.setImageBitmap(temp);
+
+			ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+			decor.addView(iv, lp);
+
+			final AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
+			alphaAnimation.setDuration(800);
+			iv.setAnimation(alphaAnimation);
+			alphaAnimation.startNow();
+			decor.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					alphaAnimation.reset();
+					alphaAnimation.cancel();
+					iv.setAnimation(null);
+					iv.setVisibility(View.GONE);
+					decor.removeView(iv);
+				}
+			}, 800);
+
 		} catch (Exception e) {
-			// Log.w(TAG, e);
+			Log.e(e);
 		}
 	}
 
-	/**
-	 * 在指定的DecorView上面显示一层遮罩,然后渐变消失
-	 *
-	 * @param decor
-	 *            root View
-	 * @param coverLayerView
-	 *            覆盖在上面显示过度动画的View
-	 * @param duration
-	 *            动画时间,单位毫秒
-	 */
-	private void showAnimation(final ViewGroup decor, final View coverLayerView, final long duration) {
-		ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-		decor.addView(coverLayerView, lp);
-
-		final AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0);
-		alphaAnimation.setDuration(duration);
-		coverLayerView.setAnimation(alphaAnimation);
-		alphaAnimation.startNow();
-		decor.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				alphaAnimation.cancel();
-				coverLayerView.setVisibility(View.GONE);
-				decor.removeView(coverLayerView);
-				changingResource = false;
-			}
-		}, duration + 1);
-		changingResource = true;
-	}
-
-	public synchronized void onDestroy(Activity activity) {
+	public void onDestroy(Activity activity) {
 		activitys.remove(activity);
 	}
 
 	/**
-	 * 当前是否正在显示切换皮肤动画
+	 * 注册图片资源id
+	 */
+	public synchronized void registerDrawable(int id) {
+
+		if ((SkinProxyResources.APP_ID_MASK & id) != SkinProxyResources.APP_ID_MASK) {
+			return;
+		}
+
+		TypedValue value = cacheValue;
+		defaultResources.getValue(id, value, true);
+		long key = 0;
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
+			boolean isColorDrawable = value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT;
+			key = isColorDrawable ? value.data : (((long) value.assetCookie) << 32) | value.data;
+		} else {
+			key = (((long) value.assetCookie) << 32) | value.data;
+		}
+		drawableIdKeyMap.put(key, id);
+	}
+
+	/**
+	 * 注册资源id
+	 */
+	public synchronized void registerColorStateList(int id) {
+
+		if ((SkinProxyResources.APP_ID_MASK & id) != SkinProxyResources.APP_ID_MASK) {
+			return;
+		}
+
+		TypedValue value = cacheValue;
+		defaultResources.getValue(id, value, true);
+		long key;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			key = (((long) value.assetCookie) << 32) | value.data;
+		} else {
+			key = (value.assetCookie << 24) | value.data;
+		}
+		drawableIdKeyMap.put(key, id);
+	}
+
+	/**
+	 * 当前是否正在切换资源
 	 *
 	 * @return 是 true
 	 */
@@ -500,7 +577,7 @@ public class SkinManager {
 	}
 
 	public String getCurrentSkin() {
-		return currentSkin;
+		return currentSkinPath;
 	}
 
 	public synchronized void addOnResourcesChangeFinishListener(OnResourcesChangeFinishListener listener) {
@@ -510,4 +587,29 @@ public class SkinManager {
 	public synchronized void removeOnResourcesChangeFinishListener(OnResourcesChangeFinishListener listener) {
 		onResourcesChangeFinishListeners.remove(listener);
 	}
+
+	public Factory getViewFactory() {
+		return viewFactory;
+	}
+
+	public Resources getCurrentSkinResources() {
+		return currentSkinResources;
+	}
+
+	public Resources getDefaultResources() {
+		return defaultResources;
+	}
+
+	public LongSparseArray<Integer> getDrawableIdKeyMap() {
+		return drawableIdKeyMap;
+	}
+
+	public LongSparseArray<Integer> getColorStateListIdKeyMap() {
+		return colorStateListIdKeyMap;
+	}
+
+	public LongSparseArray<Integer> getColorDrawableIdKeyMap() {
+		return colorDrawableIdKeyMap;
+	}
+
 }

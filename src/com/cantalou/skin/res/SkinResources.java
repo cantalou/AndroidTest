@@ -1,10 +1,24 @@
-package com.cantalou.skin.resources;
+package com.cantalou.skin.res;
 
+import static com.cantalou.android.util.ReflectUtil.get;
+import static com.cantalou.android.util.ReflectUtil.set;
 import android.content.res.AssetManager;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Build;
+import android.util.LongSparseArray;
+import android.util.SparseArray;
+
+import com.cantalou.android.util.Log;
+import com.cantalou.skin.SkinManager;
+import com.cantalou.skin.sparearray.ColorStateListLongSpareArray;
+import com.cantalou.skin.sparearray.ColorStateListSpareArray;
+import com.cantalou.skin.sparearray.DrawableLongSpareArray;
 
 public class SkinResources extends Resources {
 
+	
 	/**
 	 * 皮肤资源包名
 	 */
@@ -22,6 +36,7 @@ public class SkinResources extends Resources {
 		super(assets, res.getDisplayMetrics(), res.getConfiguration());
 		this.skinName = skinName;
 	}
+	
 
 	@Override
 	public String toString() {
