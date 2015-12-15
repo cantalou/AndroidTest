@@ -41,226 +41,265 @@ import com.cantalou.skin.sparearray.DrawableLongSpareArray;
  * @author LinZhiWei
  * @date 2015年11月29日 下午3:15:02
  */
-public class SkinProxyResources extends ProxyResources {
+public class SkinProxyResources extends ProxyResources
+{
 
-	/**
-	 * 皮肤资源
-	 */
-	protected Resources skinResources;
+    /**
+     * 皮肤资源
+     */
+    protected Resources skinResources;
 
-	/**
-	 * 应用包名
-	 */
-	protected String packageName;
+    /**
+     * 应用包名
+     */
+    protected String packageName;
 
-	/**
-	 * 皮肤资源
-	 */
-	protected String skinPath;
+    /**
+     * 皮肤资源
+     */
+    protected String skinPath;
 
-	/**
-	 * 皮肤资源id映射
-	 */
-	protected SparseIntArray skinIdMap = new SparseIntArray();
+    /**
+     * 皮肤资源id映射
+     */
+    protected SparseIntArray skinIdMap = new SparseIntArray();
 
-	/**
-	 * 皮肤资源不存在的id
-	 */
-	protected SparseIntArray notFoundedSkinIds = new SparseIntArray();
+    /**
+     * 皮肤资源不存在的id
+     */
+    protected SparseIntArray notFoundedSkinIds = new SparseIntArray();
 
-	/**
-	 * Create a new ProxyResources object
-	 *
-	 * @param skinRes
-	 *            skin resources
-	 * @param defRes
-	 *            default resources
-	 * @param packageName
-	 * @param skinPath
-	 */
-	public SkinProxyResources(String packageName, Resources skinRes, Resources defRes, String skinPath) {
-		super(defRes);
-		this.skinResources = skinRes;
-		this.packageName = packageName;
-		this.skinPath = skinPath;
-	}
+    /**
+     * Create a new ProxyResources object
+     *
+     * @param skinRes     skin resources
+     * @param defRes      default resources
+     * @param packageName
+     * @param skinPath
+     */
+    public SkinProxyResources(String packageName, Resources skinRes, Resources defRes, String skinPath)
+    {
+        super(defRes);
+        this.skinResources = skinRes;
+        this.packageName = packageName;
+        this.skinPath = skinPath;
+    }
 
-	/**
-	 * Create a new ProxyResources
-	 *
-	 * @param defRes
-	 *            default resources
-	 */
-	public SkinProxyResources(Resources defRes) {
-		this("", null, defRes, "");
-	}
+    /**
+     * Create a new ProxyResources
+     *
+     * @param defRes default resources
+     */
+    public SkinProxyResources(Resources defRes)
+    {
+        this("", null, defRes, "");
+    }
 
-	@Override
-	public int getColor(int id) throws NotFoundException {
-		skinManager.registerDrawable(id);
-		Resources res;
-		int skinId;
-		if ((id & APP_ID_MASK) != APP_ID_MASK || (skinId = toSkinId(id)) == 0) {
-			return super.getColor(id);
-		} else {
-			return skinResources.getColor(skinId);
-		}
-	}
+    @Override
+    public int getColor(int id) throws NotFoundException
+    {
+        skinManager.registerDrawable(id);
+        Resources res;
+        int skinId;
+        if ((id & APP_ID_MASK) != APP_ID_MASK || (skinId = toSkinId(id)) == 0)
+        {
+            return super.getColor(id);
+        }
+        else
+        {
+            return skinResources.getColor(skinId);
+        }
+    }
 
-	/**
-	 * 将应用资源id转成皮肤资源id
-	 *
-	 * @param id
-	 * @return 皮肤资源id, 不存在皮肤资源时,返回0
-	 */
-	public synchronized int toSkinId(int id) {
+    /**
+     * 将应用资源id转成皮肤资源id
+     *
+     * @param id
+     * @return 皮肤资源id, 不存在皮肤资源时,返回0
+     */
+    public synchronized int toSkinId(int id)
+    {
 
-		if (id == 0) {
-			return 0;
-		}
+        if (id == 0)
+        {
+            return 0;
+        }
 
-		if ((id & APP_ID_MASK) != APP_ID_MASK) {
-			return 0;
-		}
+        if ((id & APP_ID_MASK) != APP_ID_MASK)
+        {
+            return 0;
+        }
 
-		// 如果皮肤资源包不存在当前资源项,直接返回0
-		if (notFoundedSkinIds.get(id) > 0) {
-			Log.v("resource id :{} toSkinId not found ", toHex(id));
-			return 0;
-		}
+        // 如果皮肤资源包不存在当前资源项,直接返回0
+        if (notFoundedSkinIds.get(id) > 0)
+        {
+            Log.v("resource id :{} toSkinId not found ", toHex(id));
+            return 0;
+        }
 
-		int skinId = skinIdMap.get(id);
-		if (skinId != 0) {
-			return skinId;
-		}
+        int skinId = skinIdMap.get(id);
+        if (skinId != 0)
+        {
+            return skinId;
+        }
 
-		String name = getResourceName(id);
-		if (TextUtils.isEmpty(name)) {
-			Log.v("resource id :{} getResourceName(id) return null", toHex(id));
-			return 0;
-		}
+        String name = getResourceName(id);
+        if (TextUtils.isEmpty(name))
+        {
+            Log.v("resource id :{} getResourceName(id) return null", toHex(id));
+            return 0;
+        }
 
-		skinId = skinResources.getIdentifier(name, null, packageName);
-		if (skinId == 0) {
-			notFoundedSkinIds.put(id, id);
-			Log.v("resource id :{} getIdentifier(name, null, packageName) return null", toHex(id));
-		} else {
-			skinIdMap.put(id, skinId);
-		}
-		Log.v("convert name:{},id:{} to skin id:{}", name, toHex(id), toHex(skinId));
-		return skinId;
-	}
+        skinId = skinResources.getIdentifier(name, null, packageName);
+        if (skinId == 0)
+        {
+            notFoundedSkinIds.put(id, id);
+            Log.v("resource id :{} getIdentifier(name, null, packageName) return null", toHex(id));
+        }
+        else
+        {
+            skinIdMap.put(id, skinId);
+        }
+        Log.v("convert name:{},id:{} to skin id:{}", name, toHex(id), toHex(skinId));
+        return skinId;
+    }
 
-	protected boolean isColor(TypedValue value) {
-		return value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT;
-	}
+    protected boolean isColor(TypedValue value)
+    {
+        return value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT;
+    }
 
-	protected Class<?>[] loadParamType = new Class<?>[] { TypedValue.class, int.class };
+    public Drawable loadDrawable(int id) throws NotFoundException
+    {
 
-	public Drawable loadDrawable(int id) throws NotFoundException {
+        if (id == 0)
+        {
+            return null;
+        }
 
-		if (id == 0) {
-			return null;
-		}
+        TypedValue value = typedValueCache;
+        getValue(id, value, true);
 
-		TypedValue value = typedValueCache;
-		getValue(id, value, true);
+        Resources res;
+        int skinId;
+        if ((id & APP_ID_MASK) != APP_ID_MASK || (skinId = toSkinId(id)) == 0)
+        {
+            res = this;
+            skinId = id;
+        }
+        else
+        {
+            res = skinResources;
+            if (isColor(value))
+            {
+                res.getValue(skinId, value, true);
+            }
+        }
 
-		Resources res;
-		int skinId;
-		if ((id & APP_ID_MASK) != APP_ID_MASK || (skinId = toSkinId(id)) == 0) {
-			res = this;
-			skinId = id;
-		} else {
-			res = skinResources;
-			if (isColor(value)) {
-				res.getValue(skinId, value, true);
-			}
-		}
+        Drawable result = null;
+        try
+        {
+            result = loadDrawable(res, value, skinId);
+        }
+        catch (Exception e)
+        {
+            Log.e(e);
+        }
 
-		Drawable result = null;
-		try {
-			result = loadDrawable(res, value, skinId);
-		} catch (Exception e) {
-			Log.e(e);
-		}
+        // 如果皮肤中存在资源, 但加载失败则直接从默认资源中加载
+        if (result == null && skinId != 0)
+        {
+            result = loadDrawable(this, value, id);
+        }
+        return result;
+    }
 
-		// 如果皮肤中存在资源, 但加载失败则直接从默认资源中加载
-		if (result == null && skinId != 0) {
-			result = loadDrawable(this, value, id);
-		}
-		return result;
-	}
+    public ColorStateList loadColorStateList(int id) throws NotFoundException
+    {
 
-	public ColorStateList loadColorStateList(int id) throws NotFoundException {
+        if (id == 0)
+        {
+            return null;
+        }
 
-		if (id == 0) {
-			return null;
-		}
+        TypedValue value = typedValueCache;
+        getValue(id, value, true);
 
-		TypedValue value = typedValueCache;
-		getValue(id, value, true);
+        Resources res;
+        int skinId;
+        if ((id & APP_ID_MASK) != APP_ID_MASK || (skinId = toSkinId(id)) == 0)
+        {
+            res = this;
+            skinId = id;
+        }
+        else
+        {
+            res = skinResources;
+            if (isColor(value))
+            {
+                res.getValue(skinId, value, true);
+            }
+        }
 
-		Resources res;
-		int skinId;
-		if ((id & APP_ID_MASK) != APP_ID_MASK || (skinId = toSkinId(id)) == 0) {
-			res = this;
-			skinId = id;
-		} else {
-			res = skinResources;
-			if (isColor(value)) {
-				res.getValue(skinId, value, true);
-			}
-		}
+        ColorStateList result = null;
+        try
+        {
+            result = loadColorStateList(res, value, skinId);
+        }
+        catch (Exception e)
+        {
+            Log.e(e);
+        }
 
-		ColorStateList result = null;
-		try {
-			result = loadColorStateList(res, value, skinId);
-		} catch (Exception e) {
-			Log.e(e);
-		}
+        // 如果皮肤中存在资源, 但加载失败则直接从默认资源中加载
+        if (result == null && skinId != 0)
+        {
+            result = loadColorStateList(this, value, id);
+        }
+        return result;
+    }
 
-		// 如果皮肤中存在资源, 但加载失败则直接从默认资源中加载
-		if (result == null && skinId != 0) {
-			result = loadColorStateList(this, value, id);
-		}
-		return result;
-	}
+    public void clearCache()
+    {
+        super.clearCache();
+        skinIdMap.clear();
+        notFoundedSkinIds.clear();
+    }
 
-	public void clearCache() {
-		super.clearCache();
-		skinIdMap.clear();
-		notFoundedSkinIds.clear();
-	}
+    /**
+     * 将 sPreloadedDrawables, sPreloadedColorDrawables, sPreloadedColorStateLists 替换成自定义的对象
+     */
+    public void replacePreloadCache()
+    {
 
-	/**
-	 * 将 sPreloadedDrawables, sPreloadedColorDrawables, sPreloadedColorStateLists 替换成自定义的对象
-	 */
-	public void replacePreloadCache() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+        {
+            LongSparseArray<ConstantState>[] sPreloadedDrawablesArray = get(Resources.class, "sPreloadedDrawables");
+            sPreloadedDrawablesArray[0] = new DrawableLongSpareArray(this, preloadedDrawables, skinManager.getDrawableIdKeyMap());
+        }
+        else
+        {
+            set(Resources.class, "sPreloadedDrawables", new DrawableLongSpareArray(this, preloadedDrawables, skinManager.getDrawableIdKeyMap()));
+        }
 
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-			LongSparseArray<ConstantState>[] sPreloadedDrawablesArray = get(Resources.class, "sPreloadedDrawables");
-			sPreloadedDrawablesArray[0] = new DrawableLongSpareArray(this, preloadedDrawables, skinManager.getDrawableIdKeyMap());
-		} else {
-			set(Resources.class, "sPreloadedDrawables", new DrawableLongSpareArray(this, preloadedDrawables, skinManager.getDrawableIdKeyMap()));
-		}
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2)
+        {
+            set(Resources.class, "sPreloadedColorDrawables", new DrawableLongSpareArray(this, preloadedColorDrawables, skinManager.getColorDrawableIdKeyMap()));
+        }
 
-		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2) {
-			set(Resources.class, "sPreloadedColorDrawables",
-					new DrawableLongSpareArray(this, preloadedColorDrawables, skinManager.getColorDrawableIdKeyMap()));
-		}
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        {
+            set(Resources.class, "sPreloadedColorStateLists", new ColorStateListLongSpareArray(this, preloadedColorStateLists16, skinManager.getColorStateListIdKeyMap()));
+        }
+        else
+        {
+            set(Resources.class, "mPreloadedColorStateLists", new ColorStateListSpareArray(this, preloadedColorStateLists, skinManager.getColorStateListIdKeyMap()));
+        }
+    }
 
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-			set(Resources.class, "sPreloadedColorStateLists",
-					new ColorStateListLongSpareArray(this, preloadedColorStateLists16, skinManager.getColorStateListIdKeyMap()));
-		} else {
-			set(Resources.class, "mPreloadedColorStateLists",
-					new ColorStateListSpareArray(this, preloadedColorStateLists, skinManager.getColorStateListIdKeyMap()));
-		}
-	}
-
-	@Override
-	public String toString() {
-		return getClass().getSimpleName() + "{" + skinPath + "}";
-	}
+    @Override
+    public String toString()
+    {
+        return getClass().getSimpleName() + "{" + skinPath + "}";
+    }
 }
