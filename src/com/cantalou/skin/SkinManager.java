@@ -421,14 +421,14 @@ public class SkinManager
 
         changeActivityResources(a, res);
 
-        if (a instanceof OnResourcesChangeListener)
+        if (a instanceof Skinable)
         {
             handler.post(new Runnable()
             {
                 @Override
                 public void run()
                 {
-                    ((OnResourcesChangeListener) a).onResourcesChange();
+                    ((Skinable) a).onResourcesChange();
                 }
             });
         }
@@ -443,9 +443,9 @@ public class SkinManager
                 {
                     for (Object f : fragments)
                     {
-                        if (f instanceof OnResourcesChangeListener)
+                        if (f instanceof Skinable)
                         {
-                            final OnResourcesChangeListener listener = (OnResourcesChangeListener) f;
+                            final Skinable listener = (Skinable) f;
                             listener.onResourcesChange();
                         }
                     }
@@ -480,9 +480,9 @@ public class SkinManager
             return;
         }
 
-        if (v instanceof OnResourcesChangeListener)
+        if (v instanceof Skinable)
         {
-            ((OnResourcesChangeListener) v).onResourcesChange();
+            ((Skinable) v).onResourcesChange();
             v.invalidate();
         }
 
