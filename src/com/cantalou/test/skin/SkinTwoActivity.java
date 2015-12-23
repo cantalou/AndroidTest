@@ -1,7 +1,6 @@
 package com.cantalou.test.skin;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -16,7 +15,7 @@ public class SkinTwoActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        skinManager.onCreate(this);
+        skinManager.onAttach(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skin);
     }

@@ -41,7 +41,7 @@ public class HelloAndroidActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 
-        Log.i("HelloAndroidActivity", "onCreate , pid:" + Process.myPid());
+        Log.i("HelloAndroidActivity", "onAttach , pid:" + Process.myPid());
 
         setContentView(R.layout.activity_main);
         container = (LinearLayout) findViewById(id.container);

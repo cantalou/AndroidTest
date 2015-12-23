@@ -266,36 +266,7 @@ public class SkinProxyResources extends ProxyResources
         notFoundedSkinIds.clear();
     }
 
-    /**
-     * 将 sPreloadedDrawables, sPreloadedColorDrawables, sPreloadedColorStateLists 替换成自定义的对象
-     */
-    public void replacePreloadCache()
-    {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
-        {
-            LongSparseArray<ConstantState>[] sPreloadedDrawablesArray = get(Resources.class, "sPreloadedDrawables");
-            sPreloadedDrawablesArray[0] = new DrawableLongSpareArray(this, preloadedDrawables, skinManager.getDrawableIdKeyMap());
-        }
-        else
-        {
-            set(Resources.class, "sPreloadedDrawables", new DrawableLongSpareArray(this, preloadedDrawables, skinManager.getDrawableIdKeyMap()));
-        }
-
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2)
-        {
-            set(Resources.class, "sPreloadedColorDrawables", new DrawableLongSpareArray(this, preloadedColorDrawables, skinManager.getColorDrawableIdKeyMap()));
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
-        {
-            set(Resources.class, "sPreloadedColorStateLists", new ColorStateListLongSpareArray(this, preloadedColorStateLists16, skinManager.getColorStateListIdKeyMap()));
-        }
-        else
-        {
-            set(Resources.class, "mPreloadedColorStateLists", new ColorStateListSpareArray(this, preloadedColorStateLists, skinManager.getColorStateListIdKeyMap()));
-        }
-    }
 
     @Override
     public String toString()

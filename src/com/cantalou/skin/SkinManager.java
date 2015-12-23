@@ -163,28 +163,28 @@ public class SkinManager
         Class<?> activityThreadClass = forName("android.app.ActivityThread");
         if (activityThreadClass == null)
         {
-            Log.w("Fail to load class android.app.ActivityThread. Try invoking onCreate in Activity.onCreate method before invoking super.onCreate");
+            Log.w("Fail to load class android.app.ActivityThread. Try invoking onAttach in Activity.onAttach method before invoking super.onAttach");
             return;
         }
 
         Object activityThread = invoke(activityThreadClass, "currentActivityThread");
         if (activityThread == null)
         {
-            Log.w("Fail to get ActivityThread instance. Try invoking onCreate in Activity.onCreate method before invoking super.onCreate");
+            Log.w("Fail to get ActivityThread instance. Try invoking onAttach in Activity.onAttach method before invoking super.onAttach");
             return;
         }
 
         Instrumentation instrumentation = invoke(activityThreadClass, "getInstrumentation");
         if (instrumentation == null)
         {
-            Log.w("Can not load class android.app.ActivityThread. Try invoking onCreate in Activity.onCreate method before invoking super.onCreate");
+            Log.w("Can not load class android.app.ActivityThread. Try invoking onAttach in Activity.onAttach method before invoking super.onAttach");
             return;
         }
 
         SkinInstrumentation skinInstrumentation = new SkinInstrumentation(this, instrumentation);
         if (!set(activityThread, "mInstrumentation", skinInstrumentation))
         {
-            Log.w("Fail to replace field named mInstrumentation . Try invoking onCreate in Activity.onCreate method before invoking super.onCreate");
+            Log.w("Fail to replace field named mInstrumentation . Try invoking onAttach in Activity.onAttach method before invoking super.onAttach");
         }
 
     }
@@ -347,7 +347,7 @@ public class SkinManager
 
         if (defaultResources == null)
         {
-            throw new IllegalStateException("defaultResources is not initialized. Call the method onCreate of SkinManage in Activity onCreate()");
+            throw new IllegalStateException("defaultResources is not initialized. Call the method onAttach of SkinManage in Activity onAttach()");
         }
 
         final Context cxt = activity.getApplicationContext();
@@ -393,10 +393,6 @@ public class SkinManager
             @Override
             protected void onPostExecute(Boolean result)
             {
-                if (result)
-                {
-
-                }
                 Log.i("changeResources doInBackground return :{}, currentSkin:{}", result, currentSkinPath);
                 ArrayList<OnResourcesChangeFinishListener> list = (ArrayList<OnResourcesChangeFinishListener>) onResourcesChangeFinishListeners.clone();
                 for (OnResourcesChangeFinishListener listener : list)
@@ -509,16 +505,17 @@ public class SkinManager
      *
      * @param activity
      */
-    public void onCreate(Activity activity)
+    public void onAttach(Activity activity)
     {
 
         if (defaultResources == null)
         {
             defaultResources = new ProxyResources(activity.getResources());
             defaultResources.replacePreloadCache();
-            registerViewFactory(activity);
             Log.v("init defaultResources and registerViewFactory ");
         }
+
+        registerViewFactory(activity);
 
         activitys.add(activity);
 

@@ -55,7 +55,7 @@ public class BackgroundService extends IntentService
     @Override
     public void onCreate()
     {
-        Log.i("", "onCreate");
+        Log.i("", "onAttach");
         super.onCreate();
     }
 

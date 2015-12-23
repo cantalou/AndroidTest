@@ -3,6 +3,7 @@ package com.cantalou.test.skin;
 import java.io.File;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -32,10 +33,16 @@ public class SkinActivity extends Activity implements OnClickListener,
     private static boolean hasNotCopy = true;
 
     @Override
+    protected void attachBaseContext(Context newBase)
+    {
+        super.attachBaseContext(newBase);
+        skinManager.onAttach(this);
+        skinManager.addOnResourcesChangeFinishListener(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        skinManager.onCreate(this);
-        skinManager.addOnResourcesChangeFinishListener(this);
         super.onCreate(savedInstanceState);
         currentSkin = skinManager.getCurrentSkin();
         setContentView(R.layout.activity_skin);

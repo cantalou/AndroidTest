@@ -40,13 +40,13 @@ public class SkinInstrumentation extends Instrumentation {
 
 	@Override
 	public void callActivityOnCreate(Activity activity, Bundle icicle, PersistableBundle persistentState) {
-		skinManager.onCreate(activity);
+		skinManager.onAttach(activity);
 		targetInstrucmentation.callActivityOnCreate(activity, icicle, persistentState);
 	}
 
 	@Override
 	public void callActivityOnCreate(Activity activity, Bundle icicle) {
-		skinManager.onCreate(activity);
+		skinManager.onAttach(activity);
 		targetInstrucmentation.callActivityOnCreate(activity, icicle);
 	}
 

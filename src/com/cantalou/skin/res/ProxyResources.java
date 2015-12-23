@@ -76,7 +76,40 @@ public class ProxyResources extends Resources
 
     protected static SparseArray<ColorStateList> preloadedColorStateLists;
 
-    protected String packageName;
+    protected LongSparseArray<ConstantState> proxyPreloadedDrawables;
+
+    protected LongSparseArray<ConstantState> proxyPreloadedColorDrawables;
+
+    protected LongSparseArray<ColorStateList> proxyPreloadedColorStateLists16;
+
+    protected SparseArray<ColorStateList> proxyPreloadedColorStateLists;
+
+    static
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+        {
+            LongSparseArray<ConstantState>[] sPreloadedDrawablesArray = get(Resources.class, "sPreloadedDrawables");
+            preloadedDrawables = sPreloadedDrawablesArray[0];
+        }
+        else
+        {
+            preloadedDrawables = get(Resources.class, "sPreloadedDrawables");
+        }
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2)
+        {
+            preloadedColorDrawables = get(Resources.class, "sPreloadedColorDrawables");
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        {
+            preloadedColorStateLists16 = get(Resources.class, "sPreloadedColorStateLists");
+        }
+        else
+        {
+            preloadedColorStateLists = get(Resources.class, "mPreloadedColorStateLists");
+        }
+    }
 
     protected SkinManager skinManager;
 
@@ -138,64 +171,47 @@ public class ProxyResources extends Resources
     public void replacePreloadCache()
     {
 
-        if (preloadedDrawables == null)
+        //drawable
+        if (proxyPreloadedDrawables == null)
         {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
-            {
-                LongSparseArray<ConstantState>[] sPreloadedDrawablesArray = get(Resources.class, "sPreloadedDrawables");
-                preloadedDrawables = sPreloadedDrawablesArray[0];
-            }
-            else
-            {
-                preloadedDrawables = get(Resources.class, "sPreloadedDrawables");
-            }
+            proxyPreloadedDrawables = new DrawableLongSpareArray(this, preloadedDrawables, skinManager.getDrawableIdKeyMap());
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+        {
+            LongSparseArray<ConstantState>[] sPreloadedDrawablesArray = get(Resources.class, "sPreloadedDrawables");
+            sPreloadedDrawablesArray[0] = proxyPreloadedDrawables;
         }
         else
         {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
-            {
-                LongSparseArray<ConstantState>[] sPreloadedDrawablesArray = get(Resources.class, "sPreloadedDrawables");
-                sPreloadedDrawablesArray[0] = preloadedDrawables;
-            }
-            else
-            {
-                set(Resources.class, "sPreloadedDrawables", preloadedDrawables);
-            }
+            set(Resources.class, "sPreloadedDrawables", proxyPreloadedDrawables);
         }
 
+        //colorDrawable
+        if (proxyPreloadedColorDrawables == null)
+        {
+            proxyPreloadedColorDrawables = new DrawableLongSpareArray(this, preloadedColorDrawables, skinManager.getColorDrawableIdKeyMap());
+        }
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2)
         {
-            if (preloadedColorDrawables == null)
-            {
-                preloadedColorDrawables = get(Resources.class, "sPreloadedColorDrawables");
-            }
-            else
-            {
-                set(Resources.class, "sPreloadedColorDrawables", preloadedColorDrawables);
-            }
+            set(Resources.class, "sPreloadedColorDrawables", proxyPreloadedColorDrawables);
         }
 
+        //colorStateList
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
         {
-            if (preloadedColorStateLists16 == null)
+            if (proxyPreloadedColorStateLists16 == null)
             {
-                preloadedColorStateLists16 = get(Resources.class, "sPreloadedColorStateLists");
+                proxyPreloadedColorStateLists16 = new ColorStateListLongSpareArray(this, preloadedColorStateLists16, skinManager.getColorStateListIdKeyMap());
             }
-            else
-            {
-                set(Resources.class, "sPreloadedColorStateLists", preloadedColorStateLists16);
-            }
+            set(Resources.class, "sPreloadedColorStateLists", proxyPreloadedColorStateLists16);
         }
         else
         {
-            if (preloadedColorStateLists == null)
+            if (proxyPreloadedColorStateLists == null)
             {
-                preloadedColorStateLists = get(Resources.class, "mPreloadedColorStateLists");
+                proxyPreloadedColorStateLists = new ColorStateListSpareArray(this, preloadedColorStateLists, skinManager.getColorStateListIdKeyMap());
             }
-            else
-            {
-                set(Resources.class, "mPreloadedColorStateLists", preloadedColorStateLists);
-            }
+            set(Resources.class, "mPreloadedColorStateLists", proxyPreloadedColorStateLists);
         }
     }
 
@@ -259,13 +275,21 @@ public class ProxyResources extends Resources
     {
         TypedValue value = typedValueCache;
         this.getValue(id, value, true);
-        return loadDrawable(this, value, id);
+        Drawable dr = loadDrawable(this, value, id);
+        if (dr == null)
+        {
+            dr = getDrawable(id);
+            if (logEnable && (id & APP_ID_MASK) == APP_ID_MASK)
+            {
+                Log.v("loadDrawable(Resources, TypedValue, int) return null, retry load value:{} from :{} result:{} ", toString(value), this, dr);
+            }
+        }
+        return dr;
     }
 
     @SuppressWarnings("deprecation")
     public Drawable loadDrawable(Resources res, TypedValue value, int id) throws NotFoundException
     {
-
         boolean isColorDrawable = value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT;
         Drawable dr = null;
         if (isColorDrawable)
@@ -294,7 +318,6 @@ public class ProxyResources extends Resources
                     rnf.initCause(e);
                     throw rnf;
                 }
-
             }
             else
             {
@@ -302,7 +325,7 @@ public class ProxyResources extends Resources
                 {
                     InputStream is = invoke(res.getAssets(), "openNonAsset", openNonAssetParam, value.assetCookie, file, AssetManager.ACCESS_STREAMING);
                     BitmapFactory.Options opts = new BitmapFactory.Options();
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1)
                     {
                         opts.inPreferredConfig = Bitmap.Config.RGB_565;
                         ReflectUtil.set(opts, "inNativeAlloc", true);
@@ -323,6 +346,7 @@ public class ProxyResources extends Resources
         {
             dr.setChangingConfigurations(value.changingConfigurations);
         }
+
         if (logEnable && (id & APP_ID_MASK) == APP_ID_MASK)
         {
             Log.v("load value:{} from :{} result:{} ", toString(value), res, dr);
@@ -334,14 +358,21 @@ public class ProxyResources extends Resources
     {
         TypedValue value = typedValueCache;
         this.getValue(id, value, true);
-        return loadColorStateList(this, value, id);
+        ColorStateList csl = loadColorStateList(this, value, id);
+        if (csl == null)
+        {
+            csl = getColorStateList(id);
+            if (logEnable && (id & APP_ID_MASK) == APP_ID_MASK)
+            {
+                Log.v("loadColorStateList(Resources, TypedValue, int) return null, retry load value:{} from :{} result:{} ", toString(value), this, csl);
+            }
+        }
+        return csl;
     }
 
     public ColorStateList loadColorStateList(Resources res, TypedValue value, int id) throws NotFoundException
     {
-
         ColorStateList csl = null;
-
         if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT)
         {
             csl = ColorStateList.valueOf(value.data);
