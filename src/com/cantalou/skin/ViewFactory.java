@@ -102,7 +102,6 @@ public class ViewFactory implements Factory
 
     private AbstractHolder getHolder(String name)
     {
-
         AbstractHolder attrHolder = viewAttrHolder.get(name);
         if (attrHolder != null)
         {
