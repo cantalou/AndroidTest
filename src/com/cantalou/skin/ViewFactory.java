@@ -23,140 +23,120 @@ import java.util.HashMap;
  * @author LinZhiWei
  * @date 2015年11月29日 下午10:22:41
  */
-public class ViewFactory implements Factory
-{
+public class ViewFactory implements Factory {
 
-    private final String[] sClassPrefixList = {"android.widget.", "android.webkit.", "android.app."};
+	private final String[] sClassPrefixList = { "android.widget.", "android.webkit.", "android.app." };
 
-    private final HashMap<String, String> superNameCache = new HashMap<String, String>();
+	private final HashMap<String, String> superNameCache = new HashMap<String, String>();
 
-    private final HashMap<String, AbstractHolder> viewAttrHolder = new HashMap<String, AbstractHolder>();
+	private static final HashMap<String, AbstractHolder> viewAttrHolder = new HashMap<String, AbstractHolder>();
+	static {
+		viewAttrHolder.put("android.view.View", new ViewHolder());// for super class
+		viewAttrHolder.put("View", new ViewHolder());// for layout file
+		viewAttrHolder.put("android.widget.TextView", new TextViewHolder());
+		viewAttrHolder.put("android.widget.ImageView", new ImageViewHolder());
+		viewAttrHolder.put("android.widget.ListView", new ListViewHolder());
+	}
 
-    public ViewFactory()
-    {
-        viewAttrHolder.put("android.view.View", new ViewHolder());// for super class
-        viewAttrHolder.put("View", new ViewHolder());// for layout file
-        viewAttrHolder.put("android.widget.TextView", new TextViewHolder());
-        viewAttrHolder.put("android.widget.ImageView", new ImageViewHolder());
-        viewAttrHolder.put("android.widget.ListView", new ListViewHolder());
-    }
+	private LayoutInflater layoutInflater;
 
-    @Override
-    public View onCreateView(String name, Context context, AttributeSet attrs)
-    {
-        View view = null;
-        if (name.contains("skin"))
-        {
-            view = null;
-        }
-        AbstractHolder attrHolder = getHolder(name);
-        if (attrHolder != null)
-        {
-            attrHolder.parse(attrs);
-        }
-        try
-        {
-            LayoutInflater inflater = LayoutInflater.from(context);
-            if (-1 == name.indexOf('.'))
-            {
-                for (String prefix : sClassPrefixList)
-                {
-                    try
-                    {
-                        view = inflater.createView(name, prefix, attrs);
-                    }
-                    catch (ClassNotFoundException e)
-                    {
-                    }
-                }
-            }
-            else
-            {
-                view = inflater.createView(name, null, attrs);
-            }
+	private Factory proxy;
 
-            if (view == null)
-            {
-                return null;
-            }
+	public ViewFactory(LayoutInflater layoutInflater) {
+		this.layoutInflater = layoutInflater;
+	}
 
-            if (attrHolder != null)
-            {
-                view.setTag(AbstractHolder.ATTR_HOLDER_KEY, attrHolder);
-            }
+	public ViewFactory(LayoutInflater layoutInflater, Factory proxy) {
+		this.layoutInflater = layoutInflater;
+		this.proxy = proxy;
+	}
 
-            return view;
+	@Override
+	public View onCreateView(String name, Context context, AttributeSet attrs) {
 
-        }
-        catch (InflateException e)
-        {
-            throw e;
-        }
-        catch (Exception e)
-        {
-            InflateException ie = new InflateException(attrs.getPositionDescription() + ": Error inflating class " + name + ", cause " + e);
-            ie.initCause(e);
-            throw ie;
-        }
-    }
+		View view = null;
+		if (name.contains("skin")) {
+			view = null;
+		}
+		AbstractHolder attrHolder = getHolder(name);
+		if (attrHolder != null) {
+			attrHolder.parse(attrs);
+		}
 
-    private AbstractHolder getHolder(String name)
-    {
-        AbstractHolder attrHolder = viewAttrHolder.get(name);
-        if (attrHolder != null)
-        {
-            return attrHolder.clone();
-        }
+		if (proxy != null) {
+			view = proxy.onCreateView(name, context, attrs);
+		}
 
-        if (-1 == name.indexOf('.'))
-        {
-            for (String prefix : sClassPrefixList)
-            {
-                try
-                {
-                    attrHolder = getHolder(getSuperClassName(prefix + name));
-                }
-                catch (ClassNotFoundException e)
-                {
-                }
-            }
-        }
-        else
-        {
-            try
-            {
-                attrHolder = getHolder(getSuperClassName(name));
-            }
-            catch (ClassNotFoundException e)
-            {
-            }
-        }
+		if (view == null) {
+			try {
+				if (-1 == name.indexOf('.')) {
+					for (String prefix : sClassPrefixList) {
+						try {
+							view = layoutInflater.createView(name, prefix, attrs);
+						} catch (ClassNotFoundException e) {
+						}
+					}
+					if (view == null) {
+						view = layoutInflater.createView(name, "android.view.", attrs);
+					}
+				} else {
+					view = layoutInflater.createView(name, null, attrs);
+				}
 
-        if (attrHolder == null)
-        {
-            Log.w("can not find a AttrHolder associated with name :{}", name);
-        }
-        else
-        {
-            viewAttrHolder.put(name, attrHolder);
-        }
-        return attrHolder.clone();
-    }
+			} catch (InflateException e) {
+				throw e;
+			} catch (Exception e) {
+				InflateException ie = new InflateException(attrs.getPositionDescription() + ": Error inflating class " + name + ", cause " + e);
+				ie.initCause(e);
+				throw ie;
+			}
+		}
 
-    private String getSuperClassName(String name) throws ClassNotFoundException
-    {
-        String superName = null;
-        Class<?> clazz = Class.forName(name);
-        if (clazz != null && clazz.getSuperclass() != null)
-        {
-            superName = clazz.getSuperclass()
-                             .getName();
-        }
-        return superName;
-    }
+		if (view != null && attrHolder != null) {
+			view.setTag(AbstractHolder.ATTR_HOLDER_KEY, attrHolder);
+		}
 
-    public void registerAttrHolder(String name, AbstractHolder attrHolder)
-    {
-        viewAttrHolder.put(name, attrHolder);
-    }
+		return view;
+	}
+
+	private AbstractHolder getHolder(String name) {
+		AbstractHolder attrHolder = viewAttrHolder.get(name);
+		if (attrHolder != null) {
+			return attrHolder.clone();
+		}
+
+		if (-1 == name.indexOf('.')) {
+			for (String prefix : sClassPrefixList) {
+				try {
+					attrHolder = getHolder(getSuperClassName(prefix + name));
+				} catch (ClassNotFoundException e) {
+				}
+			}
+		} else {
+			try {
+				attrHolder = getHolder(getSuperClassName(name));
+			} catch (ClassNotFoundException e) {
+			}
+		}
+
+		if (attrHolder == null) {
+			Log.w("can not find a AttrHolder associated with name :{}", name);
+		} else {
+			viewAttrHolder.put(name, attrHolder);
+		}
+		return attrHolder.clone();
+	}
+
+	private String getSuperClassName(String name) throws ClassNotFoundException {
+		String superName = null;
+		Class<?> clazz = Class.forName(name);
+		if (clazz != null && clazz.getSuperclass() != null) {
+			superName = clazz.getSuperclass().getName();
+		}
+		return superName;
+	}
+
+	public void registerAttrHolder(String name, AbstractHolder attrHolder) {
+		viewAttrHolder.put(name, attrHolder);
+	}
 }
