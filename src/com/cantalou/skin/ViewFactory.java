@@ -24,7 +24,7 @@ import java.util.HashMap;
 /**
  * 自定义Factory的实现, 保存View中属性的资源信息, 如:background赋值的资源id
  *
- * @author LinZhiWei
+ * @author cantalou
  * @date 2015年11月29日 下午10:22:41
  */
 public class ViewFactory implements Factory {
@@ -101,6 +101,11 @@ public class ViewFactory implements Factory {
 	}
 
 	AbstractHolder getHolder(String name) {
+
+		if (StringUtils.isBlank(name)) {
+			return null;
+		}
+
 		AbstractHolder attrHolder = viewAttrHolder.get(name);
 		if (attrHolder != null) {
 			return attrHolder.clone();
@@ -122,6 +127,7 @@ public class ViewFactory implements Factory {
 
 		if (attrHolder == null) {
 			Log.w("can not find a AttrHolder associated with name :{}", name);
+			return null;
 		} else {
 			viewAttrHolder.put(name, attrHolder);
 		}

@@ -24,7 +24,7 @@ import java.util.HashMap;
 /**
  * 自定义Factory的实现, 保存View中属性的资源信息, 如:background赋值的资源id
  *
- * @author LinZhiWei
+ * @author cantalou
  * @date 2015年11月29日 下午10:22:41
  */
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)

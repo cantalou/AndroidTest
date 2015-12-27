@@ -104,7 +104,7 @@ public class NightResources extends SkinProxyResources {
 	 * 给图片添加灰层
 	 *
 	 * @param drawable
-	 * @author LinZhiWei
+	 * @author cantalou
 	 * @date 2015年11月3日 下午4:08:56
 	 */
 	private void setColorFilter(Drawable drawable) {

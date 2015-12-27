@@ -36,7 +36,7 @@ import android.util.TypedValue;
 /**
  * 重写getDrawable,getColorStateList,getColor方法进行资源加载的拦截, 将资源id注册到SkinManger中
  *
- * @author LinZhiWei
+ * @author cantalou
  * @date 2015年12月12日 下午11:07:07
  */
 public class ProxyResources extends Resources

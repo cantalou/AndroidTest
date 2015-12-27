@@ -49,7 +49,7 @@ import static com.cantalou.android.util.ReflectUtil.set;
 /**
  * 皮肤资源Manager
  *
- * @author LinZhiWei
+ * @author cantalou
  * @date 2015年10月31日 下午3:49:46
  */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)

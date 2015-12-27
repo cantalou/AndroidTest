@@ -39,7 +39,7 @@ import com.cantalou.skin.array.DrawableLongSpareArray;
  * 皮肤Resources代理类<br>
  * 加载资源时使用皮肤资源包中的资源进行替换, 皮肤资源包 不存在指定的资源时, 使用默认资源.
  *
- * @author LinZhiWei
+ * @author cantalou
  * @date 2015年11月29日 下午3:15:02
  */
 public class SkinProxyResources extends ProxyResources {
