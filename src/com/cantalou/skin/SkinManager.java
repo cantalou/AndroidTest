@@ -13,6 +13,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.AndroidRuntimeException;
 import android.util.LongSparseArray;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
@@ -37,9 +38,12 @@ import com.cantalou.skin.res.SkinResources;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.Executor;
 
 import static com.cantalou.android.util.ReflectUtil.forName;
 import static com.cantalou.android.util.ReflectUtil.get;
@@ -102,7 +106,7 @@ public class SkinManager {
 	/**
 	 * 资源切换时提交View刷新任务到UI线程
 	 */
-	private Handler handler = new Handler(Looper.myLooper());
+	Handler handler = new Handler(Looper.myLooper());
 
 	/**
 	 * 资源切换结束回调
@@ -133,6 +137,33 @@ public class SkinManager {
 	 * 已注册的id与key的映射
 	 */
 	private BinarySearchIntArray registeredIdKey = new BinarySearchIntArray();
+
+	ArrayDeque<Runnable> serialTasks = new ArrayDeque<Runnable>() {
+		Runnable mActive;
+		public synchronized boolean offer(final Runnable e) {
+			boolean result = super.offer(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						e.run();
+					} finally {
+						scheduleNext();
+					}
+				}
+			});
+			if (mActive == null) {
+				scheduleNext();
+			}
+			return result;
+		};
+
+		public synchronized void scheduleNext() {
+			mActive = serialTasks.poll();
+			if (mActive != null) {
+				handler.post(mActive);
+			}
+		}
+	};
 
 	private static class InstanceHolder {
 		static final com.cantalou.skin.SkinManager INSTANCE = new com.cantalou.skin.SkinManager();
@@ -319,7 +350,7 @@ public class SkinManager {
 			protected Boolean doInBackground(Void... params) {
 				try {
 					Log.d("start change resource");
-					ProxyResources res = createProxyResource(cxt, skinPath);
+					final ProxyResources res = createProxyResource(cxt, skinPath);
 					if (res == null) {
 						return false;
 					}
@@ -350,7 +381,7 @@ public class SkinManager {
 				}
 				changingResource = false;
 			}
-		}.execute();
+		}.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
 
 		showSkinChangeAnimation(activity);
 	}
@@ -368,7 +399,7 @@ public class SkinManager {
 		changeActivityResources(a, res);
 
 		if (a instanceof Skinnable) {
-			handler.post(new Runnable() {
+			serialTasks.offer(new Runnable() {
 				@Override
 				public void run() {
 					((Skinnable) a).onResourcesChange();
@@ -378,7 +409,7 @@ public class SkinManager {
 
 		final List<?> fragments = get(a, "mFragments.mAdded");
 		if (fragments != null && fragments.size() > 0) {
-			handler.post(new Runnable() {
+			serialTasks.offer(new Runnable() {
 				@Override
 				public void run() {
 					for (Object f : fragments) {
@@ -393,7 +424,7 @@ public class SkinManager {
 
 		final Window w = a.getWindow();
 		if (w != null) {
-			handler.post(new Runnable() {
+			serialTasks.offer(new Runnable() {
 				@Override
 				public void run() {
 					onResourcesChange(w.getDecorView());
@@ -408,6 +439,10 @@ public class SkinManager {
 	 * @param v
 	 */
 	private void onResourcesChange(final View v) {
+
+		if (Looper.myLooper() == null || Looper.getMainLooper() != Looper.myLooper()) {
+			throw new AndroidRuntimeException("Only the original thread that created a view hierarchy can touch its views.");
+		}
 
 		if (v == null) {
 			return;
