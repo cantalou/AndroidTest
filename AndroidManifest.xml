@@ -73,9 +73,12 @@
         <activity android:name=".indicatorviewpager.IndicatorViewPager"/>
         <activity android:name=".other.OpenAppFromBrowserActivity"/>
         <activity android:name=".pageturn.PageTurnActivity"/>
-        <activity
+                <activity
             android:name=".skin.SkinTwoActivity"
             android:label="SkinTwoActivity"/>
+                        <activity
+            android:name=".skin.SkinFragmentActivity"
+            android:label="SkinFragmentActivity"/>
         <activity android:name=".skin.SkinActivity"/>
         <activity android:name=".webview.WebViewActivity">
         </activity>

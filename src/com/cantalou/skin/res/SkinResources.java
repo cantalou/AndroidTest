@@ -12,9 +12,9 @@ import android.util.SparseArray;
 
 import com.cantalou.android.util.Log;
 import com.cantalou.skin.SkinManager;
-import com.cantalou.skin.sparearray.ColorStateListLongSpareArray;
-import com.cantalou.skin.sparearray.ColorStateListSpareArray;
-import com.cantalou.skin.sparearray.DrawableLongSpareArray;
+import com.cantalou.skin.array.ColorStateListLongSpareArray;
+import com.cantalou.skin.array.ColorStateListSpareArray;
+import com.cantalou.skin.array.DrawableLongSpareArray;
 
 public class SkinResources extends Resources {
 

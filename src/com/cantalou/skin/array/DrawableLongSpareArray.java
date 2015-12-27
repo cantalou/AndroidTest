@@ -1,4 +1,4 @@
-package com.cantalou.skin.sparearray;
+package com.cantalou.skin.array;
 
 import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
