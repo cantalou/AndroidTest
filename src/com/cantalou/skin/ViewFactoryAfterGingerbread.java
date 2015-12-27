@@ -36,7 +36,7 @@ public class ViewFactoryAfterGingerbread extends ViewFactory implements Factory2
 
 	public void register(LayoutInflater layoutInflater) {
 		super.register(layoutInflater);
-		
+
 		factory2Proxy = layoutInflater.getFactory2();
 		if (factory2Proxy != null) {
 			layoutInflater.setFactory2(this);
@@ -50,6 +50,12 @@ public class ViewFactoryAfterGingerbread extends ViewFactory implements Factory2
 
 	public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
 		View view = null;
+
+		AbstractHolder attrHolder = getHolder(name);
+		if (attrHolder != null) {
+			attrHolder.parse(attrs);
+		}
+
 		if (factory2Proxy != null) {
 			view = factory2Proxy.onCreateView(parent, name, context, attrs);
 		}
@@ -58,16 +64,17 @@ public class ViewFactoryAfterGingerbread extends ViewFactory implements Factory2
 		}
 
 		if (view != null) {
-			AbstractHolder attrHolder = getHolder(name);
-			if (attrHolder != null) {
-				attrHolder.parse(attrs);
-				view.setTag(AbstractHolder.ATTR_HOLDER_KEY, attrHolder);
-			}
+			view.setTag(AbstractHolder.ATTR_HOLDER_KEY, attrHolder);
 		} else {
 			view = super.onCreateView(name, context, attrs);
 		}
 
 		return view;
+	}
+
+	@Override
+	public View onCreateView(String name, Context context, AttributeSet attrs) {
+		return factoryProxy == null ? null : super.onCreateView(name, context, attrs);
 	}
 
 }
