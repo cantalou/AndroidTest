@@ -288,7 +288,7 @@ public class ProxyResources extends Resources
     }
 
     @SuppressWarnings("deprecation")
-    public Drawable loadDrawable(Resources res, TypedValue value, int id) throws NotFoundException
+    protected Drawable loadDrawable(Resources res, TypedValue value, int id) throws NotFoundException
     {
         boolean isColorDrawable = value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT;
         Drawable dr = null;
@@ -370,7 +370,7 @@ public class ProxyResources extends Resources
         return csl;
     }
 
-    public ColorStateList loadColorStateList(Resources res, TypedValue value, int id) throws NotFoundException
+    protected ColorStateList loadColorStateList(Resources res, TypedValue value, int id) throws NotFoundException
     {
         ColorStateList csl = null;
         if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT)
