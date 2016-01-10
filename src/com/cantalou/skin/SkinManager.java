@@ -58,6 +58,7 @@ import static com.cantalou.android.util.ReflectUtil.set;
  */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class SkinManager {
+	
 	/**
 	 * 当前皮肤存储key
 	 */
@@ -106,7 +107,7 @@ public class SkinManager {
 	/**
 	 * 资源切换时提交View刷新任务到UI线程
 	 */
-	Handler handler = new Handler(Looper.myLooper());
+	Handler uiHandler = new Handler(Looper.myLooper());
 
 	/**
 	 * 资源切换结束回调
@@ -160,7 +161,7 @@ public class SkinManager {
 		public synchronized void scheduleNext() {
 			mActive = serialTasks.poll();
 			if (mActive != null) {
-				handler.post(mActive);
+				uiHandler.post(mActive);
 			}
 		}
 	};
@@ -235,13 +236,13 @@ public class SkinManager {
 			AssetManager am = AssetManager.class.newInstance();
 			int result = invoke(am, "addAssetPath", new Class<?>[] { String.class }, skinFile.getAbsolutePath());
 			if (result == 0) {
-				Log.w("AssetManager.addAssetPath return 0. Initial AssetManager fail. ");
+				Log.w("AssetManager.addAssetPath return 0. Fail to initialze AssetManager . ");
 				return null;
 			} else {
 				skinResources = new SkinResources(am, defaultResources, skinPath);
 			}
 		} catch (Exception e) {
-			Log.e(e, "初始化AssetManager失败");
+			Log.e(e, "Fail to initialze AssetManager");
 		}
 		return skinResources;
 	}
@@ -272,7 +273,7 @@ public class SkinManager {
 
 		Resources skinResources = createSkinResource(skinPath);
 		if (skinResources == null) {
-			Log.w("Create skin resources fail");
+			Log.w("Fail to create skin resources");
 			return null;
 		}
 
@@ -566,7 +567,7 @@ public class SkinManager {
 		}
 
 		if (registeredIdKey.contains(id)) {
-			Log.d("Has registered id:{}, ignore", id);
+			Log.d("Had registered id:{}, ignore", id);
 			return;
 		}
 
