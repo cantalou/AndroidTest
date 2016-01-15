@@ -68,7 +68,6 @@
         <activity android:name=".butterknife.ButterKnifeActivity"/>
         <activity android:name=".ui.listview.ListViewInScrollViewActivity"/>
         <activity android:name=".memory.MaxMemoryActivity"/>
-        <activity android:name=".ui.linearlayout.LinearLayoutActivity"/>
         <activity android:name=".cache.RemoveServiceActivity"/>
         <activity android:name=".indicatorviewpager.IndicatorViewPager"/>
         <activity android:name=".other.OpenAppFromBrowserActivity"/>
@@ -77,8 +76,9 @@
             android:name=".skin.SkinTwoActivity"
             android:label="SkinTwoActivity"/>
         <activity android:name=".skin.SkinActivity"/>
-        <activity android:name=".webview.WebViewActivity">
-        </activity>
+        <activity android:name=".webview.WebViewActivity"/>
+        <activity android:name=".imagecrop.CropImageActivity"/>
+        <activity android:name=".imagecrop.CropImageMainActivity"/>
     </application>
 
 </manifest>
