@@ -13,7 +13,9 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.AndroidRuntimeException;
 import android.util.LongSparseArray;
+import android.util.SparseIntArray;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.LayoutInflater.Factory;
@@ -23,6 +25,7 @@ import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 
+import com.cantalou.android.util.BinarySearchIntArray;
 import com.cantalou.android.util.Log;
 import com.cantalou.android.util.PrefUtil;
 import com.cantalou.android.util.StringUtils;
@@ -35,9 +38,12 @@ import com.cantalou.skin.res.SkinResources;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.Executor;
 
 import static com.cantalou.android.util.ReflectUtil.forName;
 import static com.cantalou.android.util.ReflectUtil.get;
@@ -47,11 +53,12 @@ import static com.cantalou.android.util.ReflectUtil.set;
 /**
  * 皮肤资源Manager
  *
- * @author LinZhiWei
+ * @author cantalou
  * @date 2015年10月31日 下午3:49:46
  */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class SkinManager {
+	
 	/**
 	 * 当前皮肤存储key
 	 */
@@ -75,7 +82,7 @@ public class SkinManager {
 	/**
 	 * 已载入的资源
 	 */
-	private HashMap<String, WeakReference<Resources>> cacheResources = new HashMap<String, WeakReference<Resources>>();
+	private HashMap<String, WeakReference<ProxyResources>> cacheResources = new HashMap<String, WeakReference<ProxyResources>>();
 
 	/**
 	 * 当前是否正在切换资源
@@ -100,7 +107,7 @@ public class SkinManager {
 	/**
 	 * 资源切换时提交View刷新任务到UI线程
 	 */
-	private Handler handler = new Handler(Looper.myLooper());
+	Handler uiHandler = new Handler(Looper.myLooper());
 
 	/**
 	 * 资源切换结束回调
@@ -126,6 +133,38 @@ public class SkinManager {
 	 * 文字颜色资源id与key的映射
 	 */
 	private LongSparseArray<Integer> colorStateListIdKeyMap = new LongSparseArray<Integer>();
+
+	/**
+	 * 已注册的id与key的映射
+	 */
+	private BinarySearchIntArray registeredIdKey = new BinarySearchIntArray();
+
+	ArrayDeque<Runnable> serialTasks = new ArrayDeque<Runnable>() {
+		Runnable mActive;
+		public synchronized boolean offer(final Runnable e) {
+			boolean result = super.offer(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						e.run();
+					} finally {
+						scheduleNext();
+					}
+				}
+			});
+			if (mActive == null) {
+				scheduleNext();
+			}
+			return result;
+		};
+
+		public synchronized void scheduleNext() {
+			mActive = serialTasks.poll();
+			if (mActive != null) {
+				uiHandler.post(mActive);
+			}
+		}
+	};
 
 	private static class InstanceHolder {
 		static final com.cantalou.skin.SkinManager INSTANCE = new com.cantalou.skin.SkinManager();
@@ -197,13 +236,13 @@ public class SkinManager {
 			AssetManager am = AssetManager.class.newInstance();
 			int result = invoke(am, "addAssetPath", new Class<?>[] { String.class }, skinFile.getAbsolutePath());
 			if (result == 0) {
-				Log.w("AssetManager.addAssetPath return 0. Initial AssetManager fail. ");
+				Log.w("AssetManager.addAssetPath return 0. Fail to initialze AssetManager . ");
 				return null;
 			} else {
 				skinResources = new SkinResources(am, defaultResources, skinPath);
 			}
 		} catch (Exception e) {
-			Log.e(e, "初始化AssetManager失败");
+			Log.e(e, "Fail to initialze AssetManager");
 		}
 		return skinResources;
 	}
@@ -216,38 +255,38 @@ public class SkinManager {
 	 *            资源路径
 	 * @return 代理Resources, 如果skinPath文件不存在或者解析失败返回null
 	 */
-	private Resources createProxyResource(Context cxt, String skinPath) {
+	private ProxyResources createProxyResource(Context cxt, String skinPath) {
 
 		if (DEFAULT_SKIN_PATH.equals(skinPath)) {
 			Log.d("skinPath is:{} , return defaultResources");
 			return defaultResources;
 		}
 
-		Resources skinResources = null;
-		WeakReference<Resources> resRef = cacheResources.get(skinPath);
+		ProxyResources proxyResources = null;
+		WeakReference<ProxyResources> resRef = cacheResources.get(skinPath);
 		if (resRef != null) {
-			skinResources = resRef.get();
-			if (skinResources != null) {
-				return skinResources;
+			proxyResources = resRef.get();
+			if (proxyResources != null) {
+				return proxyResources;
 			}
 		}
 
-		skinResources = createSkinResource(skinPath);
+		Resources skinResources = createSkinResource(skinPath);
 		if (skinResources == null) {
-			Log.w("Create skin resources fail");
-			return skinResources;
+			Log.w("Fail to create skin resources");
+			return null;
 		}
 
 		if (DEFAULT_SKIN_NIGHT.equals(skinPath)) {
-			skinResources = new NightResources(cxt.getPackageName(), skinResources, defaultResources, skinPath);
+			proxyResources = new NightResources(cxt.getPackageName(), skinResources, defaultResources, skinPath);
 		} else {
-			skinResources = new SkinProxyResources(cxt.getPackageName(), skinResources, defaultResources, skinPath);
+			proxyResources = new SkinProxyResources(cxt.getPackageName(), skinResources, defaultResources, skinPath);
 		}
 
 		synchronized (this) {
-			cacheResources.put(skinPath, new WeakReference<Resources>(skinResources));
+			cacheResources.put(skinPath, new WeakReference<ProxyResources>(proxyResources));
 		}
-		return skinResources;
+		return proxyResources;
 	}
 
 	/**
@@ -276,14 +315,12 @@ public class SkinManager {
 	 */
 	private void registerViewFactory(Activity activity) {
 		LayoutInflater li = activity.getLayoutInflater();
-		Factory factory = li.getFactory();
-		if (factory == null) {
-			li.setFactory(new ViewFactory(li));
-			Log.d("LayoutInflater register custom factory");
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+			new ViewFactory().register(li);
 		} else {
-			li.setFactory(new ViewFactory(li, factory));
-			Log.d("LayoutInflater register custom proxy factory");
+			new ViewFactoryAfterGingerbread().register(li);
 		}
+		Log.d("LayoutInflater:{} register custom factory:{", li);
 	}
 
 	/**
@@ -314,11 +351,11 @@ public class SkinManager {
 			protected Boolean doInBackground(Void... params) {
 				try {
 					Log.d("start change resource");
-					Resources res = createProxyResource(cxt, skinPath);
+					final ProxyResources res = createProxyResource(cxt, skinPath);
 					if (res == null) {
 						return false;
 					}
-					((ProxyResources) res).replacePreloadCache();
+					res.replacePreloadCache();
 					List<Activity> temp = (List<Activity>) activitys.clone();
 					for (int i = temp.size() - 1; i >= 0; i--) {
 						Log.d("change :{} resources to :{}", temp.get(i), res);
@@ -345,7 +382,7 @@ public class SkinManager {
 				}
 				changingResource = false;
 			}
-		}.execute();
+		}.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
 
 		showSkinChangeAnimation(activity);
 	}
@@ -362,23 +399,23 @@ public class SkinManager {
 
 		changeActivityResources(a, res);
 
-		if (a instanceof Skinable) {
-			handler.post(new Runnable() {
+		if (a instanceof Skinnable) {
+			serialTasks.offer(new Runnable() {
 				@Override
 				public void run() {
-					((Skinable) a).onResourcesChange();
+					((Skinnable) a).onResourcesChange();
 				}
 			});
 		}
 
 		final List<?> fragments = get(a, "mFragments.mAdded");
 		if (fragments != null && fragments.size() > 0) {
-			handler.post(new Runnable() {
+			serialTasks.offer(new Runnable() {
 				@Override
 				public void run() {
 					for (Object f : fragments) {
-						if (f instanceof Skinable) {
-							final Skinable listener = (Skinable) f;
+						if (f instanceof Skinnable) {
+							Skinnable listener = (Skinnable) f;
 							listener.onResourcesChange();
 						}
 					}
@@ -388,7 +425,7 @@ public class SkinManager {
 
 		final Window w = a.getWindow();
 		if (w != null) {
-			handler.post(new Runnable() {
+			serialTasks.offer(new Runnable() {
 				@Override
 				public void run() {
 					onResourcesChange(w.getDecorView());
@@ -404,12 +441,16 @@ public class SkinManager {
 	 */
 	private void onResourcesChange(final View v) {
 
+		if (Looper.myLooper() == null || Looper.getMainLooper() != Looper.myLooper()) {
+			throw new AndroidRuntimeException("Only the original thread that created a view hierarchy can touch its views.");
+		}
+
 		if (v == null) {
 			return;
 		}
 
-		if (v instanceof Skinable) {
-			((Skinable) v).onResourcesChange();
+		if (v instanceof Skinnable) {
+			((Skinnable) v).onResourcesChange();
 			v.invalidate();
 		}
 
@@ -449,13 +490,14 @@ public class SkinManager {
 			currentSkinPath = prefSkinPath;
 		}
 
-		Resources res;
+		ProxyResources res;
 		if (DEFAULT_SKIN_PATH.equals(currentSkinPath)) {
 			res = defaultResources;
 		} else {
 			res = createProxyResource(activity, currentSkinPath);
+			res.replacePreloadCache();
 		}
-
+		currentSkinResources = res;
 		try {
 			changeActivityResources(activity, res);
 		} catch (Exception e) {
@@ -524,6 +566,11 @@ public class SkinManager {
 			return;
 		}
 
+		if (registeredIdKey.contains(id)) {
+			Log.d("Had registered id:{}, ignore", id);
+			return;
+		}
+
 		TypedValue value = cacheValue;
 		defaultResources.getValue(id, value, true);
 		long key = 0;
@@ -539,7 +586,7 @@ public class SkinManager {
 			key = (((long) value.assetCookie) << 32) | value.data;
 			drawableIdKeyMap.put(key, id);
 		}
-
+		registeredIdKey.put(id);
 	}
 
 	/**

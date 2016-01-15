@@ -24,7 +24,7 @@ import com.cantalou.skin.SkinManager;
  * 重写Instrumentation的callActivityOnCreate,callActivityOnCreate,
  * callActivityOnDestroy方法, 在调用Activity的生命周期方法前增加换肤功能回调
  *
- * @author LinZhiWei
+ * @author cantalou
  * @date 2015年12月5日 下午4:53:44
  */
 public class SkinInstrumentation extends Instrumentation {

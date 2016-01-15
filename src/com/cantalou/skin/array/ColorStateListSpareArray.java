@@ -1,29 +1,28 @@
-package com.cantalou.skin.sparearray;
+package com.cantalou.skin.array;
 
 import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.os.Build;
 import android.util.LongSparseArray;
+import android.util.SparseArray;
 import android.util.TypedValue;
 
-import com.cantalou.skin.SkinManager;
 import com.cantalou.skin.res.ProxyResources;
 import com.cantalou.skin.res.SkinProxyResources;
 
-@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-public class ColorStateListLongSpareArray extends LongSparseArray<ColorStateList> {
+public class ColorStateListSpareArray extends SparseArray<ColorStateList> {
 
 	private LongSparseArray<Integer> resourceIdKeyMap;;
 
 	/**
 	 * Resources mColorStateListCache
 	 */
-	private LongSparseArray<ColorStateList> originalCache;
+	private SparseArray<ColorStateList> originalCache;
 
 	private ProxyResources resources;
 
-	public ColorStateListLongSpareArray(ProxyResources resources, LongSparseArray<ColorStateList> originalCache,
+	public ColorStateListSpareArray(ProxyResources resources, SparseArray<ColorStateList> originalCache,
 			LongSparseArray<Integer> resourceIdKeyMap) {
 		this.resources = resources;
 		this.originalCache = originalCache;
@@ -31,7 +30,7 @@ public class ColorStateListLongSpareArray extends LongSparseArray<ColorStateList
 	}
 
 	@Override
-	public ColorStateList get(long key) {
+	public ColorStateList get(int key) {
 		ColorStateList csl;
 		Integer id = resourceIdKeyMap.get(key);
 		if (id != null) {

@@ -15,6 +15,7 @@ import android.text.TextUtils;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
 
+import com.cantalou.android.util.BinarySearchIntArray;
 import com.cantalou.android.util.ReflectUtil;
 
 public class NightResources extends SkinProxyResources {
@@ -32,7 +33,7 @@ public class NightResources extends SkinProxyResources {
 	/**
 	 * 夜间模式资源不存在的id
 	 */
-	protected SparseIntArray notFoundedNightIds = new SparseIntArray();
+	protected BinarySearchIntArray notFoundedNightIds = new BinarySearchIntArray();
 
 	public NightResources(String packageName, Resources skinRes, Resources defRes, String skinName) {
 		super(packageName, skinRes, defRes, skinName);
@@ -55,7 +56,7 @@ public class NightResources extends SkinProxyResources {
 		}
 
 		// 如果皮肤资源包不存在当前资源项,直接返回id
-		if (notFoundedNightIds.get(id) > 0) {
+		if (notFoundedNightIds.contains(id)) {
 			return id;
 		}
 
@@ -76,7 +77,7 @@ public class NightResources extends SkinProxyResources {
 		}
 		nightId = getIdentifier(name, null, packageName);
 		if (nightId == 0) {
-			notFoundedNightIds.put(id, id);
+			notFoundedNightIds.put(id);
 			nightId = id;
 		} else {
 			nightIdMap.put(id, nightId);
@@ -94,7 +95,7 @@ public class NightResources extends SkinProxyResources {
 		super.getValueForDensity(toNightId(id), density, outValue, resolveRefs);
 	}
 
-	Drawable loadDrawable(TypedValue value, int id) throws NotFoundException {
+	public Drawable loadDrawable(int id) throws NotFoundException {
 		Drawable result = super.loadDrawable(toNightId(id));
 		setColorFilter(result);
 		return result;
@@ -104,7 +105,7 @@ public class NightResources extends SkinProxyResources {
 	 * 给图片添加灰层
 	 *
 	 * @param drawable
-	 * @author LinZhiWei
+	 * @author cantalou
 	 * @date 2015年11月3日 下午4:08:56
 	 */
 	private void setColorFilter(Drawable drawable) {

@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
  *
  * Description: TODO.
  *
- * @author LinZhiWei
+ * @author cantalou
  * @date 2015年12月08日 18:54
  *
  * Copyright (c) 2015年, 4399 Network CO.ltd. All Rights Reserved.
