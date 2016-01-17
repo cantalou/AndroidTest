@@ -314,6 +314,11 @@ public class SkinManager {
 	 * @param activity
 	 */
 	private void registerViewFactory(LayoutInflater li) {
+		if (li.getFactory() instanceof ViewFactory) {
+			Log.w("Had register factory");
+			return;
+		}
+
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 			new ViewFactory().register(li);
 		} else {
@@ -431,6 +436,15 @@ public class SkinManager {
 				}
 			});
 		}
+
+		// ActionBar
+		serialTasks.offer(new Runnable() {
+			@Override
+			public void run() {
+				invoke(a, "invalidateOptionsMenu");
+				invoke(a, "supportInvalidateOptionsMenu");
+			}
+		});
 	}
 
 	/**
@@ -568,6 +582,8 @@ public class SkinManager {
 			return;
 		}
 
+		Log.v("register drawable {} 0x{}", currentSkinResources.getResourceName(id), Integer.toHexString(id));
+
 		TypedValue value = cacheValue;
 		defaultResources.getValue(id, value, true);
 		long key = 0;
@@ -600,6 +616,8 @@ public class SkinManager {
 			return;
 		}
 
+		Log.v("register ColorStateList {} 0x{}", currentSkinResources.getResourceName(id), Integer.toHexString(id));
+
 		TypedValue value = cacheValue;
 		defaultResources.getValue(id, value, true);
 		long key;
@@ -625,52 +643,82 @@ public class SkinManager {
 		if (handledDrawableId.contains(id)) {
 			return;
 		}
+		handledDrawableId.put(id);
+
+		Log.v("register xml {} 0x{}", currentSkinResources.getResourceName(id), Integer.toHexString(id));
+
 		int size = activitys.size();
 		if (size == 0) {
 			return;
 		}
 		Activity activity = activitys.get(size - 1);
-		LayoutInflater li = activity.getLayoutInflater().cloneInContext(activity);
+
+		try {
+			// Native ics, appcompat, actionbarsherlock
+			Object menuInflater = invoke(activity, "getSupportMenuInflater");
+			if (menuInflater == null) {
+				menuInflater = invoke(activity, "getMenuInflater");
+			}
+
+			Method inflateMethod = null;
+			Class<?> menuBuilderKlass = null;
+			Method[] methods = menuInflater.getClass().getDeclaredMethods();
+			for (Method m : methods) {
+				if ("inflate".equals(m.getName())) {
+					inflateMethod = m;
+					menuBuilderKlass = m.getParameterTypes()[1];
+					break;
+				}
+			}
+
+			Object menu = menuBuilderKlass.getConstructor(Context.class).newInstance(activity);
+			inflateMethod.invoke(menuInflater, id, menu);
+
+			ArrayList<?> items = get(menu, "mItems");
+			for (Object menuItem : items) {
+				int iconResId = get(menuItem, "mIconResId");
+				if (iconResId > 0) {
+					set(menuItem, "mIconDrawable", null);
+					registerDrawable(iconResId);
+				}
+			}
+		} catch (Exception e1) {
+			Log.e(e1);
+		}
+		
+	}
+
+	/**
+	 * 注册layout资源id
+	 * 
+	 * @param id
+	 */
+	public synchronized void registerLayout(int id) {
+		if ((SkinProxyResources.APP_ID_MASK & id) != SkinProxyResources.APP_ID_MASK) {
+			return;
+		}
+
+		if (handledDrawableId.contains(id)) {
+			return;
+		}
+		handledDrawableId.put(id);
+
+		Log.v("register layout {} 0x{}", currentSkinResources.getResourceName(id), Integer.toHexString(id));
+
+		int size = activitys.size();
+		if (size == 0) {
+			return;
+		}
+		Activity activity = activitys.get(size - 1);
+		LayoutInflater li = activity.getLayoutInflater();
 		registerViewFactory(li);
 		try {
 			li.inflate(id, null);
 		} catch (Exception e) {
-
-			if (e.getCause() instanceof ClassNotFoundException) {
-				try {
-					// Native ics, appcompat, actionbarsherlock
-					Object menuInflater = invoke(activity, "getSupportMenuInflater");
-					if (menuInflater == null) {
-						menuInflater = invoke(activity, "getMenuInflater");
-					}
-
-					Method inflateMethod = null;
-					Class<?> menuBuilderKlass = null;
-					Method[] methods = menuInflater.getClass().getDeclaredMethods();
-					for (Method m : methods) {
-						if ("inflate".equals(m.getName())) {
-							inflateMethod = m;
-							menuBuilderKlass = m.getParameterTypes()[1];
-							break;
-						}
-					}
-
-					Object menu = menuBuilderKlass.getConstructor(Context.class).newInstance(activity);
-					inflateMethod.invoke(menuInflater, id, menu);
-
-					ArrayList<?> items = get(menu, "mItems");
-					for (Object menuItem : items) {
-						int iconResId = get(menuItem, "mIconResId");
-						registerDrawable(iconResId);
-					}
-
-				} catch (Exception e1) {
-					Log.w("ClassNotFoundException com.android.internal.view.menu.MenuBuilder");
-				}
-			}
+			Log.e(e);
+			handledDrawableId.delete(id);
+			registerXml(id);
 		}
-
-		handledDrawableId.put(id);
 	}
 
 	/**

@@ -167,7 +167,6 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@color/default_line_indicator_selected_color"
-                android:onClick="next"
                 android:padding="10dip"
                 android:text="activity"
                 android:textSize="12sp" />
@@ -179,7 +178,6 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@color/default_line_indicator_selected_color"
-                android:onClick="next"
                 android:padding="10dip"
                 android:text="fragment"
                 android:textSize="12sp" />
