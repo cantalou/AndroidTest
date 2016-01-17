@@ -243,6 +243,14 @@ public class ProxyResources extends Resources {
 		}
 		return dr;
 	}
+	
+	
+
+	@Override
+	public XmlResourceParser getXml(int id) throws NotFoundException {
+		skinManager.registerXml(id);
+		return super.getXml(id);
+	}
 
 	@SuppressWarnings("deprecation")
 	protected Drawable loadDrawable(Resources res, TypedValue value, int id) throws NotFoundException {
@@ -310,6 +318,7 @@ public class ProxyResources extends Resources {
 	}
 
 	protected ColorStateList loadColorStateList(Resources res, TypedValue value, int id) throws NotFoundException {
+
 		ColorStateList csl = null;
 		if (value.type >= TypedValue.TYPE_FIRST_COLOR_INT && value.type <= TypedValue.TYPE_LAST_COLOR_INT) {
 			csl = ColorStateList.valueOf(value.data);
