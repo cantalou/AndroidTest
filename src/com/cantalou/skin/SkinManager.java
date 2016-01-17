@@ -7,13 +7,16 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.AndroidRuntimeException;
+import android.util.AttributeSet;
 import android.util.LongSparseArray;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
@@ -35,12 +38,14 @@ import com.cantalou.skin.res.NightResources;
 import com.cantalou.skin.res.ProxyResources;
 import com.cantalou.skin.res.SkinProxyResources;
 import com.cantalou.skin.res.SkinResources;
+import com.cantalou.test.ui.slidingmenu.MainFragment;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.Executor;
@@ -58,7 +63,7 @@ import static com.cantalou.android.util.ReflectUtil.set;
  */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class SkinManager {
-	
+
 	/**
 	 * 当前皮肤存储key
 	 */
@@ -141,6 +146,7 @@ public class SkinManager {
 
 	ArrayDeque<Runnable> serialTasks = new ArrayDeque<Runnable>() {
 		Runnable mActive;
+
 		public synchronized boolean offer(final Runnable e) {
 			boolean result = super.offer(new Runnable() {
 				@Override
@@ -648,6 +654,14 @@ public class SkinManager {
 
 	public LongSparseArray<Integer> getColorDrawableIdKeyMap() {
 		return colorDrawableIdKeyMap;
+	}
+
+	private BinarySearchIntArray parsedXmlIds = new BinarySearchIntArray();
+
+	public void registerPendingParseXml(int xmlId) {
+		if (parsedXmlIds.contains(xmlId)) {
+			return;
+		}
 	}
 
 }
