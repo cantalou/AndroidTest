@@ -48,6 +48,9 @@ import static com.cantalou.android.util.ReflectUtil.forName;
 import static com.cantalou.android.util.ReflectUtil.get;
 import static com.cantalou.android.util.ReflectUtil.invoke;
 import static com.cantalou.android.util.ReflectUtil.set;
+import static com.cantalou.android.util.ReflectUtil.findByMethod;
+
+;
 
 /**
  * 皮肤资源Manager
@@ -660,20 +663,16 @@ public class SkinManager {
 				menuInflater = invoke(activity, "getMenuInflater");
 			}
 
-			Method inflateMethod = null;
-			Class<?> menuBuilderKlass = null;
-			Method[] methods = menuInflater.getClass().getDeclaredMethods();
-			for (Method m : methods) {
-				if ("inflate".equals(m.getName())) {
-					inflateMethod = m;
-					menuBuilderKlass = m.getParameterTypes()[1];
-					break;
-				}
+			Class<?> menuBuilderKlass = forName("com.android.internal.view.menu.MenuBuilder");
+			if (menuBuilderKlass == null) {
+				menuBuilderKlass = forName("android.support.v7.view.menu.MenuBuilder");
+			}
+			if (menuBuilderKlass == null) {
+				menuBuilderKlass = forName("com.actionbarsherlock.internal.view.menu.MenuBuilder");
 			}
 
 			Object menu = menuBuilderKlass.getConstructor(Context.class).newInstance(activity);
-			inflateMethod.invoke(menuInflater, id, menu);
-
+			findByMethod(menuInflater.getClass(), "inflate").invoke(menuInflater, id, menu);
 			ArrayList<?> items = get(menu, "mItems");
 			for (Object menuItem : items) {
 				int iconResId = get(menuItem, "mIconResId");
@@ -685,7 +684,7 @@ public class SkinManager {
 		} catch (Exception e1) {
 			Log.e(e1);
 		}
-		
+
 	}
 
 	/**
