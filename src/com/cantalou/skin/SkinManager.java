@@ -201,7 +201,7 @@ public class SkinManager {
 			return;
 		}
 
-		Instrumentation instrumentation = invoke(activityThreadClass, "getInstrumentation");
+		Instrumentation instrumentation = invoke(activityThread, "getInstrumentation");
 		if (instrumentation == null) {
 			Log.w("Can not load class android.app.ActivityThread. Try invoking onAttach in Activity.onAttach method before invoking super.onAttach");
 			return;
@@ -697,13 +697,6 @@ public class SkinManager {
 			return;
 		}
 
-		if (handledDrawableId.contains(id)) {
-			return;
-		}
-		handledDrawableId.put(id);
-
-		Log.v("register layout {} 0x{}", currentSkinResources.getResourceName(id), Integer.toHexString(id));
-
 		int size = activitys.size();
 		if (size == 0) {
 			return;
@@ -711,6 +704,13 @@ public class SkinManager {
 		Activity activity = activitys.get(size - 1);
 		LayoutInflater li = activity.getLayoutInflater();
 		registerViewFactory(li);
+		
+		if (handledDrawableId.contains(id)) {
+			return;
+		}
+		handledDrawableId.put(id);
+
+		Log.v("register layout {} 0x{}", currentSkinResources.getResourceName(id), Integer.toHexString(id));
 		try {
 			li.inflate(id, null);
 		} catch (Exception e) {

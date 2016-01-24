@@ -25,17 +25,7 @@ public abstract class AbstractHolder implements Cloneable {
 		}
 		return result ? this : null;
 	}
-
-	/**
-	 * 重新加载资源
-	 *
-	 * @param view
-	 *            view对象
-	 * @param res
-	 *            资源对象
-	 */
-	public abstract void reload(View view, Resources res);
-
+	
 	/**
 	 * 解析组件属性
 	 *
@@ -46,6 +36,16 @@ public abstract class AbstractHolder implements Cloneable {
 		called = true;
 		return false;
 	}
+
+	/**
+	 * 重新加载资源
+	 *
+	 * @param view
+	 *            view对象
+	 * @param res
+	 *            资源对象
+	 */
+	public abstract void reload(View view, Resources res);
 
 	protected int getResourceId(AttributeSet attrs, String name) {
 		int id = 0;

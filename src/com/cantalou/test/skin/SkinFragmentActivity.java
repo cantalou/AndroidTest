@@ -21,7 +21,7 @@ public class SkinFragmentActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		skinManager.onAttach(this);
+		//skinManager.onAttach(this);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_skin);
 		ViewGroup container = (ViewGroup) findViewById(R.id.skin_container);
@@ -39,7 +39,7 @@ public class SkinFragmentActivity extends FragmentActivity {
 
 	@Override
 	protected void onDestroy() {
-		skinManager.onDestroy(this);
+		//skinManager.onDestroy(this);
 		super.onDestroy();
 	}
 

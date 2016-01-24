@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,7 +18,7 @@ import com.cantalou.skin.SkinManager;
 import com.cantalou.test.R;
 import com.cantalou.android.util.FileUtil;
 
-public class SkinActivity extends Activity implements OnClickListener, OnResourcesChangeFinishListener {
+public class SkinActivity extends FragmentActivity implements OnClickListener, OnResourcesChangeFinishListener {
 
 	private SkinManager skinManager = SkinManager.getInstance();
 
@@ -38,7 +39,7 @@ public class SkinActivity extends Activity implements OnClickListener, OnResourc
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		skinManager.onAttach(this);
+		//skinManager.onAttach(this);
 		currentSkin = skinManager.getCurrentSkin();
 		setContentView(R.layout.activity_skin);
 		initView();
@@ -54,7 +55,7 @@ public class SkinActivity extends Activity implements OnClickListener, OnResourc
 
 	@Override
 	protected void onDestroy() {
-		skinManager.onDestroy(this);
+		//skinManager.onDestroy(this);
 		super.onDestroy();
 	}
 

@@ -5,8 +5,9 @@ import com.cantalou.skin.SkinManager;
 
 public class HelloAndroidApplication extends Application {
 
-    @Override
-    public void onCreate() {
-	super.onCreate();
-    }
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		SkinManager.getInstance().initByReplaceInstrumentation(this);
+	}
 }
