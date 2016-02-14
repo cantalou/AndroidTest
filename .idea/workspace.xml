@@ -1,93 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="443e757a-4d9b-4a34-910c-2df96c466000" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../AndroidSkinChange/androidSkinChange.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/multidex_1_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/multidex_instrumentation_1_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/settings.gradle" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidSkinChange\.idea\libraries\android_util_1_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\.idea\libraries\1_guice_3_0_no_aop.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\.idea\libraries\1_library_2_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\.idea\libraries\android_util_2_0_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\.idea\libraries\library_2_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-hdpi\crop__divider.9.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-hdpi\crop__ic_cancel.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-hdpi\crop__ic_done.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-mdpi\crop__divider.9.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-mdpi\crop__ic_cancel.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-mdpi\crop__ic_done.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-xhdpi\crop__divider.9.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-xhdpi\crop__ic_cancel.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-xhdpi\crop__ic_done.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-xhdpi\crop__tile.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable-xhdpi\tile.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\drawable\texture.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\layout\activity_crop_image.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\values-v14\test_styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\res\values\test_dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\setting.gradle" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\OnResourcesChangeFinishListener.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\OnResourcesChangeListener.java" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\SkinManager.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\Skinnable.java" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\ViewFactory.java" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\ViewFactoryAfterGingerbread.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\array\ColorStateListLongSpareArray.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\array\ColorStateListSpareArray.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\array\DrawableLongSpareArray.java" afterPath="" />
       <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\holder\AbstractHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\holder\AttrHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\holder\ImageViewHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\holder\ListViewHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\holder\TextViewHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\holder\ViewHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\instrumentation\SkinInstrumentation.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\res\NightResources.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\res\ProxyResources.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\res\SkinProxyResources.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidTest\src\com\cantalou\skin\res\SkinResources.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidSkinChange/androidSkinChange.iml" afterPath="$PROJECT_DIR$/../AndroidSkinChange/androidSkinChange.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <list id="5aeb185a-9234-4da6-992c-91029b5cab52" name="Failed commit: Default" comment="1">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/.gradle/2.8/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/../AndroidUtil/.gradle/2.8/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/.gradle/2.8/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/../AndroidUtil/.gradle/2.8/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/.gradle/2.8/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/../AndroidUtil/.gradle/2.8/taskArtifacts/outputFileStates.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/.gradle/2.8/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/../AndroidUtil/.gradle/2.8/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/test/HelloAndroidApplication.java" afterPath="$PROJECT_DIR$/src/com/cantalou/test/HelloAndroidApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinActivity.java" afterPath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinTwoActivity.java" afterPath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinTwoActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_page_turn.xml" afterPath="$PROJECT_DIR$/res/layout/activity_page_turn.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_remove_service.xml" afterPath="$PROJECT_DIR$/res/layout/activity_remove_service.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_skin.xml" afterPath="$PROJECT_DIR$/res/layout/activity_skin.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/.gradle/2.8/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/../AndroidUtil/.gradle/2.8/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/gradle.properties" afterPath="$PROJECT_DIR$/../AndroidUtil/gradle.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidSkinChange/.idea/gradle.xml" afterPath="$PROJECT_DIR$/../AndroidSkinChange/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/guice_3_0_no_aop.xml" afterPath="$PROJECT_DIR$/.idea/libraries/guice_3_0_no_aop.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/hwbsa.xml" afterPath="$PROJECT_DIR$/res/layout/hwbsa.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/library_2_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/library_2_4_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidSkinChange/.idea/misc.xml" afterPath="$PROJECT_DIR$/../AndroidSkinChange/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidSkinChange/.idea/modules.xml" afterPath="$PROJECT_DIR$/../AndroidSkinChange/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/view_page_turn_front.xml" afterPath="$PROJECT_DIR$/res/layout/view_page_turn_front.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidSkinChange/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../AndroidSkinChange/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../AndroidUtil/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidSkinChange\AndroidSkinChange.iml" afterPath="$PROJECT_DIR$/../AndroidSkinChange/androidSkinChange.iml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\.idea\libraries\1_aopalliance_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/aopalliance_1_0.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\.idea\libraries\1_asm_3_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/asm_3_1.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\.idea\libraries\1_butterknife_5_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/butterknife_5_1_1.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\.idea\libraries\1_cglib_2_2_1_v20090111.xml" afterPath="$PROJECT_DIR$/.idea/libraries/cglib_2_2_1_v20090111.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\.idea\libraries\1_javax_inject_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\.idea\libraries\1_roboguice_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/roboguice_2_0.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\.idea\libraries\1_support_v4_r7.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_r7.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidTest\.idea\libraries\1_universal_image_loader_1_9_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidUtil\AndroidUtil.iml" afterPath="$PROJECT_DIR$/../AndroidUtil/androidUtil.iml" />
     </list>
+    <list id="818780f9-fe2d-485d-8c9d-6ad8650b7daf" name="Failed commit: Failed commit: Default" comment="1" />
     <ignored path="AndroidTest.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -119,7 +59,7 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4813278">
+            <state vertical-scroll-proportion="0.6062718">
               <caret line="61" column="23" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
               <folding />
             </state>
@@ -3011,6 +2951,19 @@
       <option name="number" value="Default" />
       <updated>1455413293423</updated>
     </task>
+    <task id="LOCAL-00001" summary="1">
+      <created>1455414282053</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1455414282054</updated>
+    </task>
+    <task id="LOCAL-00002" summary="1">
+      <created>1455414387908</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1455414387908</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3018,22 +2971,22 @@
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40600666" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2057842" sideWeight="0.4978678" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16351502" sideWeight="0.4978678" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16351502" sideWeight="0.4978678" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.75586355" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16351502" sideWeight="0.5021322" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.24413647" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3050,6 +3003,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <confirmMoveToFailedCommit value="2" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -3082,7 +3040,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4813278">
+        <state vertical-scroll-proportion="0.6062718">
           <caret line="61" column="23" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
           <folding />
         </state>
