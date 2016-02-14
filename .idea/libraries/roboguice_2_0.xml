@@ -1,11 +1,9 @@
 <component name="libraryTable">
   <library name="roboguice-2.0">
     <CLASSES>
-      <root url="jar://D:/Program Files (x86)/gradle-2.8/caches/modules-2/files-2.1/org.roboguice/roboguice/2.0/727ccb8f376109d0b5c44abca6f791dccc5c5dbc/roboguice-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/roboguice-2.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://D:/Program Files (x86)/gradle-2.8/caches/modules-2/files-2.1/org.roboguice/roboguice/2.0/b2e6d36ea5369c8306146adb980fecfa8d9ab996/roboguice-2.0-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

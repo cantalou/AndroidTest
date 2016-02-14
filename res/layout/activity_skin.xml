@@ -1,44 +1,41 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/skin_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:baselineAligned="false"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.wy.test.skin.SkinActivity" >
+        tools:context="com.wy.test.skin.SkinActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <com.cantalou.test.skin.view.SkinImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:clickable="true"
-                    android:src="@drawable/selector_skin_icon" />
+                    android:src="@drawable/selector_skin_icon"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="图片" />
+                    android:text="图片"/>
             </LinearLayout>
 
             <LinearLayout
@@ -46,19 +43,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <com.cantalou.test.skin.view.SkinFrameLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@color/blue"
-                    android:clickable="true" />
+                    android:clickable="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="FL背景" />
+                    android:text="FL背景"/>
             </LinearLayout>
 
             <LinearLayout
@@ -66,20 +63,20 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <com.cantalou.test.skin.view.SkinTextView
                     android:layout_width="60dp"
                     android:layout_height="50dp"
                     android:gravity="center"
                     android:text="文本内容颜色"
-                    android:textColor="@color/new_blue" />
+                    android:textColor="@color/new_blue"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/skin_text" />
+                    android:text="@string/skin_text"/>
             </LinearLayout>
 
             <LinearLayout
@@ -87,19 +84,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <com.cantalou.test.skin.view.SkinFrameLayout
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/selector_skin_icon"
-                    android:clickable="true" />
+                    android:clickable="true"/>
 
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:gravity="center"
-                    android:text="背景点击" />
+                    android:text="背景点击"/>
             </LinearLayout>
 
             <LinearLayout
@@ -107,58 +104,58 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/selector_skin_color"
                     android:clickable="true"
-                    android:gravity="center" />
+                    android:gravity="center"/>
 
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:gravity="center"
-                    android:text="颜色点击" />
+                    android:text="颜色点击"/>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/night"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="night" />
+                android:text="night"/>
 
             <CheckBox
                 android:id="@+id/red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="red" />
+                android:text="red"/>
 
             <CheckBox
                 android:id="@+id/green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="green" />
+                android:text="green"/>
 
             <CheckBox
                 android:id="@+id/def"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="默认" />
+                android:text="默认"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/activity"
@@ -169,7 +166,7 @@
                 android:background="@color/default_line_indicator_selected_color"
                 android:padding="10dip"
                 android:text="activity"
-                android:textSize="12sp" />
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/fragment"
@@ -180,7 +177,7 @@
                 android:background="@color/default_line_indicator_selected_color"
                 android:padding="10dip"
                 android:text="fragment"
-                android:textSize="12sp" />
+                android:textSize="12sp"/>
         </LinearLayout>
     </LinearLayout>
 

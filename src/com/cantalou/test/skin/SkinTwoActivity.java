@@ -15,7 +15,7 @@ public class SkinTwoActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        skinManager.onAttach(this);
+        //skinManager.onAttach(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skin);
     }
@@ -30,7 +30,7 @@ public class SkinTwoActivity extends Activity
     @Override
     protected void onDestroy()
     {
-        skinManager.onDestroy(this);
+        //skinManager.onDestroy(this);
         super.onDestroy();
     }
 }

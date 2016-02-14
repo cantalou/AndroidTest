@@ -38,7 +38,7 @@ public class SkinActivity extends Activity implements OnClickListener, OnResourc
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		skinManager.onAttach(this);
+		//skinManager.onAttach(this);
 		currentSkin = skinManager.getCurrentSkin();
 		setContentView(R.layout.activity_skin);
 		initView();
@@ -54,7 +54,7 @@ public class SkinActivity extends Activity implements OnClickListener, OnResourc
 
 	@Override
 	protected void onDestroy() {
-		skinManager.onDestroy(this);
+		//skinManager.onDestroy(this);
 		super.onDestroy();
 	}
 
