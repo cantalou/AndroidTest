@@ -10,9 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="443e757a-4d9b-4a34-910c-2df96c466000" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/src/com/cantalou/android/util/Log.java" afterPath="$PROJECT_DIR$/../AndroidUtil/src/com/cantalou/android/util/Log.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/ProxyResources.java" afterPath="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/ProxyResources.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java" afterPath="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MOVED" beforePath="D:\workspace\AndroidUtil\AndroidUtil.iml" afterPath="$PROJECT_DIR$/../AndroidUtil/androidUtil.iml" />
     </list>
@@ -20,6 +17,11 @@
     <list id="818780f9-fe2d-485d-8c9d-6ad8650b7daf" name="Failed commit: Failed commit: Default" comment="1" />
     <ignored path="AndroidTest.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="../AndroidUtil/gradle/wrapper/gradle-wrapper.jar" />
+    <ignored path="../AndroidUtil/gradle/wrapper/gradle-wrapper.properties" />
+    <ignored path="../AndroidUtil/gradlew" />
+    <ignored path="../AndroidUtil/gradlew.bat" />
+    <ignored path="../AndroidUtil/local.properties" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,8 +89,8 @@
       <file leaf-file-name="SkinProxyResources.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42043796">
-              <caret line="151" column="9" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.5644599">
+              <caret line="159" column="9" selection-start-line="159" selection-start-column="9" selection-end-line="159" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#492#524#0" expanded="true" />
@@ -3084,7 +3086,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456138489463</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1">
+      <created>1456480809002</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1456480809002</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3099,13 +3107,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2057842" sideWeight="0.7398721" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.7526652" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40600666" sideWeight="0.7398721" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.74946696" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2057842" sideWeight="0.26012793" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.25053304" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13539445" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4936034" order="1" side_tool="false" content_ui="tabs" />
@@ -3577,8 +3585,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42043796">
-          <caret line="151" column="9" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.5644599">
+          <caret line="159" column="9" selection-start-line="159" selection-start-column="9" selection-end-line="159" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#492#524#0" expanded="true" />
