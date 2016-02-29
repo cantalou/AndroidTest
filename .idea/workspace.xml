@@ -10,6 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="443e757a-4d9b-4a34-910c-2df96c466000" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/.gitignore" afterPath="$PROJECT_DIR$/../AndroidUtil/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java" afterPath="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidSkinChange/.settings/org.eclipse.jdt.core.prefs" afterPath="$PROJECT_DIR$/../AndroidSkinChange/.settings/org.eclipse.jdt.core.prefs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MOVED" beforePath="D:\workspace\AndroidUtil\AndroidUtil.iml" afterPath="$PROJECT_DIR$/../AndroidUtil/androidUtil.iml" />
     </list>
@@ -58,16 +61,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProxyResources.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProxyResources.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/ProxyResources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="365" column="44" selection-start-line="365" selection-start-column="26" selection-end-line="365" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.6268657">
+              <caret line="324" column="35" selection-start-line="324" selection-start-column="35" selection-end-line="324" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1203#1235#0" expanded="true" />
-                <element signature="e#7361#7362#0" expanded="true" />
-                <element signature="e#7414#7415#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,7 +77,7 @@
         <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/NightResources.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="82" column="44" selection-start-line="82" selection-start-column="44" selection-end-line="82" selection-end-column="44" />
+              <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
               <folding>
                 <element signature="e#1254#1255#0" expanded="true" />
                 <element signature="e#1315#1316#0" expanded="true" />
@@ -86,20 +86,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SkinProxyResources.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SkinProxyResources.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5644599">
-              <caret line="159" column="9" selection-start-line="159" selection-start-column="9" selection-end-line="159" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="174" column="28" selection-start-line="174" selection-start-column="28" selection-end-line="174" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#492#524#0" expanded="true" />
                 <element signature="e#1588#1589#0" expanded="true" />
                 <element signature="e#1630#1631#0" expanded="true" />
-                <element signature="e#3316#3317#0" expanded="true" />
-                <element signature="e#3432#3433#0" expanded="true" />
-                <element signature="e#5569#5570#0" expanded="true" />
-                <element signature="e#5641#5642#0" expanded="true" />
+                <element signature="e#3282#3283#0" expanded="true" />
+                <element signature="e#3398#3399#0" expanded="true" />
+                <element signature="e#5535#5536#0" expanded="true" />
+                <element signature="e#5607#5608#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,7 +107,7 @@
       <file leaf-file-name="Resources.java" pinned="false" current-in-tab="false">
         <entry file="file://D:/android/sources/android-21/android/content/res/Resources.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-66.37288">
+            <state vertical-scroll-proportion="0.0">
               <caret line="1428" column="70" selection-start-line="1428" selection-start-column="62" selection-end-line="1428" selection-end-column="70" />
               <folding />
             </state>
@@ -2769,8 +2768,8 @@
         <option value="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/CacheKeyAndIdManager.java" />
         <option value="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/NightResources.java" />
         <option value="$PROJECT_DIR$/../AndroidUtil/src/com/cantalou/android/util/Log.java" />
-        <option value="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/ProxyResources.java" />
         <option value="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java" />
+        <option value="$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/ProxyResources.java" />
       </list>
     </option>
   </component>
@@ -2813,7 +2812,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2824,6 +2823,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -2833,19 +2833,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AndroidTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3092,7 +3081,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456480809002</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="1">
+      <created>1456480983050</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1456480983050</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3108,15 +3103,14 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40600666" sideWeight="0.7398721" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.74946696" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29699665" sideWeight="0.74626863" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.25053304" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29699665" sideWeight="0.25373134" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13539445" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4936034" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3128,6 +3122,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4936034" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -3149,36 +3144,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/NightResources.java</url>
-          <line>82</line>
-          <properties />
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/NightResources.java</url>
-          <line>90</line>
-          <properties />
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/NightResources.java</url>
-          <line>98</line>
-          <properties />
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/NightResources.java</url>
-          <line>106</line>
-          <properties />
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/NightResources.java</url>
-          <line>114</line>
-          <properties />
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://D:/android/sources/android-21/android/content/res/Resources.java</url>
           <line>699</line>
@@ -3251,7 +3216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35833332">
           <caret line="423" column="50" selection-start-line="423" selection-start-column="50" selection-end-line="423" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3315,10 +3279,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1442" column="0" selection-start-line="1442" selection-start-column="0" selection-end-line="1442" selection-end-column="0" />
-          <folding>
-            <element signature="e#123212#123213#0" expanded="false" />
-            <element signature="e#123262#123263#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3326,7 +3286,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1914" column="54" selection-start-line="1914" selection-start-column="54" selection-end-line="1914" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3406,7 +3365,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3414,7 +3372,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="85" column="13" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3422,7 +3379,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="63" column="33" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3444,7 +3400,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7134588">
           <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3452,9 +3407,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20694645">
           <caret line="713" column="0" selection-start-line="713" selection-start-column="0" selection-end-line="713" selection-end-column="0" />
-          <folding>
-            <element signature="e#27234#27235#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3470,7 +3422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="92" selection-start-line="49" selection-start-column="81" selection-end-line="49" selection-end-column="92" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3494,7 +3445,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="420" column="0" selection-start-line="420" selection-start-column="0" selection-end-line="420" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3502,7 +3452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="945" column="56" selection-start-line="945" selection-start-column="50" selection-end-line="945" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3510,15 +3459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="625" column="37" selection-start-line="625" selection-start-column="37" selection-end-line="625" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/holder/ImageViewHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3547,13 +3487,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="174" column="22" selection-start-line="174" selection-start-column="21" selection-end-line="174" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/holder/ImageViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://D:/android/sources/android-21/android/content/res/Resources.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-66.37288">
+        <state vertical-scroll-proportion="0.0">
           <caret line="1428" column="70" selection-start-line="1428" selection-start-column="62" selection-end-line="1428" selection-end-column="70" />
           <folding />
         </state>
@@ -3562,7 +3509,7 @@
     <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/NightResources.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="44" selection-start-line="82" selection-start-column="44" selection-end-line="82" selection-end-column="44" />
+          <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
           <folding>
             <element signature="e#1254#1255#0" expanded="true" />
             <element signature="e#1315#1316#0" expanded="true" />
@@ -3570,32 +3517,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/ProxyResources.java">
+    <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="365" column="44" selection-start-line="365" selection-start-column="26" selection-end-line="365" selection-end-column="44" />
+          <caret line="174" column="28" selection-start-line="174" selection-start-column="28" selection-end-line="174" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1203#1235#0" expanded="true" />
-            <element signature="e#7361#7362#0" expanded="true" />
-            <element signature="e#7414#7415#0" expanded="true" />
+            <element signature="e#1588#1589#0" expanded="true" />
+            <element signature="e#1630#1631#0" expanded="true" />
+            <element signature="e#3282#3283#0" expanded="true" />
+            <element signature="e#3398#3399#0" expanded="true" />
+            <element signature="e#5535#5536#0" expanded="true" />
+            <element signature="e#5607#5608#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java">
+    <entry file="file://$PROJECT_DIR$/../AndroidSkinChange/src/com/cantalou/skin/content/res/ProxyResources.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5644599">
-          <caret line="159" column="9" selection-start-line="159" selection-start-column="9" selection-end-line="159" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.6268657">
+          <caret line="324" column="35" selection-start-line="324" selection-start-column="35" selection-end-line="324" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#492#524#0" expanded="true" />
-            <element signature="e#1588#1589#0" expanded="true" />
-            <element signature="e#1630#1631#0" expanded="true" />
-            <element signature="e#3316#3317#0" expanded="true" />
-            <element signature="e#3432#3433#0" expanded="true" />
-            <element signature="e#5569#5570#0" expanded="true" />
-            <element signature="e#5641#5642#0" expanded="true" />
           </folding>
         </state>
       </provider>
