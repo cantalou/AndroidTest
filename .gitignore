@@ -6,6 +6,5 @@
 /build/
 /gen/
 /gradle/
-
 /.gradle/
 /project.properties

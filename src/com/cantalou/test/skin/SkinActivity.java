@@ -76,11 +76,11 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
 		green.setOnClickListener(this);
 
 		night = (CheckBox) findViewById(R.id.night);
-		night.setChecked(SkinManager.DEFAULT_SKIN_NIGHT.equals(currentSkin));
+		night.setChecked(SkinManager.PREF_KEY_CURRENT_SKIN.equals(currentSkin));
 		night.setOnClickListener(this);
 
 		def = (CheckBox) findViewById(R.id.def);
-		def.setChecked(SkinManager.DEFAULT_SKIN_PATH.equals(currentSkin));
+		def.setChecked(SkinManager.PREF_KEY_CURRENT_SKIN.equals(currentSkin));
 		def.setOnClickListener(this);
 
 		findViewById(R.id.activity).setOnClickListener(this);
@@ -116,15 +116,15 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
 		}
 
 		case R.id.night: {
-			if (!currentSkin.endsWith(SkinManager.DEFAULT_SKIN_NIGHT)) {
-				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_NIGHT);
+			if (!currentSkin.endsWith(SkinManager.PREF_KEY_CURRENT_SKIN)) {
+				skinManager.changeResources(this, SkinManager.PREF_KEY_CURRENT_SKIN);
 			}
 			break;
 		}
 
 		case R.id.def: {
-			if (!currentSkin.endsWith(SkinManager.DEFAULT_SKIN_PATH)) {
-				skinManager.changeResources(this, SkinManager.DEFAULT_SKIN_PATH);
+			if (!currentSkin.endsWith(SkinManager.PREF_KEY_CURRENT_SKIN)) {
+				skinManager.changeResources(this, SkinManager.PREF_KEY_CURRENT_SKIN);
 			}
 			break;
 		}
@@ -146,7 +146,7 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
 				red.setChecked(true);
 			} else if (currentSkin.endsWith("green.apk")) {
 				green.setChecked(true);
-			} else if (currentSkin.endsWith(SkinManager.DEFAULT_SKIN_NIGHT)) {
+			} else if (currentSkin.endsWith(SkinManager.PREF_KEY_CURRENT_SKIN)) {
 				night.setChecked(true);
 			} else {
 				def.setChecked(true);

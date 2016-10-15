@@ -20,12 +20,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cantalou.test.R;
 import com.cantalou.test.R.id;
 import com.cantalou.test.R.layout;
 import com.cantalou.android.util.CommonAdapter;
 
-public class ListViewInScrollViewActivity extends Activity
-{
+public class ListViewInScrollViewActivity extends Activity {
 
     private LinearLayout ll;
 
@@ -34,79 +34,63 @@ public class ListViewInScrollViewActivity extends Activity
     private ScrollView sv;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(layout.activity_listview_in_scrollview);
 
         List<String> data = new ArrayList<String>();
-        for (int i = 0; i < 10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
             data.add(Integer.toString(i));
         }
 
         listView = (ListView) findViewById(id.listview);
-        listView.setAdapter(new CommonAdapter<String>(layout.hwbsa, data, this)
-        {
+        listView.setAdapter(new CommonAdapter<String>(this, data, R.layout.hwbsa) {
             @Override
-            public void handle(String data1)
-            {
+            public void handle(String data1) {
                 TextView tv = findViewById(id.count);
                 tv.setText(data1);
             }
         });
         setListViewHeightBasedOnChildren(listView);
-        listView.setOnTouchListener(new OnTouchListener()
-        {
+        listView.setOnTouchListener(new OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                if (event.getAction() == MotionEvent.ACTION_UP)
-                {
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
                     sv.requestDisallowInterceptTouchEvent(false);
-                }
-                else
-                {
+                } else {
                     sv.requestDisallowInterceptTouchEvent(true);
                 }
                 return listView.onTouchEvent(event);
             }
         });
 
-        listView.setOnItemClickListener(new OnItemClickListener()
-        {
+        listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(), "123", Toast.LENGTH_SHORT);
             }
         });
 
         sv = (ScrollView) findViewById(id.scrollView);
-        sv.post(new Runnable()
-        {
+        sv.post(new Runnable() {
             @Override
-            public void run()
-            {
+            public void run() {
                 sv.scrollTo(0, 0);
             }
         });
 
     }
 
-    public static void setListViewHeightBasedOnChildren(ListView listView)
-    {
-        if (listView == null)
-        {
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        if (listView == null) {
             return;
         }
 
         ListAdapter listAdapter = listView.getAdapter();
 
         int totalHeight = 0;
-        for (int i = 0; i < listAdapter.getCount() / 2; i++)
-        {
+        for (int i = 0; i < listAdapter.getCount() / 2; i++) {
             View listItem = listAdapter.getView(i, null, listView);
             listItem.measure(0, 0);
             totalHeight += listItem.getMeasuredHeight();
@@ -119,30 +103,22 @@ public class ListViewInScrollViewActivity extends Activity
 
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         Log.i("", "onResume");
         super.onResume();
-        try
-        {
+        try {
             Thread.sleep(10000);
-        }
-        catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
         super.onStart();
-        try
-        {
+        try {
             Thread.sleep(2000);
-        }
-        catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
