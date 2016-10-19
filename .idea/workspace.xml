@@ -19,34 +19,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94152992-7595-4083-9c43-f9fdee0e5f74" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/AbstractHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/AbstractHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarContainerHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarContainerHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/AndroidTest.iml" afterPath="$PROJECT_DIR$/.idea/modules/AndroidTest.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/AppCompactToolBarHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/AppCompactToolBarHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinManager.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/layout/factory/ViewFactory.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/layout/factory/ViewFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/914331513/androidSkinChange.iml" afterPath="$PROJECT_DIR$/.idea/modules/914331513/androidSkinChange.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/androidSkinChange.iml" afterPath="$PROJECT_DIR$/../androidSkinChange/androidSkinChange.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/36067598/androidUtil.iml" afterPath="$PROJECT_DIR$/.idea/modules/36067598/androidUtil.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/aopalliance_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/aopalliance_1_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/asm_3_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/asm_3_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/butterknife_5_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/butterknife_5_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/cglib_2_2_1_v20090111.xml" afterPath="$PROJECT_DIR$/.idea/libraries/cglib_2_2_1_v20090111.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/guice_3_0_no_aop.xml" afterPath="$PROJECT_DIR$/.idea/libraries/guice_3_0_no_aop.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/library_2_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/library_2_4_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/library_2_4_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/library_2_4_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/multidex_1_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/multidex_1_0_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/roboguice_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/roboguice_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_20_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_20_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_20_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_20_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../androidSkinChange/.idea/workspace.xml" />
       <change type="MOVED" beforePath="D:\workspace\AndroidUtil\AndroidUtil.iml" afterPath="$PROJECT_DIR$/../AndroidUtil/androidUtil.iml" />
     </list>
     <ignored path="AndroidTest.iws" />
@@ -112,7 +85,7 @@
       <file leaf-file-name="AbstractHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/AbstractHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57857144">
+            <state vertical-scroll-proportion="1.2017804">
               <caret line="118" column="17" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
               <folding />
             </state>
@@ -193,6 +166,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../androidSkinChange" />
+    <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -3090,21 +3064,21 @@
     <property name="CpuMonitor.minimized" value="true" />
     <property name="NetworkMonitor.minimized" value="true" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.93.101:5555" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="87" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="89" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="107" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="109" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="256" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="257" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="900" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="902" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="178" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="180" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="184" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="186" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="183" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="185" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="805" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="806" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
@@ -3317,21 +3291,21 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4914712" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.189099" sideWeight="0.82835823" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36596218" sideWeight="0.74307036" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.189099" sideWeight="0.82835823" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.59288096" sideWeight="0.7398721" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.189099" sideWeight="0.1716418" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.59288096" sideWeight="0.26012793" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16044776" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16044776" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19349681" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3357,6 +3331,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3394,7 +3372,7 @@
         <state vertical-scroll-proportion="-73.92857">
           <caret line="115" column="9" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3499,7 +3477,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/AbstractHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57857144">
+        <state vertical-scroll-proportion="1.2017804">
           <caret line="118" column="17" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
           <folding />
         </state>
