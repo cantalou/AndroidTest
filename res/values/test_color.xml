@@ -2,6 +2,6 @@
 <resources>
     <color name="blue">#00a2ff</color>
     <color name="new_blue">#00a2ff</color>
-    <color name="new_blue_not_in_skin">#0f525f</color>
+    <color name="new_blue_not_in_skin">#00a2f2</color>
     <color name="new_blue_night">#A9A9A9</color>
 </resources>
