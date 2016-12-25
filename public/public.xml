@@ -3,412 +3,210 @@
 
 <resources>
 
-  <!-- PRIVATE SECTION.  These resources have not been declared public.
-       You can make them public my moving these lines into a file in res/values. -->
+  <!-- PUBLIC SECTION.  These resources have been declared public.
+       Changes to these definitions will break binary compatibility. -->
 
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:9 -->
   <public type="attr" name="centered" id="0x7f010000" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:10 -->
   <public type="attr" name="selectedColor" id="0x7f010001" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:11 -->
   <public type="attr" name="strokeWidth" id="0x7f010002" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:12 -->
   <public type="attr" name="unselectedColor" id="0x7f010003" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:39 -->
   <public type="attr" name="fillColor" id="0x7f010004" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:39 -->
   <public type="attr" name="pageColor" id="0x7f010005" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:39 -->
   <public type="attr" name="radius" id="0x7f010006" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:39 -->
   <public type="attr" name="snap" id="0x7f010007" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:39 -->
   <public type="attr" name="strokeColor" id="0x7f010008" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:40 -->
   <public type="attr" name="lineWidth" id="0x7f010009" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:40 -->
   <public type="attr" name="gapWidth" id="0x7f01000a" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="clipPadding" id="0x7f01000b" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="footerColor" id="0x7f01000c" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="footerLineHeight" id="0x7f01000d" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="footerIndicatorStyle" id="0x7f01000e" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="footerIndicatorHeight" id="0x7f01000f" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="footerIndicatorUnderlinePadding" id="0x7f010010" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="footerPadding" id="0x7f010011" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="linePosition" id="0x7f010012" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="selectedBold" id="0x7f010013" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="titlePadding" id="0x7f010014" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:41 -->
   <public type="attr" name="topPadding" id="0x7f010015" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:42 -->
   <public type="attr" name="fades" id="0x7f010016" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:42 -->
   <public type="attr" name="fadeDelay" id="0x7f010017" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:42 -->
   <public type="attr" name="fadeLength" id="0x7f010018" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:43 -->
   <public type="attr" name="vpiCirclePageIndicatorStyle" id="0x7f010019" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:43 -->
   <public type="attr" name="vpiIconPageIndicatorStyle" id="0x7f01001a" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:43 -->
   <public type="attr" name="vpiLinePageIndicatorStyle" id="0x7f01001b" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:43 -->
   <public type="attr" name="vpiTitlePageIndicatorStyle" id="0x7f01001c" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:43 -->
   <public type="attr" name="vpiTabPageIndicatorStyle" id="0x7f01001d" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:43 -->
   <public type="attr" name="vpiUnderlinePageIndicatorStyle" id="0x7f01001e" />
 
-  <!-- Declared at res\drawable-hdpi-v4\bg.jpg:0 -->
   <public type="drawable" name="bg" id="0x7f020000" />
-  <!-- Declared at res\drawable-hdpi-v4\f.jpg:0 -->
   <public type="drawable" name="f" id="0x7f020001" />
-  <!-- Declared at res\drawable\flag.xml:0 -->
   <public type="drawable" name="flag" id="0x7f020002" />
-  <!-- Declared at res\drawable-hdpi-v4\g.jpg:0 -->
   <public type="drawable" name="g" id="0x7f020003" />
-  <!-- Declared at res\drawable-hdpi-v4\hl.jpg:0 -->
   <public type="drawable" name="hl" id="0x7f020004" />
-  <!-- Declared at res\drawable-hdpi-v4\hs.jpg:0 -->
   <public type="drawable" name="hs" id="0x7f020005" />
-  <!-- Declared at res\drawable-hdpi-v4\i1.jpg:0 -->
   <public type="drawable" name="i1" id="0x7f020006" />
-  <!-- Declared at res\drawable-hdpi-v4\i2.jpg:0 -->
   <public type="drawable" name="i2" id="0x7f020007" />
-  <!-- Declared at res\drawable-hdpi-v4\i3.jpg:0 -->
   <public type="drawable" name="i3" id="0x7f020008" />
-  <!-- Declared at res\drawable-hdpi-v4\i4.jpg:0 -->
   <public type="drawable" name="i4" id="0x7f020009" />
-  <!-- Declared at res\drawable-xhdpi-v4\ic_launcher.png:0 -->
   <public type="drawable" name="ic_launcher" id="0x7f02000a" />
-  <!-- Declared at res\drawable-xhdpi-v4\ic_launcher_not_in_skin.png:0 -->
   <public type="drawable" name="ic_launcher_not_in_skin" id="0x7f02000b" />
-  <!-- Declared at res\drawable\round.xml:0 -->
   <public type="drawable" name="round" id="0x7f02000c" />
-  <!-- Declared at res\drawable\selector_skin_color.xml:0 -->
   <public type="drawable" name="selector_skin_color" id="0x7f02000d" />
-  <!-- Declared at res\drawable\selector_skin_icon.xml:0 -->
   <public type="drawable" name="selector_skin_icon" id="0x7f02000e" />
-  <!-- Declared at res\drawable-hdpi-v4\vl.jpg:0 -->
   <public type="drawable" name="vl" id="0x7f02000f" />
-  <!-- Declared at res\drawable\vpi__tab_indicator.xml:0 -->
   <public type="drawable" name="vpi__tab_indicator" id="0x7f020010" />
-  <!-- Declared at res\drawable-mdpi-v4\vpi__tab_selected_focused_holo.9.png:0 -->
-  <!-- Declared at res\drawable-hdpi-v4\vpi__tab_selected_focused_holo.9.png:0 -->
-  <!-- Declared at res\drawable-xhdpi-v4\vpi__tab_selected_focused_holo.9.png:0 -->
   <public type="drawable" name="vpi__tab_selected_focused_holo" id="0x7f020011" />
-  <!-- Declared at res\drawable-mdpi-v4\vpi__tab_selected_holo.9.png:0 -->
-  <!-- Declared at res\drawable-hdpi-v4\vpi__tab_selected_holo.9.png:0 -->
-  <!-- Declared at res\drawable-xhdpi-v4\vpi__tab_selected_holo.9.png:0 -->
   <public type="drawable" name="vpi__tab_selected_holo" id="0x7f020012" />
-  <!-- Declared at res\drawable-mdpi-v4\vpi__tab_selected_pressed_holo.9.png:0 -->
-  <!-- Declared at res\drawable-hdpi-v4\vpi__tab_selected_pressed_holo.9.png:0 -->
-  <!-- Declared at res\drawable-xhdpi-v4\vpi__tab_selected_pressed_holo.9.png:0 -->
   <public type="drawable" name="vpi__tab_selected_pressed_holo" id="0x7f020013" />
-  <!-- Declared at res\drawable-mdpi-v4\vpi__tab_unselected_focused_holo.9.png:0 -->
-  <!-- Declared at res\drawable-hdpi-v4\vpi__tab_unselected_focused_holo.9.png:0 -->
-  <!-- Declared at res\drawable-xhdpi-v4\vpi__tab_unselected_focused_holo.9.png:0 -->
   <public type="drawable" name="vpi__tab_unselected_focused_holo" id="0x7f020014" />
-  <!-- Declared at res\drawable-mdpi-v4\vpi__tab_unselected_holo.9.png:0 -->
-  <!-- Declared at res\drawable-hdpi-v4\vpi__tab_unselected_holo.9.png:0 -->
-  <!-- Declared at res\drawable-xhdpi-v4\vpi__tab_unselected_holo.9.png:0 -->
   <public type="drawable" name="vpi__tab_unselected_holo" id="0x7f020015" />
-  <!-- Declared at res\drawable-mdpi-v4\vpi__tab_unselected_pressed_holo.9.png:0 -->
-  <!-- Declared at res\drawable-hdpi-v4\vpi__tab_unselected_pressed_holo.9.png:0 -->
-  <!-- Declared at res\drawable-xhdpi-v4\vpi__tab_unselected_pressed_holo.9.png:0 -->
   <public type="drawable" name="vpi__tab_unselected_pressed_holo" id="0x7f020016" />
-  <!-- Declared at res\drawable-hdpi-v4\vs.jpg:0 -->
   <public type="drawable" name="vs" id="0x7f020017" />
 
-  <!-- Declared at res\layout\activity_a.xml:0 -->
   <public type="layout" name="activity_a" id="0x7f030000" />
-  <!-- Declared at res\layout\activity_common_adapter_listview.xml:0 -->
   <public type="layout" name="activity_common_adapter_listview" id="0x7f030001" />
-  <!-- Declared at res\layout\activity_flow_layout.xml:0 -->
   <public type="layout" name="activity_flow_layout" id="0x7f030002" />
-  <!-- Declared at res\layout\activity_image.xml:0 -->
   <public type="layout" name="activity_image" id="0x7f030003" />
-  <!-- Declared at res\layout\activity_linear_layout.xml:0 -->
   <public type="layout" name="activity_linear_layout" id="0x7f030004" />
-  <!-- Declared at res\layout\activity_listview_in_scrollview.xml:0 -->
   <public type="layout" name="activity_listview_in_scrollview" id="0x7f030005" />
-  <!-- Declared at res\layout\activity_main.xml:0 -->
   <public type="layout" name="activity_main" id="0x7f030006" />
-  <!-- Declared at res\layout\activity_page_turn.xml:0 -->
   <public type="layout" name="activity_page_turn" id="0x7f030007" />
-  <!-- Declared at res\layout\activity_remove_service.xml:0 -->
   <public type="layout" name="activity_remove_service" id="0x7f030008" />
-  <!-- Declared at res\layout\activity_single_top.xml:0 -->
   <public type="layout" name="activity_single_top" id="0x7f030009" />
-  <!-- Declared at res\layout\activity_skin.xml:0 -->
   <public type="layout" name="activity_skin" id="0x7f03000a" />
-  <!-- Declared at res\layout\activity_web_view.xml:0 -->
   <public type="layout" name="activity_web_view" id="0x7f03000b" />
-  <!-- Declared at res\layout\arc_button.xml:0 -->
   <public type="layout" name="arc_button" id="0x7f03000c" />
-  <!-- Declared at res\layout\butter_knife.xml:0 -->
   <public type="layout" name="butter_knife" id="0x7f03000d" />
-  <!-- Declared at res\layout\draw_arc_ring.xml:0 -->
   <public type="layout" name="draw_arc_ring" id="0x7f03000e" />
-  <!-- Declared at res\layout\draw_ring.xml:0 -->
   <public type="layout" name="draw_ring" id="0x7f03000f" />
-  <!-- Declared at res\layout\fragment_left.xml:0 -->
   <public type="layout" name="fragment_left" id="0x7f030010" />
-  <!-- Declared at res\layout\fragment_main.xml:0 -->
   <public type="layout" name="fragment_main" id="0x7f030011" />
-  <!-- Declared at res\layout\hwbsa.xml:0 -->
   <public type="layout" name="hwbsa" id="0x7f030012" />
-  <!-- Declared at res\layout\indicator_fragment.xml:0 -->
   <public type="layout" name="indicator_fragment" id="0x7f030013" />
-  <!-- Declared at res\layout\indicator_fragment_main.xml:0 -->
   <public type="layout" name="indicator_fragment_main" id="0x7f030014" />
-  <!-- Declared at res\layout\item.xml:0 -->
   <public type="layout" name="item" id="0x7f030015" />
-  <!-- Declared at res\layout\rotate_image.xml:0 -->
   <public type="layout" name="rotate_image" id="0x7f030016" />
-  <!-- Declared at res\layout\rotate_image2.xml:0 -->
   <public type="layout" name="rotate_image2" id="0x7f030017" />
-  <!-- Declared at res\layout\sliding_menu_activity.xml:0 -->
   <public type="layout" name="sliding_menu_activity" id="0x7f030018" />
-  <!-- Declared at res\layout\sliding_menu_view.xml:0 -->
   <public type="layout" name="sliding_menu_view" id="0x7f030019" />
-  <!-- Declared at res\layout\view_page_turn_front.xml:0 -->
   <public type="layout" name="view_page_turn_front" id="0x7f03001a" />
 
-  <!-- Declared at res\anim\myanim.xml:0 -->
   <public type="anim" name="myanim" id="0x7f040000" />
 
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:3 -->
   <public type="array" name="media_names" id="0x7f050000" />
 
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:13 -->
   <public type="bool" name="default_circle_indicator_centered" id="0x7f060000" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:14 -->
   <public type="bool" name="default_circle_indicator_snap" id="0x7f060001" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:15 -->
   <public type="bool" name="default_line_indicator_centered" id="0x7f060002" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:16 -->
   <public type="bool" name="default_title_indicator_selected_bold" id="0x7f060003" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:17 -->
   <public type="bool" name="default_underline_indicator_fades" id="0x7f060004" />
 
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:18 -->
   <public type="color" name="blue" id="0x7f070000" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:19 -->
   <public type="color" name="default_circle_indicator_fill_color" id="0x7f070001" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:20 -->
   <public type="color" name="default_circle_indicator_page_color" id="0x7f070002" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:21 -->
   <public type="color" name="default_circle_indicator_stroke_color" id="0x7f070003" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:22 -->
   <public type="color" name="default_line_indicator_selected_color" id="0x7f070004" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:23 -->
   <public type="color" name="default_line_indicator_unselected_color" id="0x7f070005" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:24 -->
   <public type="color" name="default_title_indicator_footer_color" id="0x7f070006" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:25 -->
   <public type="color" name="default_title_indicator_selected_color" id="0x7f070007" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:26 -->
   <public type="color" name="default_title_indicator_text_color" id="0x7f070008" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:27 -->
   <public type="color" name="default_underline_indicator_selected_color" id="0x7f070009" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:28 -->
   <public type="color" name="new_blue" id="0x7f07000a" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:29 -->
   <public type="color" name="new_blue_night" id="0x7f07000b" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:30 -->
   <public type="color" name="new_blue_not_in_skin" id="0x7f07000c" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:31 -->
   <public type="color" name="vpi__background_holo_dark" id="0x7f07000d" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:32 -->
   <public type="color" name="vpi__background_holo_light" id="0x7f07000e" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:33 -->
   <public type="color" name="vpi__bright_foreground_disabled_holo_dark" id="0x7f07000f" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:34 -->
   <public type="color" name="vpi__bright_foreground_disabled_holo_light" id="0x7f070010" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:35 -->
   <public type="color" name="vpi__bright_foreground_holo_dark" id="0x7f070011" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:36 -->
   <public type="color" name="vpi__bright_foreground_holo_light" id="0x7f070012" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:37 -->
   <public type="color" name="vpi__bright_foreground_inverse_holo_dark" id="0x7f070013" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:38 -->
   <public type="color" name="vpi__bright_foreground_inverse_holo_light" id="0x7f070014" />
-  <!-- Declared at res\color\vpi__dark_theme.xml:0 -->
   <public type="color" name="vpi__dark_theme" id="0x7f070015" />
-  <!-- Declared at res\color\vpi__light_theme.xml:0 -->
   <public type="color" name="vpi__light_theme" id="0x7f070016" />
 
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:44 -->
   <public type="dimen" name="default_circle_indicator_radius" id="0x7f080000" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:45 -->
   <public type="dimen" name="default_circle_indicator_stroke_width" id="0x7f080001" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:46 -->
   <public type="dimen" name="default_line_indicator_gap_width" id="0x7f080002" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:47 -->
   <public type="dimen" name="default_line_indicator_line_width" id="0x7f080003" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:48 -->
   <public type="dimen" name="default_line_indicator_stroke_width" id="0x7f080004" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:49 -->
   <public type="dimen" name="default_title_indicator_clip_padding" id="0x7f080005" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:50 -->
   <public type="dimen" name="default_title_indicator_footer_indicator_height" id="0x7f080006" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:51 -->
   <public type="dimen" name="default_title_indicator_footer_indicator_underline_padding" id="0x7f080007" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:52 -->
   <public type="dimen" name="default_title_indicator_footer_line_height" id="0x7f080008" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:53 -->
   <public type="dimen" name="default_title_indicator_footer_padding" id="0x7f080009" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:54 -->
   <public type="dimen" name="default_title_indicator_text_size" id="0x7f08000a" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:55 -->
   <public type="dimen" name="default_title_indicator_title_padding" id="0x7f08000b" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:56 -->
   <public type="dimen" name="default_title_indicator_top_padding" id="0x7f08000c" />
 
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:57 -->
   <public type="integer" name="default_circle_indicator_orientation" id="0x7f090000" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:58 -->
   <public type="integer" name="default_title_indicator_footer_indicator_style" id="0x7f090001" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:59 -->
   <public type="integer" name="default_title_indicator_line_position" id="0x7f090002" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:60 -->
   <public type="integer" name="default_underline_indicator_fade_delay" id="0x7f090003" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:61 -->
   <public type="integer" name="default_underline_indicator_fade_length" id="0x7f090004" />
 
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:62 -->
   <public type="string" name="action_settings1" id="0x7f0a0000" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:63 -->
   <public type="string" name="action_settings2" id="0x7f0a0001" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:64 -->
   <public type="string" name="app_name" id="0x7f0a0002" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:65 -->
   <public type="string" name="hello" id="0x7f0a0003" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:66 -->
   <public type="string" name="skin_color" id="0x7f0a0004" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:67 -->
   <public type="string" name="skin_text" id="0x7f0a0005" />
 
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:68 -->
   <public type="style" name="AppBaseTheme" id="0x7f0b0000" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:70 -->
   <public type="style" name="TextAppearance.TabPageIndicator" id="0x7f0b0001" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:74 -->
   <public type="style" name="Theme.PageIndicatorDefaults" id="0x7f0b0002" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:78 -->
   <public type="style" name="Widget" id="0x7f0b0003" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:79 -->
   <public type="style" name="Widget.IconPageIndicator" id="0x7f0b0004" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:83 -->
   <public type="style" name="Widget.TabPageIndicator" id="0x7f0b0005" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\values\values.xml:94 -->
   <public type="style" name="text_flag_01" id="0x7f0b0006" />
 
-  <!-- Declared at res\menu\activity_main.xml:0 -->
   <public type="menu" name="activity_main" id="0x7f0c0000" />
-  <!-- Declared at res\menu\main.xml:0 -->
   <public type="menu" name="main" id="0x7f0c0001" />
-  <!-- Declared at res\menu\menu_page_turn.xml:0 -->
   <public type="menu" name="menu_page_turn" id="0x7f0c0002" />
-  <!-- Declared at res\menu\skin.xml:0 -->
   <public type="menu" name="skin" id="0x7f0c0003" />
 
-  <!-- Declared at <generated>:0 -->
   <public type="id" name="none" id="0x7f0d0000" />
-  <!-- Declared at <generated>:0 -->
   <public type="id" name="triangle" id="0x7f0d0001" />
-  <!-- Declared at <generated>:0 -->
   <public type="id" name="underline" id="0x7f0d0002" />
-  <!-- Declared at <generated>:0 -->
   <public type="id" name="bottom" id="0x7f0d0003" />
-  <!-- Declared at <generated>:0 -->
   <public type="id" name="top" id="0x7f0d0004" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_common_adapter_listview.xml:6 -->
   <public type="id" name="listview" id="0x7f0d0005" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_flow_layout.xml:1 -->
   <public type="id" name="content" id="0x7f0d0006" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_listview_in_scrollview.xml:1 -->
   <public type="id" name="scrollView" id="0x7f0d0007" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_main.xml:6 -->
   <public type="id" name="container" id="0x7f0d0008" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_remove_service.xml:33 -->
   <public type="id" name="key" id="0x7f0d0009" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_remove_service.xml:39 -->
   <public type="id" name="value" id="0x7f0d000a" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_remove_service.xml:51 -->
   <public type="id" name="get" id="0x7f0d000b" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_remove_service.xml:57 -->
   <public type="id" name="put" id="0x7f0d000c" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_skin.xml:6 -->
   <public type="id" name="skin_container" id="0x7f0d000d" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_skin.xml:129 -->
   <public type="id" name="night" id="0x7f0d000e" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_skin.xml:135 -->
   <public type="id" name="red" id="0x7f0d000f" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_skin.xml:141 -->
   <public type="id" name="green" id="0x7f0d0010" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_skin.xml:147 -->
   <public type="id" name="def" id="0x7f0d0011" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_skin.xml:160 -->
   <public type="id" name="activity" id="0x7f0d0012" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_skin.xml:171 -->
   <public type="id" name="fragment" id="0x7f0d0013" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\activity_web_view.xml:10 -->
   <public type="id" name="webView" id="0x7f0d0014" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\arc_button.xml:7 -->
   <public type="id" name="arc_start" id="0x7f0d0015" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\arc_button.xml:14 -->
   <public type="id" name="iv_1" id="0x7f0d0016" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\arc_button.xml:20 -->
   <public type="id" name="iv_2" id="0x7f0d0017" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\arc_button.xml:26 -->
   <public type="id" name="iv_3" id="0x7f0d0018" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\arc_button.xml:32 -->
   <public type="id" name="iv_4" id="0x7f0d0019" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\butter_knife.xml:6 -->
   <public type="id" name="btn_test" id="0x7f0d001a" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\butter_knife.xml:12 -->
   <public type="id" name="btn_test1" id="0x7f0d001b" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\hwbsa.xml:7 -->
   <public type="id" name="count" id="0x7f0d001c" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\indicator_fragment.xml:7 -->
   <public type="id" name="indicator" id="0x7f0d001d" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\indicator_fragment.xml:13 -->
   <public type="id" name="viewpager" id="0x7f0d001e" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\item.xml:9 -->
   <public type="id" name="img1" id="0x7f0d001f" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\item.xml:15 -->
   <public type="id" name="title" id="0x7f0d0020" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\rotate_image.xml:8 -->
   <public type="id" name="add" id="0x7f0d0021" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\rotate_image.xml:16 -->
   <public type="id" name="rotateImage" id="0x7f0d0022" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\rotate_image2.xml:11 -->
   <public type="id" name="image1" id="0x7f0d0023" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\sliding_menu_view.xml:7 -->
   <public type="id" name="left" id="0x7f0d0024" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\sliding_menu_view.xml:13 -->
   <public type="id" name="main" id="0x7f0d0025" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\layout\sliding_menu_view.xml:19 -->
   <public type="id" name="right" id="0x7f0d0026" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\menu\activity_main.xml:5 -->
   <public type="id" name="action_select" id="0x7f0d0027" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\menu\main.xml:3 -->
   <public type="id" name="action_settings" id="0x7f0d0028" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\menu\skin.xml:4 -->
   <public type="id" name="action_1" id="0x7f0d0029" />
-  <!-- Declared at F:\work\workspace\android\AndroidTest\build\intermediates\res\merged\debug\menu\skin.xml:10 -->
   <public type="id" name="action_2" id="0x7f0d002a" />
 
 </resources>

@@ -17,6 +17,7 @@ repositories {
 
 apply plugin: 'android'
 apply from: './keepResourcesId.gradle'
+apply from: './genNameId.gradle'
 
 dependencies {
     compile 'com.android.support:support-v4:20.0.0'
@@ -59,7 +60,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 21
         multiDexEnabled true
     }
