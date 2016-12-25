@@ -30,6 +30,7 @@ dependencies {
     //compile 'com.cantalou:android-util:2.0.8@aar'
     compile project(':androidSkinChange')
     //compile project(':androidUtil')
+    compile project(path: ':androidUtil')
 }
 
 android {
