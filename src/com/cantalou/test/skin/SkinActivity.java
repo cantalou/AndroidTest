@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 
 import com.cantalou.skin.OnResourcesChangeFinishListener;
 import com.cantalou.skin.SkinManager;
+import com.cantalou.skin.content.res.ResourcesManager;
 import com.cantalou.test.R;
 import com.cantalou.android.util.FileUtil;
 
@@ -117,14 +118,14 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
 
 		case R.id.night: {
 			if (!currentSkin.endsWith(SkinManager.PREF_KEY_CURRENT_SKIN)) {
-				skinManager.changeResources(this, SkinManager.PREF_KEY_CURRENT_SKIN);
+				skinManager.changeResources(this, ResourcesManager.DEFAULT_NIGHT_RESOURCES);
 			}
 			break;
 		}
 
 		case R.id.def: {
 			if (!currentSkin.endsWith(SkinManager.PREF_KEY_CURRENT_SKIN)) {
-				skinManager.changeResources(this, SkinManager.PREF_KEY_CURRENT_SKIN);
+				skinManager.changeResources(this, ResourcesManager.DEFAULT_RESOURCES);
 			}
 			break;
 		}
