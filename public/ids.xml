@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
 <item type="id" name="none" />
 <item type="id" name="triangle" />
 <item type="id" name="underline" />
@@ -15,7 +14,6 @@
 <item type="id" name="get" />
 <item type="id" name="put" />
 <item type="id" name="skin_container" />
-<item type="id" name="night" />
 <item type="id" name="red" />
 <item type="id" name="green" />
 <item type="id" name="def" />

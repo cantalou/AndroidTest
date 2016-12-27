@@ -16,8 +16,8 @@ repositories {
 }
 
 apply plugin: 'android'
-//apply from: './keepResourcesId.gradle'
-apply from: './genNameId.gradle'
+apply from: 'https://raw.githubusercontent.com/cantalou/GradlePublic/master/keepResourcesId.gradle'
+apply from: 'https://raw.githubusercontent.com/cantalou/GradlePublic/master/genNameId.gradle'
 
 dependencies {
     compile 'com.android.support:support-v4:20.0.0'
