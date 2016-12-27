@@ -7,4 +7,5 @@
 /gen/
 /gradle/
 /.gradle/
+/.idea
 /project.properties
