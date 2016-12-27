@@ -16,6 +16,8 @@ repositories {
 }
 
 apply plugin: 'android'
+//apply from: './keepResourcesId.gradle'
+apply from: './genNameId.gradle'
 
 dependencies {
     compile 'com.android.support:support-v4:20.0.0'
@@ -27,7 +29,8 @@ dependencies {
     //compile 'com.cantalou:android-skin-change:2.0.5@aar'
     //compile 'com.cantalou:android-util:2.0.8@aar'
     compile project(':androidSkinChange')
-    compile project(':androidUtil')
+    //compile project(':androidUtil')
+    compile project(path: ':androidUtil')
 }
 
 android {

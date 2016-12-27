@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<item type="id" name="none" />
+<item type="id" name="triangle" />
+<item type="id" name="underline" />
+<item type="id" name="bottom" />
+<item type="id" name="top" />
+<item type="id" name="listview" />
+<item type="id" name="content" />
+<item type="id" name="scrollView" />
+<item type="id" name="container" />
+<item type="id" name="key" />
+<item type="id" name="value" />
+<item type="id" name="get" />
+<item type="id" name="put" />
+<item type="id" name="skin_container" />
+<item type="id" name="night" />
+<item type="id" name="red" />
+<item type="id" name="green" />
+<item type="id" name="def" />
+<item type="id" name="activity" />
+<item type="id" name="fragment" />
+<item type="id" name="webView" />
+<item type="id" name="arc_start" />
+<item type="id" name="iv_1" />
+<item type="id" name="iv_2" />
+<item type="id" name="iv_3" />
+<item type="id" name="iv_4" />
+<item type="id" name="btn_test" />
+<item type="id" name="btn_test1" />
+<item type="id" name="count" />
+<item type="id" name="indicator" />
+<item type="id" name="viewpager" />
+<item type="id" name="img1" />
+<item type="id" name="title" />
+<item type="id" name="add" />
+<item type="id" name="rotateImage" />
+<item type="id" name="image1" />
+<item type="id" name="left" />
+<item type="id" name="main" />
+<item type="id" name="right" />
+<item type="id" name="action_select" />
+<item type="id" name="action_settings" />
+<item type="id" name="action_1" />
+<item type="id" name="action_2" />
+</resources>
