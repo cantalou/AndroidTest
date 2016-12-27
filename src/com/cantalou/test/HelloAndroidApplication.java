@@ -8,6 +8,6 @@ public class HelloAndroidApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		SkinManager.getInstance().initByReplaceInstrumentation(this);
+		SkinManager.getInstance().init(this);
 	}
 }

@@ -15,52 +15,58 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94152992-7595-4083-9c43-f9fdee0e5f74" name="Default" comment="1">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/android_util_1_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/findbugs-idea.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.7\taskArtifacts\cache.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.7\taskArtifacts\cache.properties.lock" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.7\taskArtifacts\fileHashes.bin" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.7\taskArtifacts\fileSnapshots.bin" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.7\taskArtifacts\outputFileStates.bin" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.7\taskArtifacts\taskArtifacts.bin" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.8\taskArtifacts\cache.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.8\taskArtifacts\cache.properties.lock" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.8\taskArtifacts\fileHashes.bin" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.8\taskArtifacts\fileSnapshots.bin" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.8\taskArtifacts\outputFileStates.bin" afterPath="" />
-      <change type="DELETED" beforePath="D:\workspace\AndroidUtil\.gradle\2.8\taskArtifacts\taskArtifacts.bin" afterPath="" />
+    <list default="true" id="94152992-7595-4083-9c43-f9fdee0e5f74" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/KeepIdSkinProxyResources.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/ResourcesManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../androidSkinChange/src/android/content/res/SkinTypeArray.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../androidSkinChange/.idea/modules/2027060148/androidUtil.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/user1.xml" />
+      <change type="DELETED" beforePath="D:\workspace\AndroidTest\.idea\libraries\android_util_1_0_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspace\androidSkinChange\.idea\libraries\android_util_1_0_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspace\androidSkinChange\.idea\modules\36067598\androidUtil.iml" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspace\androidSkinChange\.idea\runConfigurations.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspace\androidSkinChange\src\com\cantalou\skin\Skinnable.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspace\androidSkinChange\src\com\cantalou\skin\content\res\NightResources.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspace\androidSkinChange\src\com\cantalou\skin\content\res\ResourcesManager.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\workspace\androidSkinChange\src\com\cantalou\skin\content\res\StaticProxyResources.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/AbstractHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/AbstractHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarContainerHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarContainerHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarViewHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarViewHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionMenuItemViewHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionMenuItemViewHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../androidSkinChange/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/AndroidTest.iml" afterPath="$PROJECT_DIR$/.idea/modules/AndroidTest.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/AndroidUtil.iml" afterPath="$PROJECT_DIR$/../AndroidUtil/AndroidUtil.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinActivity.java" afterPath="$PROJECT_DIR$/src/com/cantalou/test/skin/SkinActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/AppCompactToolBarHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/AppCompactToolBarHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/AttrHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/AttrHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/array/ColorStateListLongSpareArray.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/array/ColorStateListLongSpareArray.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/array/ColorStateListSpareArray.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/array/ColorStateListSpareArray.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/array/DrawableLongSpareArray.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/array/DrawableLongSpareArray.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/cantalou/test/HelloAndroidApplication.java" afterPath="$PROJECT_DIR$/src/com/cantalou/test/HelloAndroidApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/ImageViewHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/ImageViewHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/ListViewHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/ListViewHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/OnResourcesChangeFinishListener.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/OnResourcesChangeFinishListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/ProxyResources.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/ProxyResources.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/src/com/cantalou/android/util/ReflectUtil.java" afterPath="$PROJECT_DIR$/../AndroidUtil/src/com/cantalou/android/util/ReflectUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinInstrumentation.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinInstrumentation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinManager.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/SkinResources.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/SkinResources.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/TextViewHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/TextViewHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/layout/factory/ViewFactory.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/layout/factory/ViewFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/layout/factory/ViewFactoryAfterGingerbread.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/layout/factory/ViewFactoryAfterGingerbread.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/ViewHandler.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/ViewHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/914331513/androidSkinChange.iml" afterPath="$PROJECT_DIR$/.idea/modules/914331513/androidSkinChange.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/androidSkinChange.iml" afterPath="$PROJECT_DIR$/../androidSkinChange/androidSkinChange.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/36067598/androidUtil.iml" afterPath="$PROJECT_DIR$/.idea/modules/36067598/androidUtil.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/.idea/modules/36067598/androidUtil.iml" afterPath="$PROJECT_DIR$/../androidSkinChange/.idea/modules/36067598/androidUtil.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/aopalliance_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/aopalliance_1_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/asm_3_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/asm_3_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/build.gradle" afterPath="$PROJECT_DIR$/../AndroidUtil/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/butterknife_5_1_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/butterknife_5_1_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/cglib_2_2_1_v20090111.xml" afterPath="$PROJECT_DIR$/.idea/libraries/cglib_2_2_1_v20090111.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/gradle.properties" afterPath="$PROJECT_DIR$/../AndroidUtil/gradle.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/.idea/gradle.xml" afterPath="$PROJECT_DIR$/../AndroidUtil/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/library_2_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/library_2_4_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/roboguice_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/roboguice_2_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_20_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_20_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_20_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_20_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/.idea/modules/androidSkinChange.iml" afterPath="$PROJECT_DIR$/../androidSkinChange/.idea/modules/androidSkinChange.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/build.gradle" afterPath="$PROJECT_DIR$/../androidSkinChange/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/.idea/gradle.xml" afterPath="$PROJECT_DIR$/../androidSkinChange/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/.idea/modules.xml" afterPath="$PROJECT_DIR$/../androidSkinChange/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AndroidUtil/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../AndroidUtil/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../androidSkinChange/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../androidSkinChange/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\workspace\AndroidUtil\src\com\cantalou\android\manager\system\SystemCompat.java" afterPath="$PROJECT_DIR$/../AndroidUtil/src/com/cantalou/android/manager/system/InstrumentationCompat.java" />
+      <change type="MOVED" beforePath="D:\workspace\androidSkinChange\src\com\cantalou\skin\CacheKeyAndIdManager.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/CacheKeyIdManager.java" />
+      <change type="MOVED" beforePath="D:\workspace\androidSkinChange\src\com\cantalou\skin\content\res\ResourcesCompat.java" afterPath="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/util/ResourcesUtil.java" />
     </list>
     <ignored path="AndroidTest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -110,31 +116,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="SkinManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="183" column="52" selection-start-line="183" selection-start-column="52" selection-end-line="183" selection-end-column="52" />
+              <folding>
+                <element signature="e#2608#2641#0" expanded="true" />
+                <element signature="e#5902#5903#0" expanded="true" />
+                <element signature="e#5948#5949#0" expanded="true" />
+                <element signature="e#12581#12582#0" expanded="true" />
+                <element signature="e#12624#12625#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../androidSkinChange/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../AndroidUtil/build.gradle">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6244344">
-              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gradle.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../androidSkinChange/gradle.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkinActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/cantalou/test/skin/SkinActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="139" column="22" selection-start-line="139" selection-start-column="22" selection-end-line="139" selection-end-column="22" />
+            <state vertical-scroll-proportion="1.042471">
+              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -142,8 +154,15 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../AndroidUtil" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
   </component>
   <component name="GradleLocalSettings">
@@ -593,11 +612,6 @@
                 <option name="name" value="prepareComAndroidSupportSupportV42000Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.cantalou:android-util:1.0.5" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComCantalouAndroidUtil105Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Prepare com.viewpagerindicator:library:2.4.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="prepareComViewpagerindicatorLibrary241Library" />
@@ -812,11 +826,6 @@
                 <option name="name" value="assembleDefault" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Publishes artifacts to bintray.com." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="bintrayUpload" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Assembles a bundle containing the library in debug." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="bundleDebug" />
@@ -833,19 +842,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="copyReleaseLint" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates the Maven POM file for publication 'MyPublication'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="generatePomFileForMyPublicationPublication" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="javadocJar" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -870,25 +866,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="packageReleaseResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Publishes all publications produced by this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="publish" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Publishes Maven publication 'MyPublication' to the local Maven repository." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="publishMyPublicationPublicationToMavenLocal" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Publishes all Maven publications produced by this project to the local Maven cache." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="publishToMavenLocal" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="sourcesJar" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1517,11 +1494,6 @@
                 <option name="name" value="assembleReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Publishes artifacts to bintray.com." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
-                <option name="name" value="bintrayUpload" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
                 <option name="name" value="build" />
@@ -1733,11 +1705,6 @@
                 <option name="name" value="generateDebugSources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Generates the Maven POM file for publication 'MyPublication'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
-                <option name="name" value="generatePomFileForMyPublicationPublication" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
                 <option name="name" value="generateReleaseAssets" />
               </ExternalTaskPojo>
@@ -1766,14 +1733,6 @@
                 <option name="description" value="Installs the android (on device) tests for the Debug build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
                 <option name="name" value="installDebugAndroidTest" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
-                <option name="name" value="javadocJar" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs lint on all variants." />
@@ -1889,9 +1848,9 @@
                 <option name="name" value="preReleaseUnitTestBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.cantalou:android-util:1.0.5" />
+                <option name="description" value="Prepare AndroidTest:androidUtil:unspecified" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
-                <option name="name" value="prepareComCantalouAndroidUtil105Library" />
+                <option name="name" value="prepareAndroidTestAndroidUtilUnspecifiedLibrary" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
@@ -1968,21 +1927,6 @@
                 <option name="name" value="properties" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Publishes all publications produced by this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
-                <option name="name" value="publish" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Publishes Maven publication 'MyPublication' to the local Maven repository." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
-                <option name="name" value="publishMyPublicationPublicationToMavenLocal" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Publishes all Maven publications produced by this project to the local Maven cache." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
-                <option name="name" value="publishToMavenLocal" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Displays the signing info for each variant." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
                 <option name="name" value="signingReport" />
@@ -1991,10 +1935,6 @@
                 <option name="description" value="Prints out all the source sets defined in this project." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
                 <option name="name" value="sourceSets" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/../androidSkinChange" />
-                <option name="name" value="sourcesJar" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays the tasks runnable from project ':androidSkinChange'." />
@@ -2091,7 +2031,7 @@
       <map>
         <entry key="D:/AndroidMobileGroups/m4399_MobileGroups/branches/v1.6.2/m4399_Forums" value="4401188837765" />
         <entry key="$PROJECT_DIR$/../AndroidUtil" value="2898938577252" />
-        <entry key="D:\workspace\AndroidTest" value="10323476918174" />
+        <entry key="D:\workspace\AndroidTest" value="10335222048214" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -3024,8 +2964,6 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-io/commons-io/2.4/commons-io-2.4.jar" />
                             <option value="D:/Program Files (x86)/gradle/gradle-2.14/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.2.4/c3ffe3a73348645042fb0b06303b6a3de194494e/httpcore-4.2.4-sources.jar" />
                             <option value="D:/Program Files (x86)/gradle/gradle-2.14/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.2.4/3b7f38df6de5dd8b500e602ae8c2dd5ee446f883/httpcore-4.2.4.jar" />
-                            <option value="D:/Program Files (x86)/gradle/gradle-2.14/caches/modules-2/files-2.1/com.cantalou/android-util/1.0.5/53567e6ed048d9a1fc21a5e4c462a8335088d1df/android-util-1.0.5-sources.jar" />
-                            <option value="D:/Program Files (x86)/gradle/gradle-2.14/caches/modules-2/files-2.1/com.cantalou/android-util/1.0.5/2a5a59e68fbd28e44eda16a5b8ff97790172243b/android-util-1.0.5.aar" />
                             <option value="D:/Program Files (x86)/gradle/gradle-2.14/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.7/b9920fa27e99ebfb25cf4019bb76f8f5ecd58598/gradle-bintray-plugin-1.7-sources.jar" />
                             <option value="D:/Program Files (x86)/gradle/gradle-2.14/caches/modules-2/files-2.1/com.jfrog.bintray.gradle/gradle-bintray-plugin/1.7/c67c5fe6fb62259d0b059cf550f40fe11c66012/gradle-bintray-plugin-1.7.jar" />
                             <option value="D:/Program Files (x86)/gradle/gradle-2.14/caches/modules-2/files-2.1/com.android.tools.build/gradle/2.1.3/134ae0eb9aab134a3c79cea60956c659f851e7e4/gradle-2.1.3-sources.jar" />
@@ -3238,7 +3176,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarContainerHandler.java" />
         <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/AppCompactToolBarHandler.java" />
         <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/layout/factory/ViewFactory.java" />
         <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/AbstractHandler.java" />
@@ -3257,13 +3194,19 @@
         <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/SkinProxyResources.java" />
         <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/SkinResources.java" />
         <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/SkinContextWrapper.java" />
-        <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinManager.java" />
         <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinInstrumentation.java" />
         <option value="$PROJECT_DIR$/../AndroidUpdate/build.gradle" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/../AndroidUtil/gradle.properties" />
         <option value="$PROJECT_DIR$/../AndroidUtil/build.gradle" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/com/cantalou/test/HelloAndroidApplication.java" />
+        <option value="$PROJECT_DIR$/../androidSkinChange/src/android/content/res/TypedArray.java" />
+        <option value="$PROJECT_DIR$/../AndroidUtil/src/com/cantalou/android/util/ReflectUtil.java" />
+        <option value="$PROJECT_DIR$/../androidSkinChange/src/android/content/res/SkinTypeArray.java" />
+        <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarContainerHandler.java" />
+        <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarViewHandler.java" />
+        <option value="$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinManager.java" />
       </list>
     </option>
   </component>
@@ -3382,7 +3325,7 @@
     <property name="MemoryMonitor.minimized" value="true" />
     <property name="CpuMonitor.minimized" value="true" />
     <property name="NetworkMonitor.minimized" value="true" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.93.101:5555" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.93.102:5555" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="89" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="109" />
@@ -3400,7 +3343,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="806" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="recentsLimit" value="5" />
-    <property name="SearchEverywhereHistoryKey" value="skin&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/test/skin/SkinActivity.java" />
+    <property name="SearchEverywhereHistoryKey" value="skinm&#9;FILE&#9;file://D:/workspace/androidSkinChange/src/com/cantalou/skin/SkinManager.java&#10;BaseDexClassLoader&#9;PSI&#9;JAVA://dalvik.system.BaseDexClassLoader&#10;TypedArray&#9;PSI&#9;JAVA://android.content.res.TypedArray&#10;skin&#9;FILE&#9;file://D:/workspace/AndroidTest/src/com/cantalou/test/skin/SkinActivity.java" />
     <property name="android.project.structure.last.selected" value="androidSkinChange" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="FullScreen" value="false" />
@@ -3602,7 +3545,13 @@
       <option name="project" value="LOCAL" />
       <updated>1476929634782</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1">
+      <created>1482745457485</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1482745457485</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -3625,27 +3574,28 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47608453" sideWeight="0.48294243" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47608453" sideWeight="0.76599145" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.189099" sideWeight="0.82835823" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19354838" sideWeight="0.7334755" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27586207" sideWeight="0.79957354" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.67964405" sideWeight="0.7270789" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21579532" sideWeight="0.7489339" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47608453" sideWeight="0.5170576" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.67964405" sideWeight="0.27292112" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18123667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16364606" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27252504" sideWeight="0.4978678" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35038933" sideWeight="0.48507464" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3672,32 +3622,31 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://D:/android/sources/android-21/android/content/res/TypedArray.java</url>
+          <line>453</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/cantalou/test/HelloAndroidActivity.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://D:/android/sources/android-21/android/view/LayoutInflater.java</url>
+          <line>550</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../AndroidUtil/src/com/cantalou/android/util/InstrumentationWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="14" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../AndroidUpdate/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3748,14 +3697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/android/sources/android-21/android/content/res/Resources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33103448">
-          <caret line="1363" column="0" selection-start-line="1363" selection-start-column="0" selection-end-line="1363" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20809248">
@@ -3770,24 +3711,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarViewHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23699422">
-          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/layout/factory/ViewFactoryAfterGingerbread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6950867">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/cantalou/test/HelloAndroidActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23410405">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -3798,31 +3725,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/android/sources/android-21/android/view/LayoutInflater.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33268103">
-          <caret line="712" column="0" selection-start-line="712" selection-start-column="0" selection-end-line="712" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../AndroidUtil/src/com/cantalou/android/util/ReflectUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3419355">
-          <caret line="81" column="27" selection-start-line="81" selection-start-column="27" selection-end-line="81" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/AbstractHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8193642">
           <caret line="118" column="17" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarContainerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24566475">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -3847,27 +3753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/array/DrawableLongSpareArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.129683">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/CacheKeyAndIdManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="304" column="0" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/ResourcesCompat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/array/ColorStateListSpareArray.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3875,31 +3760,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/NightResources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33285302">
-          <caret line="45" column="11" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/ResourcesManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7002882">
-          <caret line="110" column="45" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/ProxyResources.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="59" column="11" selection-start-line="59" selection-start-column="11" selection-end-line="59" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/content/res/StaticProxyResources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35878962">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -3924,13 +3788,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="374" column="54" selection-start-line="374" selection-start-column="46" selection-end-line="374" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinInstrumentation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3938,24 +3795,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../androidSkinChange/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.813253">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../AndroidUpdate/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84393066">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -4017,10 +3860,181 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cantalou/test/HelloAndroidApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AndroidUtil/src/com/cantalou/android/util/ReflectUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.736">
+          <caret line="289" column="47" selection-start-line="289" selection-start-column="47" selection-end-line="289" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3328">
+          <caret line="900" column="19" selection-start-line="900" selection-start-column="19" selection-end-line="900" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../AndroidUtil/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6244344">
-          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/android/platforms/android-21/android.jar!/dalvik/system/BaseDexClassLoader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6934673">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3328">
+          <caret line="342" column="32" selection-start-line="342" selection-start-column="23" selection-end-line="342" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/array/DrawableLongSpareArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4608">
+          <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarContainerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="18" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/handler/actionbar/ActionBarViewHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20762712">
+          <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/android/util/TypedValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29519773">
+          <caret line="284" column="23" selection-start-line="284" selection-start-column="16" selection-end-line="284" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/android/content/res/Resources.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17090395">
+          <caret line="119" column="45" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/android/content/res/TypedArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29646018">
+          <caret line="460" column="68" selection-start-line="460" selection-start-column="68" selection-end-line="460" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/cantalou/test/HelloAndroidActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26129943">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16101696">
+          <caret line="2143" column="0" selection-start-line="2143" selection-start-column="0" selection-end-line="2143" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/com/android/internal/policy/impl/PhoneWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16101696">
+          <caret line="3551" column="0" selection-start-line="3551" selection-start-column="0" selection-end-line="3551" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/android/sources/android-21/android/view/LayoutInflater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26271185">
+          <caret line="550" column="0" selection-start-line="550" selection-start-column="0" selection-end-line="550" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/android/content/res/SkinTypeArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32768363">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../androidSkinChange/src/com/cantalou/skin/SkinManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="183" column="52" selection-start-line="183" selection-start-column="52" selection-end-line="183" selection-end-column="52" />
+          <folding>
+            <element signature="e#2608#2641#0" expanded="true" />
+            <element signature="e#5902#5903#0" expanded="true" />
+            <element signature="e#5948#5949#0" expanded="true" />
+            <element signature="e#12581#12582#0" expanded="true" />
+            <element signature="e#12624#12625#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../androidSkinChange/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.042471">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
           <folding />
         </state>
       </provider>
