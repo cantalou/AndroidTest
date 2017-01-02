@@ -39,12 +39,11 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
 
-                <data
-                        android:host="host"
-                        android:scheme="scheme"/>
+                <data android:host="host"
+                      android:scheme="scheme"/>
             </intent-filter>
         </activity>
-        <activity android:name=".sqlite.SqliteActvity"/>
+        <activity android:name=".sqlite.SqliteActvity"></activity>
         <activity android:name=".service.HandleWithBackgroundServiceActivity"/>
 
         <service android:name=".service.BackgroundService"/>
@@ -75,8 +74,10 @@
         <activity android:name=".skin.SkinFragmentActivity"/>
         <activity android:name=".skin.SkinActivity"/>
         <activity android:name=".webview.WebViewActivity"/>
-        <activity android:name=".launchmode.ActivitySingleTask" android:launchMode="singleTop"/>
-        <activity android:name=".launchmode.ActivitySingleTop" android:launchMode="singleTask"/>
+        <activity android:name=".launchmode.ActivitySingleTask"
+                  android:launchMode="singleTop"/>
+        <activity android:name=".launchmode.ActivitySingleTop"
+                  android:launchMode="singleTask"/>
     </application>
 
 </manifest>

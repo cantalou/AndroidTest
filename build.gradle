@@ -28,9 +28,9 @@ dependencies {
     compile 'org.roboguice:roboguice:2.0'
     //compile 'com.cantalou:android-skin-change:2.0.5@aar'
     //compile 'com.cantalou:android-util:2.0.8@aar'
-    compile project(':androidSkinChange')
+    compile project(':AndroidSkinChange')
     //compile project(':androidUtil')
-    compile project(path: ':androidUtil')
+    compile project(':AndroidUtil')
 }
 
 android {

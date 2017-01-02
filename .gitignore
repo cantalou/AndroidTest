@@ -1,5 +1,5 @@
 /gradlew
-/AndroidTest.iml
+*.iml
 /local.properties
 /gradlew.bat
 /bin/
