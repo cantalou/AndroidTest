@@ -26,8 +26,8 @@
                 android:orientation="vertical">
 
                 <com.cantalou.test.skin.view.SkinImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:clickable="true"
                     android:src="@drawable/selector_skin_icon"/>
 
@@ -46,8 +46,8 @@
                 android:orientation="vertical">
 
                 <com.cantalou.test.skin.view.SkinFrameLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:background="@color/blue"
                     android:clickable="true"/>
 
@@ -87,14 +87,14 @@
                 android:orientation="vertical">
 
                 <com.cantalou.test.skin.view.SkinFrameLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:background="@drawable/selector_skin_icon"
                     android:clickable="true"/>
 
                 <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:text="背景点击"/>
             </LinearLayout>
@@ -107,15 +107,15 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:background="@drawable/selector_skin_color"
                     android:clickable="true"
                     android:gravity="center"/>
 
                 <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:text="颜色点击"/>
             </LinearLayout>
