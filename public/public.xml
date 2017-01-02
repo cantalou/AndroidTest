@@ -82,6 +82,7 @@
 <public type="layout" name="sliding_menu_activity"  id="0x7f030018" />
 <public type="layout" name="sliding_menu_view"  id="0x7f030019" />
 <public type="layout" name="view_page_turn_front"  id="0x7f03001a" />
+<public type="layout" name="activity_ics_animator"  id="0x7f03001b" />
 <public type="anim" name="myanim"  id="0x7f040000" />
 <public type="array" name="media_names"  id="0x7f050000" />
 <public type="bool" name="default_circle_indicator_centered"  id="0x7f060000" />
@@ -125,6 +126,8 @@
 <public type="dimen" name="default_title_indicator_text_size"  id="0x7f08000a" />
 <public type="dimen" name="default_title_indicator_title_padding"  id="0x7f08000b" />
 <public type="dimen" name="default_title_indicator_top_padding"  id="0x7f08000c" />
+<public type="dimen" name="activity_horizontal_margin"  id="0x7f08000d" />
+<public type="dimen" name="activity_vertical_margin"  id="0x7f08000e" />
 <public type="integer" name="default_circle_indicator_orientation"  id="0x7f090000" />
 <public type="integer" name="default_title_indicator_footer_indicator_style"  id="0x7f090001" />
 <public type="integer" name="default_title_indicator_line_position"  id="0x7f090002" />
@@ -189,4 +192,8 @@
 <public type="id" name="action_settings"  id="0x7f0d0028" />
 <public type="id" name="action_1"  id="0x7f0d0029" />
 <public type="id" name="action_2"  id="0x7f0d002a" />
+<public type="id" name="image"  id="0x7f0d002b" />
+<public type="id" name="size"  id="0x7f0d002c" />
+<public type="id" name="wy"  id="0x7f0d002d" />
+<public type="id" name="alpha"  id="0x7f0d002e" />
 </resources>

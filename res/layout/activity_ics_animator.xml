@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cantalou.test.animation.IcsAnimatorActivity"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+    <ImageView android:id="@+id/image"
+               android:layout_width="60dp"
+               android:layout_height="60dp"
+               android:src="@drawable/ic_launcher"/>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal">
+
+        <Button android:id="@+id/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="大小"/>
+
+        <Button android:id="@+id/wy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="位移"/>
+
+        <Button android:id="@+id/alpha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="透明"/>
+
+    </LinearLayout>
+
+</LinearLayout>

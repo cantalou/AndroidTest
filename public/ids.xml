@@ -42,4 +42,8 @@
 <item type="id" name="action_settings" />
 <item type="id" name="action_1" />
 <item type="id" name="action_2" />
+<item type="id" name="image" />
+<item type="id" name="size" />
+<item type="id" name="wy" />
+<item type="id" name="alpha" />
 </resources>
