@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-581655137/AndroidSkinChange.iml" filepath="$PROJECT_DIR$/.idea/modules/-581655137/AndroidSkinChange.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2027060148/AndroidUtil.iml" filepath="$PROJECT_DIR$/.idea/modules/2027060148/AndroidUtil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AndroidSkinChange/AndroidSkinChange.iml" filepath="$PROJECT_DIR$/../AndroidSkinChange/AndroidSkinChange.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidTest.iml" filepath="$PROJECT_DIR$/AndroidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AndroidUtil/AndroidUtil.iml" filepath="$PROJECT_DIR$/../AndroidUtil/AndroidUtil.iml" />
     </modules>
   </component>
 </project>
