@@ -1,8 +1,5 @@
 package com.cantalou.test.skin;
 
-import java.io.File;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,11 +10,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 
+import com.cantalou.android.util.FileUtil;
 import com.cantalou.skin.OnResourcesChangeFinishListener;
 import com.cantalou.skin.ResourcesManager;
 import com.cantalou.skin.SkinManager;
 import com.cantalou.test.R;
-import com.cantalou.android.util.FileUtil;
+
+import java.io.File;
 
 public class SkinActivity extends FragmentActivity implements OnClickListener, OnResourcesChangeFinishListener {
 
@@ -27,7 +26,7 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
 
     private String currentSkin = "";
 
-    private CheckBox red, green, def;
+    private CheckBox red, def;
 
     private static boolean hasNotCopy = true;
 
@@ -40,24 +39,16 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //skinManager.onAttach(this);
         currentSkin = skinManager.getCurrentSkin();
         setContentView(R.layout.activity_skin);
         initView();
 
         if (hasNotCopy) {
             String dir = getFilesDir().getAbsolutePath() + File.separator;
-            FileUtil.copyAssetsFile(this, "green.apk", dir + "green.apk");
             FileUtil.copyAssetsFile(this, "red.apk", dir + "red.apk");
             hasNotCopy = false;
         }
 
-    }
-
-    @Override
-    protected void onDestroy() {
-        //skinManager.onDestroy(this);
-        super.onDestroy();
     }
 
     @Override
@@ -71,10 +62,6 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
         red = (CheckBox) findViewById(R.id.red);
         red.setChecked(currentSkin.endsWith("red.apk"));
         red.setOnClickListener(this);
-
-        green = (CheckBox) findViewById(R.id.green);
-        green.setChecked(currentSkin.endsWith("green.apk"));
-        green.setOnClickListener(this);
 
         def = (CheckBox) findViewById(R.id.def);
         def.setChecked(currentSkin.endsWith(ResourcesManager.DEFAULT_RESOURCES));
@@ -105,12 +92,6 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
                 }
                 break;
             }
-            case R.id.green: {
-                if (!currentSkin.endsWith("green.apk")) {
-                    skinManager.changeResources(this, getFilesDir().getAbsolutePath() + "/green.apk");
-                }
-                break;
-            }
 
             case R.id.def: {
                 if (!currentSkin.endsWith(ResourcesManager.DEFAULT_RESOURCES)) {
@@ -129,12 +110,9 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
         if (success) {
             def.setChecked(false);
             red.setChecked(false);
-            green.setChecked(false);
             currentSkin = skinManager.getCurrentSkin();
             if (currentSkin.endsWith("red.apk")) {
                 red.setChecked(true);
-            } else if (currentSkin.endsWith("green.apk")) {
-                green.setChecked(true);
             } else {
                 def.setChecked(true);
             }
