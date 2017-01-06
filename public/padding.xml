@@ -3,4 +3,5 @@
 <public-padding type="drawable" name="ic_launcher_not_in_skin" start="0x7f02000b" end="0x7f02000b" id="0x7f02000b"/>
 <public-padding type="id" name="night" start="0x7f0d000e" end="0x7f0d000e" id="0x7f0d000e"/>
 <public-padding type="id" name="green" start="0x7f0d0010" end="0x7f0d0010" id="0x7f0d0010"/>
+<public-padding type="color" name="new_blue_night" start="0x7f07000b" end="0x7f07000b" id="0x7f07000b"/>
 </resources>
