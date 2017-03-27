@@ -29,7 +29,7 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
 
     private String currentSkin = "";
 
-    private CheckBox red, night, def;
+    private CheckBox red, def;
 
     private static boolean hasNotCopy = true;
 
@@ -51,7 +51,7 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
             FileUtil.copyAssetsFile(this, "red.apk", dir + "red.apk");
             hasNotCopy = false;
         }
-        BitmapDrawable d = (BitmapDrawable) ((StateListDrawable)((ImageView) findViewById(R.id.first_icon)).getDrawable()).getCurrent();
+        BitmapDrawable d = (BitmapDrawable) ((StateListDrawable) ((ImageView) findViewById(R.id.first_icon)).getDrawable()).getCurrent();
         d.setColorFilter(d.getPaint().getColorFilter());
     }
 
@@ -66,10 +66,6 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
         red = (CheckBox) findViewById(R.id.red);
         red.setChecked(currentSkin.endsWith("red.apk"));
         red.setOnClickListener(this);
-
-        night = (CheckBox) findViewById(R.id.night);
-        night.setChecked(currentSkin.endsWith(ResourcesManager.DEFAULT_RESOURCES_NIGHT));
-        night.setOnClickListener(this);
 
         def = (CheckBox) findViewById(R.id.def);
         def.setChecked(currentSkin.endsWith(ResourcesManager.DEFAULT_RESOURCES));
@@ -101,13 +97,6 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
                 break;
             }
 
-            case R.id.night: {
-                if (!currentSkin.endsWith(ResourcesManager.DEFAULT_RESOURCES_NIGHT)) {
-                    skinManager.changeResources(this, ResourcesManager.DEFAULT_RESOURCES_NIGHT);
-                }
-                break;
-            }
-
             case R.id.def: {
                 if (!currentSkin.endsWith(ResourcesManager.DEFAULT_RESOURCES)) {
                     skinManager.changeResources(this, ResourcesManager.DEFAULT_RESOURCES);
@@ -125,12 +114,9 @@ public class SkinActivity extends FragmentActivity implements OnClickListener, O
         if (success) {
             def.setChecked(false);
             red.setChecked(false);
-            night.setChecked(false);
             currentSkin = skinManager.getCurrentSkin();
             if (currentSkin.endsWith("red.apk")) {
                 red.setChecked(true);
-            } else if (currentSkin.endsWith(ResourcesManager.DEFAULT_RESOURCES_NIGHT)) {
-                night.setChecked(true);
             } else {
                 def.setChecked(true);
             }

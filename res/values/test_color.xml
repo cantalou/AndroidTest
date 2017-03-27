@@ -3,8 +3,5 @@
     <color name="blue">#00a2ff</color>
     <color name="new_blue">#00a2ff</color>
     <color name="new_blue_not_in_skin">#00a2f2</color>
-
-    <color name="blue_night">#dfa2ff</color>
-    <color name="new_blue_night">#dfa2ff</color>
-    <color name="new_blue_not_in_skin_night">#dfa2ff</color>
+    <color name="new_blue_123">#00a2f2</color>
 </resources>
