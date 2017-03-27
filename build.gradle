@@ -17,7 +17,7 @@ repositories {
 
 apply plugin: 'com.android.application'
 //apply from: 'https://raw.githubusercontent.com/cantalou/GradlePublic/master/keepResourcesId.gradle'
-//apply from: './keepResourcesId.gradle'
+apply from: './keepResourcesId.gradle'
 //apply from: 'https://raw.githubusercontent.com/cantalou/GradlePublic/master/genNameId.gradle'
 
 dependencies {
@@ -35,7 +35,7 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 23
     buildToolsVersion "25.0.2"
 
     sourceSets {
@@ -63,7 +63,7 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 21
+        targetSdkVersion 23
         multiDexEnabled true
     }
 

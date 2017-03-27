@@ -14,10 +14,63 @@ afterEvaluate {
         def capitalizeName = variant.name.capitalize()
         def mergeTask = tasks.findByName("merge${capitalizeName}Resources")
 
-        def task = tasks.findByName("process${capitalizeName}Resources");
         mergeTask.doLast {
-            updateTimestamp(mergeTask)
+
+            def splitDataFlat = "#:#"
+            def change = false;
+            def resDir = android.sourceSets.main.res.srcDirs[0]
+            println resDir
+            if(!resDir){
+                resDir = "${projectDir}/src/main/res"
+            }
+            def newTimestampMap = getTimestamp(file(resDir.toString()))
+
+            def oldTimestampMap = [:]
+            if (timestampFile.exists()) {
+                timestampFile.eachLine {
+                    if (it.size() > 0) {
+                        def item = it.split(splitDataFlat)
+                        oldTimestampMap.put(item[0], item[1])
+                    }
+                }
+            } else {
+                change = true
+            }
+
+
+
+            if (!change) {
+                if (newTimestampMap.size() != oldTimestampMap.size()) {
+                    change = true
+                    println "文件数量发生变化 新文件数量:${newTimestampMap.size()}, 旧文件数量:${oldTimestampMap.size()}"
+                } else {
+                    for (entry in oldTimestampMap) {
+                        if (!(Long.parseLong(entry.value) == newTimestampMap.get(entry.key))) {
+                            change = true
+                            println "资源文件${entry.key}发生变化, 上一次修改时间:${entry.value}, 最新修改时间:${newTimestampMap.get(entry.key)}"
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (change) {
+                ['ids.xml', 'public.xml', 'padding.xml'].each {
+                    file("${mergeTask.outputDir}/values/${it}").delete()
+                }
+                println "新资源删除了资源, 删除values下 'ids.xml', 'public.xml', 'padding.xml' 文件"
+                timestampFile.withWriter { out ->
+                    newTimestampMap.each { k, v ->
+                        out.println "${k}${splitDataFlat}${v}"
+                    }
+                }
+                println "Update timestampFile"
+            } else {
+                println "timestampFile UP-TO-DATE"
+            }
         }
+
+        def task = tasks.findByName("process${capitalizeName}Resources");
         task.doLast {
 
             println "开始执行keep resource id 任务"
@@ -69,7 +122,7 @@ afterEvaluate {
             def releaseMode = buildType.isMinifyEnabled() && buildType.name.equalsIgnoreCase("release")
 
             def padding = getItems(paddingFile)
-            println "旧public-padding.xml 文件存在,已有节点${padding.toString()}"
+            //println "旧public-padding.xml 文件存在,已有节点${padding.toString()}"
 
             if (deletedItem.size() > 0) {
                 if (releaseMode) {
@@ -102,7 +155,6 @@ afterEvaluate {
 
                 copyPublicFilesIntoValuesDir valuesDir
                 if (releaseMode) {
-                    reRunGradle()
                     throw new RuntimeException("Release混淆模式下无法直接Task重新执行, 只拷贝文件到values文件夹下, 需要手动再次执行打包命令(命令中不要包含clean)")
                 } else {
                     it.execute()
@@ -127,7 +179,6 @@ afterEvaluate {
                 generateId("${valuesDir}/values.xml")
                 copyPublicFilesIntoValuesDir valuesDir
                 if (releaseMode) {
-                    reRunGradle()
                     throw new RuntimeException("Release混淆模式下无法直接Task重新执行, 只拷贝文件到values文件夹下, 需要手动再次执行打包命令(命令中不要包含clean)")
                 } else {
                     it.execute()
@@ -176,77 +227,18 @@ afterEvaluate {
     }
 }
 
-/**
- * 更新res文件夹最后修改时间
- * @param mergeTask
- */
-void updateTimestamp(def mergeTask) {
 
-    def change = false;
-    def newTimestampMap = [:]
-    getTimestamp file("${projectDir}/src/main/res"), newTimestampMap
+def getTimestamp(File file) {
 
-    def oldTimestampMap = [:]
-    if (timestampFile.exists()) {
-        timestampFile.eachLine {
-            if (it.size() > 0) {
-                def item = it.split(":")
-                oldTimestampMap.put(item[0], item[1])
-            }
-        }
-    } else {
-        change = true
-    }
-
-    if(oldTimestampMap.isEmpty()){
-        change = true
-    }
-
-    if (!change) {
-        if (newTimestampMap.size() < oldTimestampMap.size()) {
-            change = true
-        }
-    }
-
-    if (!change) {
-        oldTimestampMap.each { entry ->
-            if (!change && !(Long.parseLong(entry.value) == newTimestampMap.get(entry.key))) {
-                println "文件${entry.value}已更新"
-                change = true
-            }
-        }
-    }
-
-    if (change) {
-        ['ids.xml', 'public.xml', 'padding.xml'].each {
-            file("${mergeTask.outputDir}/values/${it}").delete()
-        }
-        println " 删除values下 'ids.xml', 'public.xml', 'padding.xml' 文件"
-
-        timestampFile.withWriter { out ->
-            newTimestampMap.each { k, v ->
-                out.println "${k}:${v}"
-            }
-        }
-        println "Update timestampFile"
-    } else {
-        println "timestampFile UP-TO-DATE"
-    }
-}
-
-void getTimestamp(File file, def timestampMap) {
     if (!file.exists()) {
         return
     }
 
-    if (file.isDirectory()) {
-        file.listFiles().each {
-            getTimestamp it, timestampMap
-        }
-    } else {
-        timestampMap.put file.name, file.lastModified()
+    def timestampMap = [:]
+    file.eachFileRecurse { f ->
+        timestampMap.put f.getAbsolutePath(), f.lastModified()
     }
-    timestampMap
+    return timestampMap
 }
 
 /**
@@ -265,7 +257,7 @@ def reorderPublicXml(def skipItem) {
     }
 
     def paddingIds = paddingItem*.id as HashSet
-    println "padding id ${paddingIds}"
+    //println "padding id ${paddingIds}"
 
     def oldItemMap = [:] as LinkedHashMap
     def oldItem = []
@@ -296,7 +288,7 @@ def reorderPublicXml(def skipItem) {
         v.each {
             hexVal = "0x" + Long.toString(newId, 16)
             while (paddingIds.contains(hexVal)) {
-                println "id ${hexVal} 已存在跳过"
+                //println "id ${hexVal} 已存在跳过"
                 newId++
                 hexVal = "0x" + Long.toString(newId, 16)
             }
@@ -349,12 +341,7 @@ def writePaddingXml(def items) {
         out.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
         out.println("<resources>")
         items.each {
-            def suf = ${it.id.substring(6,10)}
-            String name = it.name
-            if(!name.endsWith(suf)){
-                name += suf
-            }
-            out.println("<public-padding type=\"${it.type}\" name=\"${name}\" start=\"${it.id}\" end=\"${it.id}\" id=\"${it.id}\"/>")
+            out.println("<public-padding type=\"${it.type}\" name=\"${it.name}\" start=\"${it.id}\" end=\"${it.id}\" id=\"${it.id}\"/>")
         }
         out.println("</resources>")
     }
