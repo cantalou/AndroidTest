@@ -85,6 +85,8 @@
         </activity>
         <activity android:name=".file.FileMD5Activity">
         </activity>
-    </application>
+        <activity android:name=".performance.PMSgetPackageInfoTest"/>
+        <activity android:name=".animation.WaveActivity"/>
+    </application>/
 
 </manifest>

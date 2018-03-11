@@ -329,6 +329,7 @@
 <public type="layout" name="abc_simple_dropdown_hint"  id="0x7f030032" />
 <public type="layout" name="activity_file_md5"  id="0x7f030033" />
 <public type="layout" name="support_simple_spinner_dropdown_item"  id="0x7f030034" />
+<public type="layout" name="activity_wave"  id="0x7f030035" />
 <public type="anim" name="myanim"  id="0x7f040000" />
 <public type="anim" name="abc_fade_in"  id="0x7f040001" />
 <public type="anim" name="abc_fade_out"  id="0x7f040002" />
@@ -867,4 +868,5 @@
 <public type="id" name="submit_area"  id="0x7f0d006a" />
 <public type="id" name="search_go_btn"  id="0x7f0d006b" />
 <public type="id" name="search_voice_btn"  id="0x7f0d006c" />
+<public type="id" name="waveView"  id="0x7f0d006d" />
 </resources>

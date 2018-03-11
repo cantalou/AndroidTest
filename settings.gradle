@@ -1,3 +1,0 @@
-include ':AndroidSkinChange', ':AndroidUtil'
-project(':AndroidSkinChange').projectDir = new File('../AndroidSkinChange')
-project(':AndroidUtil').projectDir = new File('../AndroidUtil')

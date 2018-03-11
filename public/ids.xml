@@ -97,4 +97,5 @@
 <item type="id" name="submit_area" />
 <item type="id" name="search_go_btn" />
 <item type="id" name="search_voice_btn" />
+<item type="id" name="waveView" />
 </resources>
