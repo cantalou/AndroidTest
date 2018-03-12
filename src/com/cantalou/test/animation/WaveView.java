@@ -59,15 +59,6 @@ public class WaveView extends View {
 
     public static final int DEFAULT_BEHIND_WAVE_COLOR = Color.parseColor("#28FFFFFF");
     public static final int DEFAULT_FRONT_WAVE_COLOR = Color.parseColor("#3CFFFFFF");
-    public static final ShapeType DEFAULT_WAVE_SHAPE = ShapeType.CIRCLE;
-
-    public enum ShapeType {
-        CIRCLE,
-        SQUARE
-    }
-
-    // if true, the shader will display the wave
-    private boolean mShowWave;
 
     // shader containing repeated waves
     private BitmapShader mWaveShader;
@@ -75,12 +66,10 @@ public class WaveView extends View {
     private Matrix mShaderMatrix;
     // paint to draw wave
     private Paint mViewPaint;
-    // paint to draw border
-    private Paint mBorderPaint;
+
 
     private float mDefaultAmplitude;
     private float mDefaultWaterLevel;
-    private float mDefaultWaveLength;
     private double mDefaultAngularFrequency;
 
     private float mAmplitudeRatio = DEFAULT_AMPLITUDE_RATIO;
@@ -89,8 +78,6 @@ public class WaveView extends View {
     private float mWaveShiftRatio = DEFAULT_WAVE_SHIFT_RATIO;
 
     private int mBehindWaveColor = DEFAULT_BEHIND_WAVE_COLOR;
-    private int mFrontWaveColor = DEFAULT_FRONT_WAVE_COLOR;
-    private ShapeType mShapeType = DEFAULT_WAVE_SHAPE;
 
     public WaveView(Context context) {
         super(context);
@@ -178,29 +165,8 @@ public class WaveView extends View {
         mWaveLengthRatio = waveLengthRatio;
     }
 
-    public boolean isShowWave() {
-        return mShowWave;
-    }
-
-    public void setShowWave(boolean showWave) {
-        mShowWave = showWave;
-    }
-
-    public void setBorder(int width, int color) {
-        if (mBorderPaint == null) {
-            mBorderPaint = new Paint();
-            mBorderPaint.setAntiAlias(true);
-            mBorderPaint.setStyle(Style.STROKE);
-        }
-        mBorderPaint.setColor(color);
-        mBorderPaint.setStrokeWidth(width);
-
-        invalidate();
-    }
-
     public void setWaveColor(int behindWaveColor, int frontWaveColor) {
         mBehindWaveColor = behindWaveColor;
-        mFrontWaveColor = frontWaveColor;
 
         if (getWidth() > 0 && getHeight() > 0) {
             // need to recreate shader when color changed
@@ -210,15 +176,9 @@ public class WaveView extends View {
         }
     }
 
-    public void setShapeType(ShapeType shapeType) {
-        mShapeType = shapeType;
-        invalidate();
-    }
-
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-
         createShader();
     }
 
@@ -229,7 +189,6 @@ public class WaveView extends View {
         mDefaultAngularFrequency = 2.0f * Math.PI / DEFAULT_WAVE_LENGTH_RATIO / getWidth();
         mDefaultAmplitude = getHeight() * DEFAULT_AMPLITUDE_RATIO;
         mDefaultWaterLevel = getHeight() * DEFAULT_WATER_LEVEL_RATIO;
-        mDefaultWaveLength = getWidth();
 
         Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -254,13 +213,7 @@ public class WaveView extends View {
             waveY[beginX] = beginY;
         }
 
-//        wavePaint.setColor(mFrontWaveColor);
-//        final int wave2Shift = (int) (mDefaultWaveLength / 4);
-//        for (int beginX = 0; beginX < endX; beginX++) {
-//            canvas.drawLine(beginX, waveY[(beginX + wave2Shift) % endX], beginX, endY, wavePaint);
-//        }
-
-        // use the bitamp to create the shader
+        // use the bitmap to create the shader
         mWaveShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
         mViewPaint.setShader(mWaveShader);
     }
@@ -268,53 +221,32 @@ public class WaveView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         // modify paint shader according to mShowWave state
-        if (mShowWave && mWaveShader != null) {
-            // first call after mShowWave, assign it to our paint
-            if (mViewPaint.getShader() == null) {
-                mViewPaint.setShader(mWaveShader);
-            }
-
-            // sacle shader according to mWaveLengthRatio and mAmplitudeRatio
-            // this decides the size(mWaveLengthRatio for width, mAmplitudeRatio for height) of waves
-            mShaderMatrix.setScale(
-                    mWaveLengthRatio / DEFAULT_WAVE_LENGTH_RATIO,
-                    mAmplitudeRatio / DEFAULT_AMPLITUDE_RATIO,
-                    0,
-                    mDefaultWaterLevel);
-            // translate shader according to mWaveShiftRatio and mWaterLevelRatio
-            // this decides the start position(mWaveShiftRatio for x, mWaterLevelRatio for y) of waves
-            mShaderMatrix.postTranslate(
-                    mWaveShiftRatio * getWidth(),
-                    (DEFAULT_WATER_LEVEL_RATIO - mWaterLevelRatio) * getHeight());
-
-            // assign matrix to invalidate the shader
-            mWaveShader.setLocalMatrix(mShaderMatrix);
-
-            float borderWidth = mBorderPaint == null ? 0f : mBorderPaint.getStrokeWidth();
-            switch (mShapeType) {
-                case CIRCLE:
-                    if (borderWidth > 0) {
-                        canvas.drawCircle(getWidth() / 2f, getHeight() / 2f,
-                                (getWidth() - borderWidth) / 2f - 1f, mBorderPaint);
-                    }
-                    float radius = getWidth() / 2f - borderWidth;
-                    canvas.drawCircle(getWidth() / 2f, getHeight() / 2f, radius, mViewPaint);
-                    break;
-                case SQUARE:
-                    if (borderWidth > 0) {
-                        canvas.drawRect(
-                                borderWidth / 2f,
-                                borderWidth / 2f,
-                                getWidth() - borderWidth / 2f - 0.5f,
-                                getHeight() - borderWidth / 2f - 0.5f,
-                                mBorderPaint);
-                    }
-                    canvas.drawRect(borderWidth, borderWidth, getWidth() - borderWidth,
-                            getHeight() - borderWidth, mViewPaint);
-                    break;
-            }
-        } else {
-            mViewPaint.setShader(null);
+        if (mWaveShader == null) {
+            return;
         }
+        // first call after mShowWave, assign it to our paint
+        if (mViewPaint.getShader() == null) {
+            mViewPaint.setShader(mWaveShader);
+        }
+
+        // sacle shader according to mWaveLengthRatio and mAmplitudeRatio
+        // this decides the size(mWaveLengthRatio for width, mAmplitudeRatio for height) of waves
+        mShaderMatrix.setScale(
+                mWaveLengthRatio / DEFAULT_WAVE_LENGTH_RATIO,
+                mAmplitudeRatio / DEFAULT_AMPLITUDE_RATIO,
+                0,
+                mDefaultWaterLevel);
+        // translate shader according to mWaveShiftRatio and mWaterLevelRatio
+        // this decides the start position(mWaveShiftRatio for x, mWaterLevelRatio for y) of waves
+        mShaderMatrix.postTranslate(
+                mWaveShiftRatio * getWidth(),
+                (DEFAULT_WATER_LEVEL_RATIO - mWaterLevelRatio) * getHeight());
+
+        // assign matrix to invalidate the shader
+        mWaveShader.setLocalMatrix(mShaderMatrix);
+
+        canvas.drawRect(0, 0, getWidth(), getHeight(), mViewPaint);
+
+
     }
 }
