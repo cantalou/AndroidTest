@@ -58,15 +58,12 @@ public class WaveView extends View {
     private static final float DEFAULT_WAVE_SHIFT_RATIO = 0.0f;
 
     public static final int DEFAULT_BEHIND_WAVE_COLOR = Color.parseColor("#28FFFFFF");
-    public static final int DEFAULT_FRONT_WAVE_COLOR = Color.parseColor("#3CFFFFFF");
 
-    // shader containing repeated waves
     private BitmapShader mWaveShader;
-    // shader matrix
-    private Matrix mShaderMatrix;
-    // paint to draw wave
-    private Paint mViewPaint;
 
+    private Matrix mShaderMatrix;
+
+    private Paint mViewPaint;
 
     private float mDefaultAmplitude;
     private float mDefaultWaterLevel;
@@ -98,10 +95,6 @@ public class WaveView extends View {
         mShaderMatrix = new Matrix();
         mViewPaint = new Paint();
         mViewPaint.setAntiAlias(true);
-    }
-
-    public float getWaveShiftRatio() {
-        return mWaveShiftRatio;
     }
 
     /**
@@ -213,40 +206,21 @@ public class WaveView extends View {
             waveY[beginX] = beginY;
         }
 
-        // use the bitmap to create the shader
         mWaveShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
         mViewPaint.setShader(mWaveShader);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        // modify paint shader according to mShowWave state
         if (mWaveShader == null) {
             return;
         }
-        // first call after mShowWave, assign it to our paint
         if (mViewPaint.getShader() == null) {
             mViewPaint.setShader(mWaveShader);
         }
-
-        // sacle shader according to mWaveLengthRatio and mAmplitudeRatio
-        // this decides the size(mWaveLengthRatio for width, mAmplitudeRatio for height) of waves
-        mShaderMatrix.setScale(
-                mWaveLengthRatio / DEFAULT_WAVE_LENGTH_RATIO,
-                mAmplitudeRatio / DEFAULT_AMPLITUDE_RATIO,
-                0,
-                mDefaultWaterLevel);
-        // translate shader according to mWaveShiftRatio and mWaterLevelRatio
-        // this decides the start position(mWaveShiftRatio for x, mWaterLevelRatio for y) of waves
-        mShaderMatrix.postTranslate(
-                mWaveShiftRatio * getWidth(),
-                (DEFAULT_WATER_LEVEL_RATIO - mWaterLevelRatio) * getHeight());
-
-        // assign matrix to invalidate the shader
+        mShaderMatrix.setScale(mWaveLengthRatio / DEFAULT_WAVE_LENGTH_RATIO, mAmplitudeRatio / DEFAULT_AMPLITUDE_RATIO, 0, mDefaultWaterLevel);
+        mShaderMatrix.postTranslate(mWaveShiftRatio * getWidth(), (DEFAULT_WATER_LEVEL_RATIO - mWaterLevelRatio) * getHeight());
         mWaveShader.setLocalMatrix(mShaderMatrix);
-
         canvas.drawRect(0, 0, getWidth(), getHeight(), mViewPaint);
-
-
     }
 }
