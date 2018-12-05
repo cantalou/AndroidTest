@@ -21,7 +21,7 @@ import android.widget.Scroller;
  * @author jia chen
  * @date 2014年08月22日 上午11:45
  *
- * Copyright (c) 2014年, 4399 Network CO.ltd. All Rights Reserved.
+ * Copyright (c) 2014年, Network CO.ltd. All Rights Reserved.
  */
 @SuppressLint("SetJavaScriptEnabled")
 public class MyWebView extends WebView
